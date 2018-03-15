@@ -1,0 +1,5 @@
+c:\users\aluno\documents\visual studio 2015\Projects\OpinemBem\OpinemBem.DataAccess\bin\Debug\OpinemBem.DataAccess.dll
+c:\users\aluno\documents\visual studio 2015\Projects\OpinemBem\OpinemBem.DataAccess\bin\Debug\OpinemBem.DataAccess.pdb
+c:\users\aluno\documents\visual studio 2015\Projects\OpinemBem\OpinemBem.DataAccess\obj\Debug\OpinemBem.DataAccess.csprojResolveAssemblyReference.cache
+c:\users\aluno\documents\visual studio 2015\Projects\OpinemBem\OpinemBem.DataAccess\obj\Debug\OpinemBem.DataAccess.dll
+c:\users\aluno\documents\visual studio 2015\Projects\OpinemBem\OpinemBem.DataAccess\obj\Debug\OpinemBem.DataAccess.pdb

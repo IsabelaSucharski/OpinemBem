@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpinemBem.WebUI", "OpinemBem.WebUI\OpinemBem.WebUI.csproj", "{6E77B917-8D54-4B39-AB4D-AE8C9DD088B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpinemBem.Models", "OpinemBem.Models\OpinemBem.Models.csproj", "{B63475FE-764A-49E1-BA77-3C998E365BD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpinemBem.DataAccess", "OpinemBem.DataAccess\OpinemBem.DataAccess.csproj", "{2EEC2D09-949B-4CC6-9879-B4060A787F54}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E77B917-8D54-4B39-AB4D-AE8C9DD088B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E77B917-8D54-4B39-AB4D-AE8C9DD088B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E77B917-8D54-4B39-AB4D-AE8C9DD088B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E77B917-8D54-4B39-AB4D-AE8C9DD088B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B63475FE-764A-49E1-BA77-3C998E365BD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B63475FE-764A-49E1-BA77-3C998E365BD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B63475FE-764A-49E1-BA77-3C998E365BD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B63475FE-764A-49E1-BA77-3C998E365BD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EEC2D09-949B-4CC6-9879-B4060A787F54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EEC2D09-949B-4CC6-9879-B4060A787F54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EEC2D09-949B-4CC6-9879-B4060A787F54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EEC2D09-949B-4CC6-9879-B4060A787F54}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
