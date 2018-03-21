@@ -1,0 +1,95 @@
+﻿@using OpinemBem.Models
+@model CadastroU
+@{
+    Layout = "";
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Opinem Bem</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="@Url.Content("~/Scripts/jquery-1.9.1.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.js")"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <img src="@Url.Content("~/Images/opinemmbem.png")" width="375" height="300" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <form class="form-horizontal">
+                    <div class="form-group ">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.Nome, "Nome Completo:", new { @class = "control-label text-center"})
+                            @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @size = "47" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.DataNasc, "Data de Nascimento:", new { @class = "control-label text-center"})
+                            @Html.TextBoxFor(m => m.DataNasc, new { @class = "form-control", @size = "47" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.CPF, "CPF:", new { @class = "control-label text-center"})
+                            @Html.TextBoxFor(m => m.CPF, new { @class = "form-control", @size = "47" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.Email, "Email :", new { @class = "control-label text-center"})
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "opinebem@votebem.com", @size = "47" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label class="control-label">Tipo de Usuário:</label>
+                            <select class="form-control">
+                                <option>--[SELECIONE]--</option>
+                                <option>POLÍTICO</option>
+                                <option>CÍVIL</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.Senha, "Senha:", new { @class = "control-label text-center"})
+                            @Html.PasswordFor(m => m.Senha, new { @class = "form-control", @size = "47" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.ConfirmaSenha, "Confirmar Senha:", new { @class = "control-label text-center"})
+                            @Html.PasswordFor(m => m.ConfirmaSenha, new { @class = "form-control", @size = "47" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="file" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <a href="CadastroAdm.cshtml">Cadastro Administrador</a>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <a href="@Url.Action("Index", "Login")">
+                                <input type="button" class="btn btn-primary" value="Cadastrar" onclick="alert('Cadastrado com sucesso'); return true;" />
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

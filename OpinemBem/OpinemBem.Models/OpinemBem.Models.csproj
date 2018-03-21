@@ -40,7 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AceitarLeisAdm.cs" />
+    <Compile Include="AlterarProjetos.cs" />
+    <Compile Include="CadastroAdm.cs" />
+    <Compile Include="CadastroU.cs" />
+    <Compile Include="CadProjetos.cs" />
+    <Compile Include="CadProjetosAdm.cs" />
+    <Compile Include="ConcordarLeisAdm.cs" />
     <Compile Include="Login.cs" />
+    <Compile Include="LoginAdm.cs" />
+    <Compile Include="PerfilAdm.cs" />
+    <Compile Include="PerfilU.cs" />
+    <Compile Include="ProjetoAdm.cs" />
     <Compile Include="ProjetoU.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

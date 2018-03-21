@@ -10,8 +10,6 @@ namespace OpinemBem.Models
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public DateTime TempoDispo { get; set; }
-        public bool JaVotado { get; set; }
-        public string PesquisaProj { get; set; }
+        public string TempoDispo { get; set; }
     }
 }

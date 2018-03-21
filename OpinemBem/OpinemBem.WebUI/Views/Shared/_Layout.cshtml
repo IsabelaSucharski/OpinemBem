@@ -8,43 +8,48 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-   
-    <div class="container-fluid">
-        <nav class="navbar navbar-default">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+    <div class="container">        
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <nav class="navbar navbar-default">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>-->
-            </div>
-            
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="index.html">Inicio</a>
-                    </li>
-                    <li>
-                        <a href="Perfil.html">Perfil </a>
-                    </li>
-                </ul>
-                <div class="navbar-right">
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Inicio", "Index", "ProjetoU")</li>
+                            <li>@Html.ActionLink("Perfil", "Index", "Usuario")</li>
+                        </ul>
+                    </div>
+                    @*<div class="navbar-right">
                     <ul class="nav navbar-nav ">
-                        <li>
-                            <a href="CadastroLeis.html">Cadastro de Leis</a>
-                        </li>
-                        <li><a href="Login.html">Sair</a></li>
+                        <li>@Html.ActionLink("Cadastro de Leis", "Index", "Leis")</li>
+                        <li>@Html.ActionLink("Sair", "Index", "Login")</li>
                     </ul>
-                </div>
+                </div>*@
+                </nav>
             </div>
-        </nav>
-    </div>
-    @RenderBody()
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</body>
-</html>
+        </div>
+       </div>
+                <div class="container body-content">
+                    @RenderBody()
+                    <hr />
+                    <footer>
+                        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                    </footer>
+                </div>
+
+                @Scripts.Render("~/bundles/jquery")
+                @Scripts.Render("~/bundles/bootstrap")
+                @RenderSection("scripts", required: false)
+
+
+
+            </body>
+            </html>

@@ -1,0 +1,64 @@
+﻿@using OpinemBem.Models
+@model AceitarLeisAdm
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Pesquisar..." />
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button">Procurar</button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2" style="padding-top: 25px;">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nome do projeto</th>
+                        <th>Tempo Disponível</th>
+                        <th>Código</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @*@foreach (ProjetoU item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <a href="Leis.html">Projeto 1</a>
+                                </td>
+                                <td>@item.Nome</td>
+                                <td>@item.TempoDispo</td>
+                                <td>@item.Codigo</td>
+                            </tr>
+                        }*@
+                    @*<tr>
+                        <td>
+                            <a href=@Url.Action("Index","GerenciarLeisAdm")>Projeto 1</a>
+                        </td>
+                        <td>40 dias</td>
+                        <td>01</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href=@Url.Action("Index","GerenciarLeisAdm")>Projeto 2</a>
+                        </td>
+                        <td>38 dias</td>
+                        <td>02</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href=@Url.Action("Index","GerenciarLeisAdm")>Projeto 3</a>
+                        </td>
+                        <td>2 dias</td>
+                        <td>03</td>
+                    </tr>*@
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

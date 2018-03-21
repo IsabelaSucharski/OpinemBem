@@ -39,18 +39,20 @@
                     <div class="form-group">
                         <div class="col-md-12">
                             @Html.LabelFor(m => m.Senha, "Senha:", new { @class = "control-label text-center", @style = "font-size: x-large" })
-                            @Html.PasswordFor(m => m.Senha, new { @class = "form-control", @placeholder="6 dígitos", @size = "47" })
+                            @Html.PasswordFor(m => m.Senha, new { @class = "form-control", @size = "47" })
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-3">
-                            <a href="LoginAdm.html">Adminsitrador?</a>
+                            <a href="@Url.Action("Index", "LoginAdm")" class="elements">Administrador?</a>
                         </div>
                         <div class="col-md-3">
-                            <a href="Cadastrar.html">Cadastrar-se</a>
+                            <a href="@Url.Action("Index", "Login")" class="elements">Cadastrar-se</a>
                         </div>
                         <div class="col-md-6 text-right">
-                            <button type="button" class="btn btn-lg btn-primary" onclick="alert('Bem-Vindo ao Opinem Bem'); return true">Entrar</button>
+                            <a href="@Url.Action("Index","ProjetoU")">
+                                <input type="button" class="btn btn-primary" value="Cadastrar" onclick="alert('Cadastrado com sucesso'); return true;" />
+                            </a>
                         </div>
                     </div>
                 </form>

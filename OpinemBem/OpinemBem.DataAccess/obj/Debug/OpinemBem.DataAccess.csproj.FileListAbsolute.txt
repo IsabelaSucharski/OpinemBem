@@ -10,3 +10,10 @@ C:\Users\Aluno\Documents\GitHub\organizare\OpinemBem\OpinemBem.DataAccess\bin\De
 C:\Users\Aluno\Documents\GitHub\organizare\OpinemBem\OpinemBem.DataAccess\obj\Debug\OpinemBem.DataAccess.csprojResolveAssemblyReference.cache
 C:\Users\Aluno\Documents\GitHub\organizare\OpinemBem\OpinemBem.DataAccess\obj\Debug\OpinemBem.DataAccess.dll
 C:\Users\Aluno\Documents\GitHub\organizare\OpinemBem\OpinemBem.DataAccess\obj\Debug\OpinemBem.DataAccess.pdb
+E:\organizare\OpinemBem\OpinemBem.DataAccess\bin\Debug\OpinemBem.DataAccess.dll
+E:\organizare\OpinemBem\OpinemBem.DataAccess\bin\Debug\OpinemBem.DataAccess.pdb
+E:\organizare\OpinemBem\OpinemBem.DataAccess\bin\Debug\OpinemBem.Models.dll
+E:\organizare\OpinemBem\OpinemBem.DataAccess\bin\Debug\OpinemBem.Models.pdb
+E:\organizare\OpinemBem\OpinemBem.DataAccess\obj\Debug\OpinemBem.DataAccess.csprojResolveAssemblyReference.cache
+E:\organizare\OpinemBem\OpinemBem.DataAccess\obj\Debug\OpinemBem.DataAccess.dll
+E:\organizare\OpinemBem\OpinemBem.DataAccess\obj\Debug\OpinemBem.DataAccess.pdb
