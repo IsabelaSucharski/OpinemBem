@@ -232,9 +232,7 @@
     <Content Include="Views\Leis\ConcordaLeisU.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
