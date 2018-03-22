@@ -79,10 +79,10 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-6">
-                            <a href="CadastroAdm.cshtml">Cadastro Administrador</a>
+                            <a href=@Url.Action("Index","CadastroAdm")>Cadastro Administrador</a>
                         </div>
                         <div class="col-md-6 text-right">
-                            <a href="@Url.Action("Index", "Login")">
+                            <a href=@Url.Action("Index", "Login")>
                                 <input type="button" class="btn btn-primary" value="Cadastrar" onclick="alert('Cadastrado com sucesso'); return true;" />
                             </a>
                         </div>

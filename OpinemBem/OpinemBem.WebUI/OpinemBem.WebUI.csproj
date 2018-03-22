@@ -148,22 +148,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AceitarLeisAdmController.cs" />
-    <Compile Include="Controllers\AlterarProjetosController.cs" />
     <Compile Include="Controllers\CadastroAdmController.cs" />
     <Compile Include="Controllers\CadastroUController.cs" />
-    <Compile Include="Controllers\CadProjetoAdmController.cs" />
-    <Compile Include="Controllers\CadProjetosController.cs" />
-    <Compile Include="Controllers\ConcordaLeisAdmController.cs" />
-    <Compile Include="Controllers\ConcordaLeisUController.cs" />
-    <Compile Include="Controllers\GerenciarLeisAdmController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LeisController.cs" />
     <Compile Include="Controllers\LoginAdmController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PerfilAdmController.cs" />
     <Compile Include="Controllers\PerfilUController.cs" />
-    <Compile Include="Controllers\ProjetoAdmController.cs" />
-    <Compile Include="Controllers\ProjetoUController.cs" />
+    <Compile Include="Controllers\ProjetosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -221,24 +214,23 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\ProjetoU\Index.cshtml" />
+    <Content Include="Views\Projetos\ProjetoU.cshtml" />
     <Content Include="Views\LoginAdm\Index.cshtml" />
     <Content Include="Views\CadastroU\Index.cshtml" />
     <Content Include="Views\CadastroAdm\Index.cshtml" />
-    <Content Include="Views\ProjetoAdm\Index.cshtml" />
-    <Content Include="Views\CadProjetos\Index.cshtml" />
-    <Content Include="Views\CadProjetoAdm\Index.cshtml" />
-    <Content Include="Views\AlterarProjetos\Index.cshtml" />
-    <Content Include="Views\GerenciarLeisAdm\Index.cshtml" />
+    <Content Include="Views\Projetos\ProjetoAdm.cshtml" />
+    <Content Include="Views\Projetos\CadProjetos.cshtml" />
+    <Content Include="Views\Projetos\CadProjetoAdm.cshtml" />
+    <Content Include="Views\Projetos\AlterarProjetos.cshtml" />
+    <Content Include="Views\Leis\GerenciarLeisAdm.cshtml" />
     <Content Include="Views\PerfilU\Index.cshtml" />
     <Content Include="Views\PerfilAdm\Index.cshtml" />
-    <Content Include="Views\AceitarLeisAdm\Index.cshtml" />
-    <Content Include="Views\ConcordaLeisAdm\Index.cshtml" />
-    <Content Include="Views\ConcordaLeisU\Index.cshtml" />
+    <Content Include="Views\Leis\AceitarLeisAdm.cshtml" />
+    <Content Include="Views\Leis\ConcordaLeisAdm.cshtml" />
+    <Content Include="Views\Leis\ConcordaLeisU.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

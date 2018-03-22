@@ -1,6 +1,8 @@
 ﻿@using OpinemBem.Models
 @model AlterarProjetos
-
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -27,30 +29,34 @@
                     <div class="form-group">
                         <div class="col-md-12">
                             @Html.LabelFor(m => m.Nome, "Nome:", new { @class = "control-label text-center" })
-                            @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @size = "47" })
+                            p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            @*@Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @size = "47" })*@
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
                             @Html.LabelFor(m => m.Descricao, "Descrição:", new { @class = "control-label text-center" })
-                            @Html.TextAreaFor(m => m.Descricao, new { @class = "form-control", @size = "47" })
+                            p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            @*@Html.TextAreaFor(m => m.Descricao, new { @class = "form-control", @size = "47" })*@
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
                             @Html.LabelFor(m => m.Vantagens, "Vantagens:", new { @class = "control-label text-center" })
-                            @Html.TextAreaFor(m => m.Vantagens, new { @class = "form-control", @size = "47" })
+                            p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            @*@Html.TextAreaFor(m => m.Vantagens, new { @class = "form-control", @size = "47" })*@
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
                             @Html.LabelFor(m => m.Desvantagns, "Desvantagens:", new { @class = "control-label text-center" })
-                            @Html.TextAreaFor(m => m.Desvantagns, new { @class = "form-control", @size = "47" })
+                            p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            @*@Html.TextAreaFor(m => m.Desvantagns, new { @class = "form-control", @size = "47" })*@
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12 text-right">
-                            <a href="index.html">
+                            <a href=@Url.Action("AceitarLeisAdm", "Leis")>
                                 <input type="button" class="btn btn-primary" value="Alterar" onclick="alert('Alterado com sucesso!'); return true;" />
                             </a>
                         </div>

@@ -3,12 +3,12 @@ c:\users\aluno\documents\visual studio 2015\Projects\OpinemBem\OpinemBem.Models\
 c:\users\aluno\documents\visual studio 2015\Projects\OpinemBem\OpinemBem.Models\obj\Debug\OpinemBem.Models.csprojResolveAssemblyReference.cache
 c:\users\aluno\documents\visual studio 2015\Projects\OpinemBem\OpinemBem.Models\obj\Debug\OpinemBem.Models.dll
 c:\users\aluno\documents\visual studio 2015\Projects\OpinemBem\OpinemBem.Models\obj\Debug\OpinemBem.Models.pdb
+E:\organizare\OpinemBem\OpinemBem.Models\bin\Debug\OpinemBem.Models.dll
+E:\organizare\OpinemBem\OpinemBem.Models\bin\Debug\OpinemBem.Models.pdb
+E:\organizare\OpinemBem\OpinemBem.Models\obj\Debug\OpinemBem.Models.dll
+E:\organizare\OpinemBem\OpinemBem.Models\obj\Debug\OpinemBem.Models.pdb
 C:\Users\Aluno\Documents\GitHub\organizare\OpinemBem\OpinemBem.Models\bin\Debug\OpinemBem.Models.dll
 C:\Users\Aluno\Documents\GitHub\organizare\OpinemBem\OpinemBem.Models\bin\Debug\OpinemBem.Models.pdb
 C:\Users\Aluno\Documents\GitHub\organizare\OpinemBem\OpinemBem.Models\obj\Debug\OpinemBem.Models.csprojResolveAssemblyReference.cache
 C:\Users\Aluno\Documents\GitHub\organizare\OpinemBem\OpinemBem.Models\obj\Debug\OpinemBem.Models.dll
 C:\Users\Aluno\Documents\GitHub\organizare\OpinemBem\OpinemBem.Models\obj\Debug\OpinemBem.Models.pdb
-E:\organizare\OpinemBem\OpinemBem.Models\bin\Debug\OpinemBem.Models.dll
-E:\organizare\OpinemBem\OpinemBem.Models\bin\Debug\OpinemBem.Models.pdb
-E:\organizare\OpinemBem\OpinemBem.Models\obj\Debug\OpinemBem.Models.dll
-E:\organizare\OpinemBem\OpinemBem.Models\obj\Debug\OpinemBem.Models.pdb

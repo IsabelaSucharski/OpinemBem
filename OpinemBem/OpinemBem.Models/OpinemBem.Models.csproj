@@ -47,6 +47,8 @@
     <Compile Include="CadProjetos.cs" />
     <Compile Include="CadProjetosAdm.cs" />
     <Compile Include="ConcordarLeisAdm.cs" />
+    <Compile Include="ConcordarLeisU.cs" />
+    <Compile Include="GerenciarLeisAdm.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="LoginAdm.cs" />
     <Compile Include="PerfilAdm.cs" />
