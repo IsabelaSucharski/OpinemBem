@@ -7,5 +7,6 @@ namespace OpinemBem.DataAccess
 {
     public class ProjetoDAO
     {
+
     }
 }

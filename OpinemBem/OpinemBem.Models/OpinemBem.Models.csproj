@@ -41,21 +41,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AceitarLeisAdm.cs" />
-    <Compile Include="AlterarProjetos.cs" />
     <Compile Include="CadastroAdm.cs" />
     <Compile Include="CadastroU.cs" />
-    <Compile Include="CadProjetos.cs" />
-    <Compile Include="CadProjetosAdm.cs" />
-    <Compile Include="ConcordarLeisAdm.cs" />
-    <Compile Include="ConcordarLeisU.cs" />
-    <Compile Include="GerenciarLeisAdm.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="LoginAdm.cs" />
     <Compile Include="PerfilAdm.cs" />
     <Compile Include="PerfilU.cs" />
     <Compile Include="ProjetoAdm.cs" />
+    <Compile Include="ProjetoDeLei.cs" />
     <Compile Include="ProjetoU.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SEXO.cs" />
+    <Compile Include="TIPO_USUARIO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

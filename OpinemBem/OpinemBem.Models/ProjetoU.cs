@@ -11,5 +11,7 @@ namespace OpinemBem.Models
         public int Id { get; set; }
         public string Nome { get; set; }
         public string TempoDispo { get; set; }
+        public TIPO_USUARIO Tipo { get; set; }
+        public SEXO Sexo { get; set; }
     }
 }
