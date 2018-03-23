@@ -1,2 +1,2 @@
-# organizare
-TCC para disciplina de Desenvolvimento Web do SENAI PR
+# OpinemBem
+TCC para a disciplina de Desenvolvimento Web do SENAI PR
