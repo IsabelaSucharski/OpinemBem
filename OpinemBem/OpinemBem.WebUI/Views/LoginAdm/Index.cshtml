@@ -1,7 +1,7 @@
 ﻿@using OpinemBem.Models
 @model LoginAdm
 @{
-    Layout = "";
+    Layout = "~/Views/Shared/_LayoutInicioAdmin.cshtml";
 }
 
 <!DOCTYPE html>
@@ -43,15 +43,9 @@
                             @Html.PasswordFor(m => m.Senha, new { @class = "form-control", @size = "47" })
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-3">
-                            <a href="@Url.Action("Index", "Login")" class="elements">Usuário?</a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href=@Url.Action("Index", "CadastroAdm") class="elements">Cadastrar-se</a>
-                        </div>
-                        <div class="col-md-6 text-right">
-                            <a href=@Url.Action("Index","ProjetoAdm")>
+                    <div class="form-group">         
+                        <div class="col-md-12 text-right">
+                            <a href=@Url.Action("ProjetoAdm", "Projetos")>
                                 <input type="button" class="btn btn-primary" value="Entrar" onclick="alert('Bem-Vindo ao Opinem Bem'); return true;" />
                             </a>
                         </div>

@@ -231,6 +231,8 @@
     <Content Include="Views\Leis\ConcordaLeisAdm.cshtml" />
     <Content Include="Views\Leis\ConcordaLeisU.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Shared\_LayoutInicioU.cshtml" />
+    <Content Include="Views\Shared\_LayoutInicioAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
