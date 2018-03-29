@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace OpinemBem.Models
 {
-    public class CadastroAdm
+    public class Cadastro
     {
-        public int    Id { get; set; }
+        public int Id { get; set; }
         public string Nome { get; set; }
         public string DataNasc { get; set; }
         public string CPF { get; set; }
@@ -16,6 +16,7 @@ namespace OpinemBem.Models
         public string TipoUsuario { get; set; }
         public string Senha { get; set; }
         public string ConfirmaSenha { get; set; }
-        public string CodAdministrador { get; set; }
+        public TIPO_USUARIO Tipo { get; set; }
+        public SEXO Sexo { get; set; }
     }
 }

@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace OpinemBem.WebUI.Controllers
 {
-    public class CadastroAdmController : Controller
+    public class CadastroController : Controller
     {
-        // GET: CadastroAdm
+        // GET: CadastroU
         public ActionResult Index()
         {
             return View();

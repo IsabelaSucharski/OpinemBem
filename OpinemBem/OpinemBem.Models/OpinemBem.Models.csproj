@@ -41,8 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AceitarLeisAdm.cs" />
-    <Compile Include="CadastroAdm.cs" />
-    <Compile Include="CadastroU.cs" />
+    <Compile Include="Cadastro.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="LoginAdm.cs" />
     <Compile Include="PerfilAdm.cs" />

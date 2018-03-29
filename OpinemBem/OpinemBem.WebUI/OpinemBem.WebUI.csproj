@@ -148,8 +148,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\CadastroAdmController.cs" />
-    <Compile Include="Controllers\CadastroUController.cs" />
+    <Compile Include="Controllers\CadastroController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeisController.cs" />
     <Compile Include="Controllers\LoginAdmController.cs" />
@@ -173,6 +172,8 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\avatar-usuario.jpg" />
+    <Content Include="Images\exem.png" />
+    <Content Include="Images\exemcategoria.png" />
     <Content Include="Images\opinemmbem.png" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -218,8 +219,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Projetos\ProjetoU.cshtml" />
     <Content Include="Views\LoginAdm\Index.cshtml" />
-    <Content Include="Views\CadastroU\Index.cshtml" />
-    <Content Include="Views\CadastroAdm\Index.cshtml" />
+    <Content Include="Views\Cadastro\Index.cshtml" />
     <Content Include="Views\Projetos\ProjetoAdm.cshtml" />
     <Content Include="Views\Projetos\CadProjetos.cshtml" />
     <Content Include="Views\Projetos\CadProjetoAdm.cshtml" />
