@@ -15,7 +15,9 @@ create table usuario
 	email varchar(150) not null,
 	senha varchar(100) not null,
 	dataNasc datetime,
-	administrador bit
+	administrador bit,
+	foto varchar(1000),
+	caminho_foto varchar(3000)
 );
 
 create table categoria
