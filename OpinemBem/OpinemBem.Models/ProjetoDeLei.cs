@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace OpinemBem.Models
 {
     public class ProjetoDeLei
-    {       
-            public int Id { get; set; }
-            public string Nome { get; set; }
-            public string Descricao { get; set; }
-            public string Vantagens { get; set; }
-            public string Desvantagns { get; set; }       
+    {
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public Categoria Categoria { get; set; }
+        public string Descricao { get; set; }
+        public string Vantagens { get; set; }
+        public string Desvantagns { get; set; }
     }
 }

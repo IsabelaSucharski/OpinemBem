@@ -1,5 +1,5 @@
 ﻿@using OpinemBem.Models
-@model LoginAdm
+@model Usuario
 @{
     Layout = "~/Views/Shared/_LayoutInicioAdmin.cshtml";
 }
@@ -13,14 +13,14 @@
         <form class="form-horizontal">
             <div class="form-group">
                 <div class="col-md-12">
-                    @Html.LabelFor(m => m.CPF, "CPF:", new { @class = "control-label text-center", @style = "font-size: x-large" })
+                    @Html.LabelFor(m => m.CPF, "CPF:", new { @class = "control-label" })
                     @Html.TextBoxFor(m => m.CPF, new { @class = "form-control", @placeholder = "Ex.: 000.000.000-00", @size = "47" })
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-12">
-                    @Html.LabelFor(m => m.Senha, "Senha:", new { @class = "control-label text-center", @style = "font-size: x-large" })
-                    @Html.PasswordFor(m => m.Senha, new { @class = "form-control", @size = "47" })
+                    @Html.LabelFor(m => m.Senha, "Senha:", new { @class = "control-label" })
+                    @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
                 </div>
             </div>
             <div class="form-group">

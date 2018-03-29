@@ -1,5 +1,5 @@
 ﻿@using OpinemBem.Models
-@model Cadastro
+@model Usuario
 @{
     Layout = "";
 }
@@ -11,6 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/jquery.fileupload.css")" rel="stylesheet" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -23,62 +24,62 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-4 col-md-offset-4 text-center">
+            <div class="col-md-6 col-md-offset-3 text-center">
                 <img src="@Url.Content("~/Images/opinemmbem.png")" width="375" height="300" />
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 col-md-offset-4">
+            <div class="col-md-6 col-md-offset-3">
                 <form class="form-horizontal">
                     <div class="form-group ">
                         <div class="col-md-12">
-                            @Html.LabelFor(m => m.Nome, "Nome Completo:", new { @class = "control-label text-center"})
-                            @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @size = "47" })
+                            @Html.LabelFor(m => m.Nome, "Nome Completo:", new { @class = "control-label text-center" })
+                            @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-6">
-                            @Html.LabelFor(m => m.DataNasc, "Data de Nascimento:", new { @class = "control-label text-center"})
-                            @Html.TextBoxFor(m => m.DataNasc, new { @class = "form-control", @size = "47" })
+                            @Html.LabelFor(m => m.DataNasc, "Data de Nascimento:", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.DataNasc, new { @class = "form-control" })
                         </div>
                         <div class="col-md-6">
-                            @Html.LabelFor(m => m.CPF, "CPF:", new { @class = "control-label text-center"})
-                            @Html.TextBoxFor(m => m.CPF, new { @class = "form-control", @size = "47" })
+                            @Html.LabelFor(m => m.CPF, "CPF:", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.CPF, new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-12">
-                            @Html.LabelFor(m => m.Email, "Email :", new { @class = "control-label text-center"})
-                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "opinebem@votebem.com", @size = "47" })
+                        <div class="col-md-8">
+                            @Html.LabelFor(m => m.Email, "Email :", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "opinebem@votebem.com" })
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-6">
-                            <label class="control-label">Tipo de Usuário:</label>
-                            <select class="form-control">
-                                <option>--[SELECIONE]--</option>
-                                <option>POLÍTICO</option>
-                                <option>CÍVIL</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            @Html.LabelFor(m => m.Sexo, "Sexo:", new { @class = "control-label text-center", @style = "font-size: 1.2em" })
-                            @Html.PasswordFor(m => m.Sexo, new { @class = "form-control", @size = "47" })
+                        <div class="col-md-4">
+                            @Html.LabelFor(m => m.Sexo, "Sexo:", new { @class = "control-label" })
+                            @Html.EnumDropDownListFor(m => m.Sexo, "-- [SELECIONE] --", new { @id = "ddlSexo", @class = "form-control" })
                         </div>
                     </div>
                     <div class="form-group ">
                         <div class="col-md-6">
-                            @Html.LabelFor(m => m.Senha, "Senha:", new { @class = "control-label text-center"})
-                            @Html.PasswordFor(m => m.Senha, new { @class = "form-control", @size = "47" })
+                            @Html.LabelFor(m => m.Senha, "Senha:", new { @class = "control-label text-center" })
+                            @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
                         </div>
                         <div class="col-md-6">
-                            @Html.LabelFor(m => m.ConfirmaSenha, "Confirmar Senha:", new { @class = "control-label text-center"})
-                            @Html.PasswordFor(m => m.ConfirmaSenha, new { @class = "form-control", @size = "47" })
+                            @Html.LabelFor(m => m.ConfirmaSenha, "Confirmar Senha:", new { @class = "control-label text-center" })
+                            @Html.PasswordFor(m => m.ConfirmaSenha, new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input type="file" />
+                            @Html.HiddenFor(m => m.CaminhoFoto, new { @id = "hdfCaminhoFoto" })
+                            @Html.LabelFor(m => m.Foto, "Foto:", new { @id = "lblFoto", @class = "control-label" })
+                            <div class="input-group">
+                                @Html.TextBoxFor(m => m.Foto, new { @id = "txtFoto", @class = "form-control", @maxlength = 250, @readonly = true })
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default fileinput-button">
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                        <input id="fupArquivo" type="file" name="files[]" multiple="multiple" data-url="@Url.Action("Upload", "Cadastro")" />
+                                    </span>
+                                </span>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">

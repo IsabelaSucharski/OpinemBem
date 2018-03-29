@@ -5,8 +5,7 @@ using System.Text;
 
 namespace OpinemBem.DataAccess
 {
-    public class ProjetoDAO
+    public class CategoriaDAO
     {
-
     }
 }

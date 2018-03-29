@@ -1,112 +1,86 @@
 ﻿@using OpinemBem.Models
-@model PerfilAdm
+@model Usuario
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-<head>
-    <title>Opinem Bem</title>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="Content/bootstrap.css" rel="stylesheet" />
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <script src="Scripts/jquery-1.9.1.js"></script>
-    <script src="Scripts/bootstrap.js"></script>
-    <link href="LadodaTela.css" rel="stylesheet" />
-
-</head>
-<body>
-    <div class="container">
+<div class="row">
+    <div class="col-md-3" style="border-right: 2px solid #000;">
         <div class="row">
-            <div class="col-md-3" style="border-right: 2px solid #000;">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <img src="@Url.Content("~/Images/opinemmbem.png")" width="200" height="150" />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12" style="border-bottom: 2px solid #000">
-                        @Html.LabelFor(m => m.Nome, "Nome: João da Silva", new { @class = "control-label text-center", @style = "font-size: 1.7em" })
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-horizontal">
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    @Html.LabelFor(m => m.Senha, "Senha Atual:", new { @class = "control-label text-center", @style = "font-size: 1.2em" })
-                                    @Html.PasswordFor(m => m.Senha, new { @class = "form-control", @size = "47" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    @Html.LabelFor(m => m.NovaSenha, "Nova Senha:", new { @class = "control-label text-center", @style = "font-size: 1.2em" })
-                                    @Html.PasswordFor(m => m.NovaSenha, new { @class = "form-control", @size = "47" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    @Html.LabelFor(m => m.ConfirmaSenha, "Confirmar Senha:", new { @class = "control-label text-center", @style = "font-size: 1.2em" })
-                                    @Html.PasswordFor(m => m.ConfirmaSenha, new { @class = "form-control", @size = "47" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-12 text-right">
-                                    <a href=@Url.Action("Index","PerfilU")>
-                                        <input type="button" class="btn btn-primary" value="Alterar Senha" onclick="alert('Senha alterada com sucesso'); return true;" />
-                                    </a>
-                                </div>
-                            </div>
+            <div class="col-md-12 text-center">
+                <img src="@Url.Content("~/Images/opinemmbem.png")" width="200" height="150" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="border-bottom: 2px solid #000">
+                @Html.LabelFor(m => m.Nome, "Nome: João da Silva", new { @class = "control-label text-center", @style = "font-size: 1.7em" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.Senha, "Senha Atual:", new { @class = "control-label text-center", @style = "font-size: 1.2em" })
+                            @Html.PasswordFor(m => m.Senha, new { @class = "form-control", @size = "47" })
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-9">
-                <div class="row">
-                    <div class="col-md-12">
-                        <form class="form-horizontal">
-                            <div class="form-group" style="border-bottom: 2px solid #000; padding-bottom: 20px;">
-                                <div class="col-md-6">
-                                    @Html.LabelFor(m => m.NivelAdm, "Nivel do Administrador: 15", new { @class = "control-label" })
-                                </div>
-                                <div class="col-md-6">
-                                    @Html.LabelFor(m => m.ProgressoAdm, "Progresso:", new { @class = "control-label", @style = " width: 250px; " })
-                                    <progress max="100" value="50" title="50%"></progress>
-                                </div>
-                            </div>
-                            @*<div class="form-group" style="border-bottom: 2px solid #000; padding-bottom: 20px;">
-                                <div class="col-md-12">
-                                    @Html.LabelFor(m => m.CodAdministrador, "Código: JICGCMSM", new { @class = "control-label" })
-                                </div>
-                            </div>*@
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    @Html.LabelFor(m => m.ProjetosVotados, "Projetos:", new { @class = "control-label" })
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            @Html.LabelFor(m => m.VotosContra, "Votos Contra:", new { @class = "control-label", @style = " width: 250px; " })
-                                            <progress max="100" value="30" title="30%">30%</progress>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            @Html.LabelFor(m => m.VotosFavor, "Votos a Favor:", new { @class = "control-label", @style = " width: 250px; " })
-                                            <progress max="100" value="70" title="70%">70%</progress>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.NovaSenha, "Nova Senha:", new { @class = "control-label text-center", @style = "font-size: 1.2em" })
+                            @Html.PasswordFor(m => m.NovaSenha, new { @class = "form-control", @size = "47" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.ConfirmaSenha, "Confirmar Senha:", new { @class = "control-label text-center", @style = "font-size: 1.2em" })
+                            @Html.PasswordFor(m => m.ConfirmaSenha, new { @class = "form-control", @size = "47" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 text-right">
+                            <a href=@Url.Action("Index","PerfilU")>
+                                <input type="button" class="btn btn-primary" value="Alterar Senha" onclick="alert('Senha alterada com sucesso'); return true;" />
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
+    <div class="col-md-9">
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal">
+                    <div class="form-group" style="border-bottom: 2px solid #000; padding-bottom: 20px;">
+                        <div class="col-md-6">
+                            <label class="control-label">Nivel do Administrador: 15</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Progresso:</label>
+                            <progress max="100" value="50" title="50%"></progress>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <label class="control-label">Projetos:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="control-label">Votos Contra:</label>
+                                    <progress max="100" value="30" title="30%">30%</progress>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="control-label">Votos a Favor:</label>
+                                    <progress max="100" value="70" title="70%">70%</progress>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

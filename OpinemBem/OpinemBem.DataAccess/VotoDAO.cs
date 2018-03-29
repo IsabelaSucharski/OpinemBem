@@ -5,7 +5,8 @@ using System.Text;
 
 namespace OpinemBem.DataAccess
 {
-    public class LeiDAO
+    public class VotoDAO
     {
+
     }
 }

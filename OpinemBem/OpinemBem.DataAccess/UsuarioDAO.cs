@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OpinemBem.Models
+namespace OpinemBem.DataAccess
 {
-    public enum Sexo
+    public class UsuarioDAO
     {
-        MASCULINO = 1,
 
-        FEMININO = 2
     }
 }

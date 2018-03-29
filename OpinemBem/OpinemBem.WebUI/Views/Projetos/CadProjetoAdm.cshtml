@@ -3,63 +3,41 @@
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <title>Opinem Bem</title>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <script src="@Url.Content("~/Scripts/jquery-1.9.1.js")"></script>
-    <script src="@Url.Content("~/Scripts/bootstrap.js")"></script>
-</head>
-<body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12 col-md-offset-3 ">
-                <h1>Projeto de Lei</h1>
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            @Html.LabelFor(m => m.Nome, "Nome:", new { @class = "control-label text-center" })
-                            @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @size = "47" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            @Html.LabelFor(m => m.Descricao, "Descrição:", new { @class = "control-label text-center" })
-                            @Html.TextAreaFor(m => m.Descricao, new { @class = "form-control", @size = "47" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            @Html.LabelFor(m => m.Vantagens, "Vantagens:", new { @class = "control-label text-center" })
-                            @Html.TextAreaFor(m => m.Vantagens, new { @class = "form-control", @size = "47" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            @Html.LabelFor(m => m.Desvantagns, "Desvantagens:", new { @class = "control-label text-center" })
-                            @Html.TextAreaFor(m => m.Desvantagns, new { @class = "form-control", @size = "47" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-12 text-right">
-                            <a href=@Url.Action("ProjetoAdm", "Projetos")>
-                                <input type="button" class="btn btn-primary" value="Cadastrar" onclick="alert('Cadastrado com sucesso!'); return true;" />
-                            </a>
-                        </div>
-                    </div>
-                </form>
+<div class="row">
+    <div class="col-md-12 col-md-offset-3 ">
+        <h1>Projeto de Lei</h1>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.LabelFor(m => m.Nome, "Nome:", new { @class = "control-label text-center" })
+                    @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @size = "47" })
+                </div>
             </div>
-        </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.LabelFor(m => m.Descricao, "Descrição:", new { @class = "control-label text-center" })
+                    @Html.TextAreaFor(m => m.Descricao, new { @class = "form-control", @size = "47" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.LabelFor(m => m.Vantagens, "Vantagens:", new { @class = "control-label text-center" })
+                    @Html.TextAreaFor(m => m.Vantagens, new { @class = "form-control", @size = "47" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.LabelFor(m => m.Desvantagns, "Desvantagens:", new { @class = "control-label text-center" })
+                    @Html.TextAreaFor(m => m.Desvantagns, new { @class = "form-control", @size = "47" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12 text-right">
+                    <a href=@Url.Action("ProjetoAdm", "Projetos")>
+                        <input type="button" class="btn btn-primary" value="Cadastrar" onclick="alert('Cadastrado com sucesso!'); return true;" />
+                    </a>
+                </div>
+            </div>
+        </form>
     </div>
-</body>
-</html>
+</div>
