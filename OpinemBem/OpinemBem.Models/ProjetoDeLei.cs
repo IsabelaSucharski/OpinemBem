@@ -12,6 +12,7 @@ namespace OpinemBem.Models
         public Categoria Categoria { get; set; }
         public string Descricao { get; set; }
         public string Vantagens { get; set; }
-        public string Desvantagns { get; set; }
+        public string Desvantagens { get; set; }
+        public Usuario Usuario { get; set; }
     }
 }
