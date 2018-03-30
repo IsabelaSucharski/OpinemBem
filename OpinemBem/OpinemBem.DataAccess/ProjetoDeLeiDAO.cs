@@ -45,7 +45,7 @@ namespace OpinemBem.DataAccess
                     {
                         cmd.Connection = conn;
 
-                        cmd.Parameters.Add("@nome", SqlDbType.Varchar).Value = obj.Nome;
+                        cmd.Parameters.Add("@nome", SqlDbType.VarChar).Value = obj.Nome;
                         cmd.Parameters.Add("@id_categoria", SqlDbType.VarChar).Value = obj.Categoria.Id;
                         cmd.Parameters.Add("@id_usuario", SqlDbType.VarChar).Value = obj.Usuario.Id;
                         cmd.Parameters.Add("@descricao", SqlDbType.VarChar).Value = obj.Descricao;

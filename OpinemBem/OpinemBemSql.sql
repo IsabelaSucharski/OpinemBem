@@ -17,7 +17,8 @@ create table usuario
 	dataNasc datetime,
 	administrador bit,
 	foto varchar(1000),
-	caminho_foto varchar(3000)
+	caminho_foto varchar(3000),
+	sexo integer
 );
 
 create table categoria
@@ -31,6 +32,7 @@ create table projeto_de_lei
 	id_projeto int identity(1,1) primary key,
 	nome varchar(500),
 	id_categoria int not null references categoria (id_categoria),
+	id_usuario int not null references usuario(id_usuario),
 	descricao varchar(max),
 	vantagens varchar(max),
 	desvantagens varchar(max)
