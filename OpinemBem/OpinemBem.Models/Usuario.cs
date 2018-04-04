@@ -11,7 +11,7 @@ namespace OpinemBem.Models
         public string Nome { get; set; }
         public string CPF { get; set; }
         public string Email { get; set; }
-        public DateTime? DataNasc { get; set; }
+        public DateTime DataNasc { get; set; }
         public string Senha { get; set; }
         public string NovaSenha { get; set; }
         public string ConfirmaSenha { get; set; }
