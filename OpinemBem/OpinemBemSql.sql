@@ -29,6 +29,9 @@ create table categoria
 	nome varchar(200)	
 );
 
+insert into categoria values('religião')
+select * from categoria
+
 create table projeto_de_lei
 (
 	id_projeto int identity(1,1) primary key,
@@ -37,9 +40,11 @@ create table projeto_de_lei
 	id_usuario int not null references usuario(id_usuario),
 	descricao varchar(max),
 	vantagens varchar(max),
-	desvantagens varchar(max)
+	desvantagens varchar(max),
+	tempo_disponivel date
 );
 
+select * from projeto_de_lei
 create table voto
 (
 	id_usuario int not null references usuario,
