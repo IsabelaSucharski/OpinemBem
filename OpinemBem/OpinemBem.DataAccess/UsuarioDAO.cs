@@ -116,10 +116,10 @@ namespace OpinemBem.DataAccess
                             Email = row["email"].ToString(),
                             Senha = row["senha"].ToString(),
                             DataNasc = Convert.ToDateTime(row["data_nasc"]),
-                            Administrador = Convert.ToBoolean([row["administrador"]),
+                            Administrador = Convert.ToBoolean(row["administrador"]),
                             Foto = row["foto"].ToString(),
                             CaminhoFoto = row["caminho_foto"].ToString(),
-                            Sexo = Convert.ToInt32(row["sexo"])
+                            Sexo = (Sexo)Convert.ToInt32(row["sexo"])
                         };
                         return usuario;
                     }
@@ -157,17 +157,16 @@ namespace OpinemBem.DataAccess
                                 Email = row["email"].ToString(),
                                 Senha = row["senha"].ToString(),
                                 DataNasc = Convert.ToDateTime(row["data_nasc"]),
-                                Administrador = Convert.ToBoolean([row["administrador"]),
+                                Administrador = Convert.ToBoolean(row["administrador"]),
                                 Foto = row["foto"].ToString(),
                                 CaminhoFoto = row["caminho_foto"].ToString(),
-                                Sexo = Convert.ToInt32(row["sexo"])
+                                Sexo = (Sexo)Convert.ToInt32(row["sexo"])
                             };
 
                             lst.Add(usuario);
                         }
                     }
                 }
-
                 return lst;
             }
         }

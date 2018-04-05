@@ -14,12 +14,14 @@ create table usuario
 	cpf varchar(20) not null unique,
 	email varchar(150) not null,
 	senha varchar(100) not null,
-	dataNasc datetime,
+	data_nasc datetime,
 	administrador bit,
 	foto varchar(1000),
 	caminho_foto varchar(3000),
 	sexo integer
 );
+
+insert into usuario (nome, cpf, email, senha, administrador, sexo) values ('Administrador', '111.111.1111-11', 'admin@opinembem.com.br', '123', 1, 1);
 
 create table categoria
 (
@@ -60,3 +62,6 @@ create table comentario
 --religiao varchar(250),
 --email varchar(200) unique,
 --nivel int
+
+
+select * from usuario;

@@ -150,7 +150,7 @@ namespace OpinemBem.DataAccess
                     {
                         var Categoria = new Categoria()
                         {
-                            Id = Convert.ToInt32(row["id"]),
+                            Id = Convert.ToInt32(row["id_categoria"]),
                             Nome = row["nome"].ToString()
                         };
 

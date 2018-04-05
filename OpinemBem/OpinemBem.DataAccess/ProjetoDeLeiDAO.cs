@@ -21,11 +21,12 @@ namespace OpinemBem.DataAccess
                         cmd.Connection = conn;
 
                         cmd.Parameters.Add("@nome", SqlDbType.VarChar).Value = obj.Nome;
-                        cmd.Parameters.Add("@id_categoria", SqlDbType.VarChar).Value = obj.Categoria.Id;
-                        cmd.Parameters.Add("@id_usuario", SqlDbType.VarChar).Value = obj.Usuario.Id;
+                        cmd.Parameters.Add("@id_categoria", SqlDbType.Int).Value = obj.Categoria.Id;
+                        cmd.Parameters.Add("@id_usuario", SqlDbType.Int).Value = obj.Usuario.Id;
                         cmd.Parameters.Add("@descricao", SqlDbType.VarChar).Value = obj.Descricao;
                         cmd.Parameters.Add("@vantagens", SqlDbType.VarChar).Value = obj.Vantagens;
                         cmd.Parameters.Add("@desvantagens", SqlDbType.VarChar).Value = obj.Desvantagens;
+                        cmd.Parameters.Add("@tempo_disponivel", SqlDbType.DateTime).Value = obj.TempoDisponivel;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -46,11 +47,12 @@ namespace OpinemBem.DataAccess
                         cmd.Connection = conn;
 
                         cmd.Parameters.Add("@nome", SqlDbType.VarChar).Value = obj.Nome;
-                        cmd.Parameters.Add("@id_categoria", SqlDbType.VarChar).Value = obj.Categoria.Id;
-                        cmd.Parameters.Add("@id_usuario", SqlDbType.VarChar).Value = obj.Usuario.Id;
+                        cmd.Parameters.Add("@id_categoria", SqlDbType.Int).Value = obj.Categoria.Id;
+                        cmd.Parameters.Add("@id_usuario", SqlDbType.Int).Value = obj.Usuario.Id;
                         cmd.Parameters.Add("@descricao", SqlDbType.VarChar).Value = obj.Descricao;
                         cmd.Parameters.Add("@vantagens", SqlDbType.VarChar).Value = obj.Vantagens;
                         cmd.Parameters.Add("@desvantagens", SqlDbType.VarChar).Value = obj.Desvantagens;
+                        cmd.Parameters.Add("@tempo_disponivel", SqlDbType.DateTime).Value = obj.TempoDisponivel;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -110,7 +112,9 @@ namespace OpinemBem.DataAccess
                             Usuario = new Usuario() { Id = Convert.ToInt32(row["id_usuario"]) },
                             Descricao = row["desvantagens"].ToString(),
                             Vantagens = row["vantagens"].ToString(),
-                            Desvantagens = row["desvantagens"].ToString()
+                            Desvantagens = row["desvantagens"].ToString(),
+                            TempoDisponivel = Convert.ToDateTime(row["tempo_disponivel"])
+                           
                         };
                         return projeto;
                     }
@@ -148,7 +152,8 @@ namespace OpinemBem.DataAccess
                                 Usuario = new Usuario() { Id = Convert.ToInt32(row["id_usuario"]) },
                                 Descricao = row["desvantagens"].ToString(),
                                 Vantagens = row["vantagens"].ToString(),
-                                Desvantagens = row["desvantagens"].ToString()
+                                Desvantagens = row["desvantagens"].ToString(),
+                                TempoDisponivel = Convert.ToDateTime(row["tempo_disponivel"])
                             };
 
                             lst.Add(projetoDeLei);
