@@ -29,8 +29,22 @@ create table categoria
 	nome varchar(200)	
 );
 
-insert into categoria values('religião')
-select * from categoria
+insert into categoria values('Religião')
+insert into categoria values('Sociedade')
+insert into categoria values('Esporte')
+insert into categoria values('Indústria')
+insert into categoria values('Meio Ambiente')
+insert into categoria values('Saúde')
+insert into categoria values('Segurança')
+insert into categoria values('Crianças e Adolescentes')
+insert into categoria values('Mulher')
+insert into categoria values('Transporte')
+insert into categoria values('Educação')
+
+
+--drop table categoria
+
+--select * from categoria
 
 create table projeto_de_lei
 (
@@ -41,10 +55,11 @@ create table projeto_de_lei
 	descricao varchar(max),
 	vantagens varchar(max),
 	desvantagens varchar(max),
-	tempo_disponivel date
+	tempo_disponivel varchar(10),
+	votos int
 );
 
-select * from projeto_de_lei
+--select * from projeto_de_lei
 create table voto
 (
 	id_usuario int not null references usuario,
@@ -69,4 +84,6 @@ create table comentario
 --nivel int
 
 
-select * from usuario;
+--select * from usuario;
+
+select * from projeto_de_lei

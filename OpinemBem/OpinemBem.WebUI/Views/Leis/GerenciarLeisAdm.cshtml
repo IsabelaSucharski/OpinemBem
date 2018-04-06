@@ -6,11 +6,17 @@
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <h1>Projeto de Lei</h1>
-        <form class="form-horizontal">
+        <form class="form-horizontal" action="@Url.Action("SalvarLeisAdm","Leis")">
             <div class="form-group">
                 <div class="col-md-12">
                     @Html.LabelFor(m => m.Nome, "Nome:", new { @class = "control-label text-center" })
                     @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @size = "47" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.LabelFor(m => m.Categoria.Id, "Categoria:", new { @class = "control-label text-center" })
+                    @Html.DropDownListFor(m => m.Categoria.Id, new SelectList(ViewBag.Categorias, "Id", "Nome"), "--[SELECIONE]--", new { @class = "form-control" })
                 </div>
             </div>
             <div class="form-group">
@@ -32,20 +38,14 @@
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-md-4">
-                    <a href=@Url.Action("AceitarLeisAdm", "AceitarLeisAdm")>
-                        <input type="submit" class="btn btn-danger" value="Excluir" onclick="alert('Projeto excluido com sucesso!'); return true;" />
-                    </a>
+                <div class="col-md-4">                    
+                        <input type="submit" class="btn btn-danger" value="Excluir" />
                 </div>
-                <div class="col-md-4">
-                    <a href=@Url.Action("AlterarProjetos", "Projetos")>
-                        <input type="submit" class="btn btn-warning" value="Alterar" />
-                    </a>
+                <div class="col-md-4">                    
+                        <input type="submit" class="btn btn-warning" value="Alterar"/>
                 </div>
-                <div class="col-md-4">
-                    <a href=@Url.Action("AceitarLeisAdm", "AceitarLeisAdm")>
-                        <input type="submit" class="btn btn-success" value="Publicar" onclick="alert('Projeto publicado com sucesso!'); return true;" />
-                    </a>
+                <div class="col-md-4">                    
+                        <input type="submit" class="btn btn-success" value="Publicar" />                   
                 </div>
             </div>
         </form>

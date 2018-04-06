@@ -150,12 +150,10 @@ namespace OpinemBem.DataAccess
                                 DataHora = Convert.ToDateTime(row["data_comentario"]),
                                 Mensagem = row["mensagem"].ToString()                            
                             };
-
                             lst.Add(Comentario);
                         }
                     }
                 }
-
                 return lst;
             }
         }

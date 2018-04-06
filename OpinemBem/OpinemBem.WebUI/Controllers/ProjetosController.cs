@@ -26,7 +26,7 @@ namespace OpinemBem.WebUI.Controllers
             return View();
         }
 
-        public ActionResult SalvarProjetoU(ProjetoDeLei obj)
+        public ActionResult SalvarProjetoU (ProjetoDeLei obj)
         {
             obj.Usuario = new Usuario() { Id = 1 };
             new ProjetoDeLeiDAO().Inserir(obj);
@@ -40,7 +40,8 @@ namespace OpinemBem.WebUI.Controllers
 
         public ActionResult ProjetoU()
         {
-            return View();
+            var lst = new ProjetoDeLeiDAO().BuscarTodos();
+            return View(lst);
         }
     }
 }

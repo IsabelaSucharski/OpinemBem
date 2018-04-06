@@ -14,6 +14,7 @@ namespace OpinemBem.Models
         public string Vantagens { get; set; }
         public string Desvantagens { get; set; }
         public Usuario Usuario { get; set; }
-        public DateTime TempoDisponivel{ get; set; }
+        public int TempoDisponivel{ get; set; }
+        public int Votos { get; set; }
     }
 }

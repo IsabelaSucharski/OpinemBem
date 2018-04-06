@@ -14,7 +14,7 @@ namespace OpinemBem.DataAccess
         {
             using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI"))
             {
-                string strSQL = "INSERT INTO projeto_de_lei (nome, id_categoria, id_usuario, descricao, vantagens, desvantagens) VALUES (@nome, @id_categoria, @id_usuario, @descricao, @vantagens, @desvantagens);";
+                string strSQL = "INSERT INTO projeto_de_lei (nome, id_categoria, id_usuario, descricao, vantagens, desvantagens, tempo_disponivel, votos) VALUES (@nome, @id_categoria, @id_usuario, @descricao, @vantagens, @desvantagens, @tempo_disponivel, @votos);";
                 {
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {
@@ -26,7 +26,8 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@descricao", SqlDbType.VarChar).Value = obj.Descricao;
                         cmd.Parameters.Add("@vantagens", SqlDbType.VarChar).Value = obj.Vantagens;
                         cmd.Parameters.Add("@desvantagens", SqlDbType.VarChar).Value = obj.Desvantagens;
-                        cmd.Parameters.Add("@tempo_disponivel", SqlDbType.DateTime).Value = obj.TempoDisponivel;
+                        cmd.Parameters.Add("@tempo_disponivel", SqlDbType.Int).Value = obj.TempoDisponivel;
+                        cmd.Parameters.Add("@votos", SqlDbType.Int).Value = obj.Votos;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -52,7 +53,8 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@descricao", SqlDbType.VarChar).Value = obj.Descricao;
                         cmd.Parameters.Add("@vantagens", SqlDbType.VarChar).Value = obj.Vantagens;
                         cmd.Parameters.Add("@desvantagens", SqlDbType.VarChar).Value = obj.Desvantagens;
-                        cmd.Parameters.Add("@tempo_disponivel", SqlDbType.DateTime).Value = obj.TempoDisponivel;
+                        cmd.Parameters.Add("@tempo_disponivel", SqlDbType.Int).Value = obj.TempoDisponivel;
+                        cmd.Parameters.Add("@votos", SqlDbType.Int).Value = obj.Votos;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -113,8 +115,8 @@ namespace OpinemBem.DataAccess
                             Descricao = row["desvantagens"].ToString(),
                             Vantagens = row["vantagens"].ToString(),
                             Desvantagens = row["desvantagens"].ToString(),
-                            TempoDisponivel = Convert.ToDateTime(row["tempo_disponivel"])
-                           
+                            TempoDisponivel = Convert.ToInt32(row["tempo_disponivel"]),
+                            Votos = Convert.ToInt32(row["votos"])
                         };
                         return projeto;
                     }
@@ -153,14 +155,13 @@ namespace OpinemBem.DataAccess
                                 Descricao = row["desvantagens"].ToString(),
                                 Vantagens = row["vantagens"].ToString(),
                                 Desvantagens = row["desvantagens"].ToString(),
-                                TempoDisponivel = Convert.ToDateTime(row["tempo_disponivel"])
+                                TempoDisponivel = Convert.ToInt32(row["tempo_disponivel"]),
+                                Votos = Convert.ToInt32(row["votos"])
                             };
-
                             lst.Add(projetoDeLei);
                         }
                     }
                 }
-
                 return lst;
             }
         }
