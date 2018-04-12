@@ -16,7 +16,7 @@
             <div class="form-group">
                 <div class="col-md-12">
                     @Html.LabelFor(m => m.Categoria.Id, "Categoria:", new { @class = "control-label text-center" })
-                    @Html.DropDownListFor(m => m.Categoria.Id, new SelectList(ViewBag.Categorias, "Id", "Nome"), "--[SELECIONE]--", new { @class = "form-control" })
+                    @Html.DropDownListFor(m => m.Categoria.Id, new SelectList(ViewBag.Categorias ?? new List<Categoria>(), "Id", "Nome"), "--[SELECIONE]--", new { @class = "form-control" })
                 </div>
             </div>
             <div class="form-group">

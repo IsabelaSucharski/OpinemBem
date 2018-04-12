@@ -31,31 +31,20 @@
                         <th>Já votado?</th>
                     </tr>
                 </thead>
-                <tbody>                   
-                    @*<tr>
-                        <td>
-                            <a href=@Url.Action("GerenciarLeisAdm", "Leis")>Projeto 1</a>
-                        </td>
-                        <td>40 dias</td>
-                        <td>01</td>
-                        <td>Sim</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href=@Url.Action("GerenciarLeisAdm", "Leis")>Projeto 2</a>
-                        </td>
-                        <td>38 dias</td>
-                        <td>02</td>
-                        <td>Sim</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href=@Url.Action("GerenciarLeisAdm", "Leis")>Projeto 3</a>
-                        </td>
-                        <td>2 dias</td>
-                        <td>03</td>
-                        <td>Não</td>
-                    </tr>*@
+                <tbody>
+                    @foreach (ProjetoDeLei item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a href="@Url.Action("ConcordaLeisAdm", "Leis")">
+                                    @item.Nome
+                                </a>
+                            </td>
+                            <td>@item.TempoDisponivel</td>
+                            <td>@item.Id</td>
+                            <td>0</td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>

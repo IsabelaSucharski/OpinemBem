@@ -14,7 +14,7 @@ namespace OpinemBem.DataAccess
         {
             using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
             {
-                string strSQL = "INSERT INTO usuario (nome, cpf, email, senha, data_nasc, admministrador, foto, caminho_foto, sexo) VALUES ( @nome, @cpf, @email, @senha, @data_nasc, @admministrador, @foto, @caminho_foto, @sexo);";
+                string strSQL = "INSERT INTO usuario (nome, cpf, email, senha, data_nasc, administrador, foto, caminho_foto, sexo) VALUES ( @nome, @cpf, @email, @senha, @data_nasc, @administrador, @foto, @caminho_foto, @sexo);";
                 {
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {
@@ -26,8 +26,8 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@senha", SqlDbType.VarChar).Value = obj.Senha;
                         cmd.Parameters.Add("@data_nasc", SqlDbType.DateTime).Value = obj.DataNasc;
                         cmd.Parameters.Add("@administrador", SqlDbType.Bit).Value = obj.Administrador;
-                        cmd.Parameters.Add("@foto", SqlDbType.VarChar).Value = obj.Foto;
-                        cmd.Parameters.Add("@caminho_foto", SqlDbType.VarChar).Value = obj.CaminhoFoto;
+                        cmd.Parameters.Add("@foto", SqlDbType.VarChar).Value = obj.Foto ?? string.Empty;
+                        cmd.Parameters.Add("@caminho_foto", SqlDbType.VarChar).Value = obj.CaminhoFoto ?? string.Empty;
                         cmd.Parameters.Add("@sexo", SqlDbType.Int).Value = obj.Sexo;
 
                         conn.Open();
@@ -54,8 +54,8 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@senha", SqlDbType.VarChar).Value = obj.Senha;
                         cmd.Parameters.Add("@data_nasc", SqlDbType.DateTime).Value = obj.DataNasc;
                         cmd.Parameters.Add("@administrador", SqlDbType.Bit).Value = obj.Administrador;
-                        cmd.Parameters.Add("@foto", SqlDbType.VarChar).Value = obj.Foto;
-                        cmd.Parameters.Add("@caminho_foto", SqlDbType.VarChar).Value = obj.CaminhoFoto;
+                        cmd.Parameters.Add("@foto", SqlDbType.VarChar).Value = obj.Foto ?? string.Empty;
+                        cmd.Parameters.Add("@caminho_foto", SqlDbType.VarChar).Value = obj.CaminhoFoto ?? string.Empty;
                         cmd.Parameters.Add("@sexo", SqlDbType.Int).Value = obj.Sexo;
 
                         conn.Open();

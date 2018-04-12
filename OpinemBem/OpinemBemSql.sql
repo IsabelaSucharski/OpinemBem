@@ -23,6 +23,8 @@ create table usuario
 
 insert into usuario (nome, cpf, email, senha, administrador, sexo) values ('Administrador', '111.111.1111-11', 'admin@opinembem.com.br', '123', 1, 1);
 
+select * from usuario
+
 create table categoria
 (
 	id_categoria int identity(1,1) primary key,
@@ -56,6 +58,7 @@ create table projeto_de_lei
 	vantagens varchar(max),
 	desvantagens varchar(max),
 	tempo_disponivel varchar(10),
+	publicado bit not null default 0,
 	votos int
 );
 
@@ -87,3 +90,7 @@ create table comentario
 --select * from usuario;
 
 select * from projeto_de_lei
+
+select * from usuario
+
+--alter table projeto_de_lei add publicado bit not null default 0;

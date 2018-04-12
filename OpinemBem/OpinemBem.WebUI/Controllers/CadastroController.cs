@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OpinemBem.DataAccess;
+using OpinemBem.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,6 +14,12 @@ namespace OpinemBem.WebUI.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult SalvarUsuario (Usuario obj)
+        {
+            new UsuarioDAO().Inserir(obj);
+            return RedirectToAction("Index", "Login");
         }
 
         [HttpPost]

@@ -29,37 +29,16 @@
                     @foreach (ProjetoDeLei item in Model)
                     {
                         <tr>
-                            <td>@item.Nome</td>
+                            <td>
+                                <a href="@Url.Action("ConcordaLeisU", "Leis")">
+                                    @item.Nome
+                                </a>
+                            </td>
                             <td>@item.TempoDisponivel</td>
                             <td>@item.Id</td>
                             @*<td>0</td>*@
                         </tr>
                     }
-
-                    @*<tr>
-                            <td>
-                                <a href=@Url.Action("ConcordaLeisU", "Leis")>Projeto 1</a>
-                            </td>
-                            <td>40 dias</td>
-                            <td>01</td>
-                            <td>Sim</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href=@Url.Action("ConcordaLeisU", "Leis")>Projeto 2</a>
-                            </td>
-                            <td>38 dias</td>
-                            <td>02</td>
-                            <td>Sim</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href=@Url.Action("ConcordaLeisU", "Leis")>Projeto 3</a>
-                            </td>
-                            <td>2 dias</td>
-                            <td>03</td>
-                            <td>Não</td>
-                        </tr>*@
                 </tbody>
             </table>
         </div>
