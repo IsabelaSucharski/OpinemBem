@@ -42,7 +42,17 @@ namespace OpinemBem.DataAccess
         {
             using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI"))
             {
-                string strSQL = "UPDATE projeto_de_lei set projeto_de_lei = @projeto_de_lei where id_projeto = @id_projeto;";
+                string strSQL = @"UPDATE projeto_de_lei set 
+                                    nome = @nome,
+                                    id_categoria = @id_categoria,
+                                    id_usuario = @id_usuario,
+                                    descricao = @descricao,
+                                    vantagens = @vantagens,
+                                    desvantagens = @desvantagens,
+                                    tempo_disponivel = @tempo_disponivel,
+                                    publilcado = @publicado,
+                                    votos = @votos
+                                    where id_projeto = @id_projeto;";
                 {
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {
@@ -57,11 +67,32 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@tempo_disponivel", SqlDbType.Int).Value = obj.TempoDisponivel;
                         cmd.Parameters.Add("@publicado", SqlDbType.Bit).Value = obj.Publicado;
                         cmd.Parameters.Add("@votos", SqlDbType.Int).Value = obj.Votos;
+                        cmd.Parameters.Add("@id_projeto", SqlDbType.Int).Value = obj.Id;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
                         conn.Close();
+                    }
+                }
+            }
+        }
 
+        public void Publicar (ProjetoDeLei obj)
+        {
+            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI"))
+            {
+                string strSQL = @"UPDATE projeto_de_lei set publicado where id_projeto = @id_projeto;";
+                {
+                    using (SqlCommand cmd = new SqlCommand(strSQL))
+                    {
+                        cmd.Connection = conn;
+
+                        cmd.Parameters.Add("@id_projeto", SqlDbType.Int).Value = obj.Id;
+                        cmd.Parameters.Add("@publicado", SqlDbType.Bit).Value = obj.Publicado;
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
                     }
                 }
             }
@@ -168,6 +199,6 @@ namespace OpinemBem.DataAccess
                 }
                 return lst;
             }
-        }
+        }        
     }
 }

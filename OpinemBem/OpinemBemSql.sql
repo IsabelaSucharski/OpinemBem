@@ -23,7 +23,7 @@ create table usuario
 
 insert into usuario (nome, cpf, email, senha, administrador, sexo) values ('Administrador', '111.111.1111-11', 'admin@opinembem.com.br', '123', 1, 1);
 
-select * from usuario
+--select * from usuario
 
 create table categoria
 (
@@ -44,7 +44,7 @@ insert into categoria values('Transporte')
 insert into categoria values('Educação')
 
 
---drop table categoria
+drop table projeto_de_lei
 
 --select * from categoria
 
@@ -89,8 +89,8 @@ create table comentario
 
 --select * from usuario;
 
-select * from projeto_de_lei
+--select * from projeto_de_lei
 
-select * from usuario
+--select * from usuario
 
---alter table projeto_de_lei add publicado bit not null default 0;
+--alter table projeto_de_lei  drop column comentario;

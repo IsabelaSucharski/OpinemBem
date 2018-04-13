@@ -49,38 +49,31 @@
     </div>
     <div class="col-md-9">
         <div class="row">
-            <div class="col-md-12">
-                <form class="form-horizontal">
-                    <div class="form-group" style="border-bottom: 2px solid #000; padding-bottom: 20px;">
-                        <div class="col-md-6">
-                            <label class="control-label">Nivel do Administrador: 15</label>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="control-label">Progresso:</label>
-                            <progress max="100" value="50" title="50%"></progress>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-6">
-                            <label class="control-label">Projetos:</label>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label class="control-label">Votos Contra:</label>
-                                    <progress max="100" value="30" title="30%">30%</progress>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label class="control-label">Votos a Favor:</label>
-                                    <progress max="100" value="70" title="70%">70%</progress>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nome do projeto</th>
+                        <th>Tempo Disponível</th>
+                        <th>Código</th>
+                        <th>Já votado?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (ProjetoDeLei item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a href="@Url.Action("ConcordaLeisAdm", "Leis")">
+                                    @item.Nome
+                                </a>
+                            </td>
+                            <td>@item.TempoDisponivel</td>
+                            <td>@item.Id</td>
+                            <td>0</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
