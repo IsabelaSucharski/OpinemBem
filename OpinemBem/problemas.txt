@@ -1,0 +1,39 @@
+O QUE PRECISA ARRUMAR:
+
+-colocar tipo ususario e sexo na tela de cad u
+
+-esquecer senha(tela contem email e a senha nova)
+
+-o que vai ter no banco das classes(tela perfil?)
+
+-verificacao do cpf
+
+-USUARIO TEM QUE TER CIDADE ESTADO
+
+-O PROJETO DE LEI TEM QUE TER NUMERO E QUEM DESCREVEU ELE,COMO UM DEPUTADO, ANO DA CRIACAO
+
+-TABLES DO ENUM
+
+-classe de usuario e a table do banco estao diferentes
+
+-telas que tem salvar: gerenciar leis, cadpprojetsadm, cadastro de leis, voto de lei
+
+-uma tela sobre o opine bem
+
+-e os votos vai contabilizar quantos votos foram feitos e mostar o grafico de quantos sim e nao na tabela da pagina do usuario e na table do inicio
+
+-nova cs para aceitar leis que tem menos campo que a projetoU projetoadm
+
+-a lei salva pelo adm vai ser armazenada na projetoU
+
+-tela de esquecer senha na login
+
+-pagina do usuario que tem a table dos projetos que ele votou
+
+-excluir tela aceitar leis = habilitar campos na tela gerenciar
+
+-concordarleiu a categporia deve receber a que foi colocada no cadastro de projeto
+
+-tela inicial do administrador projeto adm, tirar e colocar como aceitarleisadm
+
+-comentario/categoria na tela de votar projeto u

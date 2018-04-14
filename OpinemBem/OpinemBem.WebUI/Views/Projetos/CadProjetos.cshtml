@@ -13,12 +13,12 @@
                     @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @size = "47" })
                 </div>
             </div>
-        <div class="form-group">
-            <div class="col-md-12">
-                @Html.LabelFor(m => m.Categoria.Id, "Categoria:", new { @class = "control-label text-center" })
-                @Html.DropDownListFor(m => m.Categoria.Id, new SelectList(ViewBag.Categorias, "Id", "Nome"), "--[SELECIONE]--", new { @class = "form-control" })
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.LabelFor(m => m.Categoria.Id, "Categoria:", new { @class = "control-label text-center" })
+                    @Html.DropDownListFor(m => m.Categoria.Id, new SelectList(ViewBag.Categorias, "Id", "Nome"), "--[SELECIONE]--", new { @class = "form-control" })
+                </div>
             </div>
-        </div>
             <div class="form-group">
                 <div class="col-md-12">
                     @Html.LabelFor(m => m.Descricao, "Descrição:", new { @class = "control-label text-center" })
@@ -41,11 +41,11 @@
                 <div class="col-md-12">
                     @Html.LabelFor(m => m.TempoDisponivel, "Tempo Disponível:", new { @class = "control-label text-center" })
                     @Html.TextBoxFor(m => m.TempoDisponivel, new { @class = "form-control", @size = "47" })
-                </div>  
+                </div>
             </div>
             <div class="form-group">
                 <div class="col-md-12 text-right">
-                        <input type="submit" class="btn btn-primary" value="Cadastrar" />
+                    <input type="submit" class="btn btn-primary" value="Cadastrar" />
                 </div>
             </div>
         </form>

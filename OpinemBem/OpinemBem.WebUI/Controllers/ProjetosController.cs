@@ -17,7 +17,15 @@ namespace OpinemBem.WebUI.Controllers
 
         public ActionResult CadProjetoAdm()
         {
+            ViewBag.Categorias = new CategoriaDAO().BuscarTodos();
             return View();
+        }
+
+        public ActionResult SalvarProjetoAdm(ProjetoDeLei obj)
+        {
+            obj.Usuario = new Usuario() { Id = 1 };
+            new ProjetoDeLeiDAO().Inserir(obj);
+            return RedirectToAction("ProjetoAdm", "Projetos");
         }
 
         public ActionResult CadProjetos()

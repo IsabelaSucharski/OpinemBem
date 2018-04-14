@@ -1,0 +1,22 @@
+PROBLEMAS NA DOCUMENTAÇÃO
+-canvas
+-objetivos
+- requisitos 
+-regras de negocio
+-prototipos
+-legenda das tabelas
+-cronograma
+-mudar dig caso de uso
+-der
+-ferrramentas em tabela
+
+-se um projeto ter um tanto de votos de tantos administradores o projeto sera publicdo
+
+-tem comentario nas leis na hora de votar
+
+- a tela de inicio do usuario é a projeto u que tem a tabela com as leis que ja foram aceitas pelo administrador e estao na lista para serem votadas
+(nome do projeto, tempo disponivel é o tempo em dias em que o proejtp vai estar dispónivel para ser votado, o codigo do projeto em que pode ser procurado, e os votos vai contabilizar quantos votos foram feitos e mostar o grafico de quantos sim e nao)
+
+-a tela aceitar leis sao leis que o usuario cadastrou e que o administrador ira aceitar e assim ir para a table do projetoU
+
+-tem que adicionar RF de comentario

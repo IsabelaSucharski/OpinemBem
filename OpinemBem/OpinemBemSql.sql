@@ -44,7 +44,7 @@ insert into categoria values('Transporte')
 insert into categoria values('Educação')
 
 
-drop table projeto_de_lei
+--drop table projeto_de_lei
 
 --select * from categoria
 
