@@ -18,12 +18,11 @@ namespace OpinemBem.DataAccess
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {
                         cmd.Connection = conn;
-
                         cmd.Parameters.Add("@nome", SqlDbType.VarChar).Value = obj.Nome;
                         cmd.Parameters.Add("@cpf", SqlDbType.VarChar).Value = obj.CPF;
                         cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = obj.Email;
                         cmd.Parameters.Add("@senha", SqlDbType.VarChar).Value = obj.Senha;
-                        cmd.Parameters.Add("@data_nasc", SqlDbType.DateTime).Value = obj.DataNasc;
+                        cmd.Parameters.Add("@data_nasc", SqlDbType.DateTime).Value = obj.DataNasc.HasValue ? obj.DataNasc : DateTime.Now;
                         cmd.Parameters.Add("@administrador", SqlDbType.Bit).Value = obj.Administrador;
                         cmd.Parameters.Add("@foto", SqlDbType.VarChar).Value = obj.Foto ?? string.Empty;
                         cmd.Parameters.Add("@sexo", SqlDbType.Int).Value = obj.Sexo;
@@ -40,17 +39,25 @@ namespace OpinemBem.DataAccess
         {
             using (SqlConnection conn = new SqlConnection("@Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI"))
             {
-                string strSQL = @"UPDATE usuario set usuario = @usuario where id_usuario = @id_usuario;";
+                string strSQL = @"UPDATE usuario set 
+                                    nome = @nome, 
+                                    cpf = @cpf, 
+                                    email = @email, 
+                                    senha = @senha, 
+                                    data_nasc = @data_nasc, 
+                                    administrador = @administrador, 
+                                    foto = @foto, 
+                                    sexo = @sexo
+                                WHERE id_usuario = @id_usuario;";
                 {
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {
                         cmd.Connection = conn;
-
                         cmd.Parameters.Add("@nome", SqlDbType.VarChar).Value = obj.Nome;
                         cmd.Parameters.Add("@cpf", SqlDbType.VarChar).Value = obj.CPF;
                         cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = obj.Email;
                         cmd.Parameters.Add("@senha", SqlDbType.VarChar).Value = obj.Senha;
-                        cmd.Parameters.Add("@data_nasc", SqlDbType.DateTime).Value = obj.DataNasc;
+                        cmd.Parameters.Add("@data_nasc", SqlDbType.DateTime).Value = obj.DataNasc.HasValue ? obj.DataNasc : DateTime.Now;
                         cmd.Parameters.Add("@administrador", SqlDbType.Bit).Value = obj.Administrador;
                         cmd.Parameters.Add("@foto", SqlDbType.VarChar).Value = obj.Foto ?? string.Empty;
                         cmd.Parameters.Add("@sexo", SqlDbType.Int).Value = obj.Sexo;
@@ -93,12 +100,12 @@ namespace OpinemBem.DataAccess
                     {
                         conn.Open();
                         cmd.Connection = conn;
+                        cmd.Parameters.Add("@id_usuario", SqlDbType.VarChar).Value = id;
                         cmd.CommandText = strSQL;
 
                         var dataReader = cmd.ExecuteReader();
                         var dt = new DataTable();
                         dt.Load(dataReader);
-
                         conn.Close();
 
                         if (!(dt != null && dt.Rows.Count > 0))
@@ -178,6 +185,7 @@ namespace OpinemBem.DataAccess
                     cmd.Parameters.Add("@CPF", SqlDbType.VarChar).Value = obj.CPF ?? string.Empty;
                     cmd.Parameters.Add("@SENHA", SqlDbType.VarChar).Value = obj.Senha ?? string.Empty;
                     cmd.CommandText = strSQL;
+
                     var dataReader = cmd.ExecuteReader();
                     var dt = new DataTable();
                     dt.Load(dataReader);
@@ -218,6 +226,7 @@ namespace OpinemBem.DataAccess
                     cmd.Parameters.Add("@CPF", SqlDbType.VarChar).Value = obj.CPF ?? string.Empty;
                     cmd.Parameters.Add("@SENHA", SqlDbType.VarChar).Value = obj.Senha ?? string.Empty;
                     cmd.CommandText = strSQL;
+
                     var dataReader = cmd.ExecuteReader();
                     var dt = new DataTable();
                     dt.Load(dataReader);

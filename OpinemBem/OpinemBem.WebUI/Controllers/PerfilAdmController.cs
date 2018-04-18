@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OpinemBem.DataAccess;
+using OpinemBem.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +13,8 @@ namespace OpinemBem.WebUI.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var usuarioLogado = new UsuarioDAO().BuscarPorId(((Usuario)User).Id);
+            return View(usuarioLogado);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace OpinemBem.DataAccess
         {
             using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI"))
             {
-                string strSQL = "INSERT INTO projeto_de_lei (nome, id_categoria, id_usuario, descricao, vantagens, desvantagens, tempo_disponivel, publicado, votos) VALUES (@nome, @id_categoria, @id_usuario, @descricao, @vantagens, @desvantagens, @tempo_disponivel, @publicado, @votos);";
+                string strSQL = "INSERT INTO projeto_de_lei (nome, id_categoria, id_usuario, descricao, vantagens, desvantagens, tempo_disponivel, publicado) VALUES (@nome, @id_categoria, @id_usuario, @descricao, @vantagens, @desvantagens, @tempo_disponivel, @publicado);";
                 {
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {
@@ -28,7 +28,6 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@desvantagens", SqlDbType.VarChar).Value = obj.Desvantagens;
                         cmd.Parameters.Add("@tempo_disponivel", SqlDbType.Int).Value = obj.TempoDisponivel;
                         cmd.Parameters.Add("@publicado", SqlDbType.Bit).Value = obj.Publicado;
-                        cmd.Parameters.Add("@votos", SqlDbType.Int).Value = obj.Votos;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -50,9 +49,8 @@ namespace OpinemBem.DataAccess
                                     vantagens = @vantagens,
                                     desvantagens = @desvantagens,
                                     tempo_disponivel = @tempo_disponivel,
-                                    publilcado = @publicado,
-                                    votos = @votos
-                                    where id_projeto = @id_projeto;";
+                                    publilcado = @publicado
+                                WHERE id_projeto = @id_projeto;";
                 {
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {
@@ -66,7 +64,6 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@desvantagens", SqlDbType.VarChar).Value = obj.Desvantagens;
                         cmd.Parameters.Add("@tempo_disponivel", SqlDbType.Int).Value = obj.TempoDisponivel;
                         cmd.Parameters.Add("@publicado", SqlDbType.Bit).Value = obj.Publicado;
-                        cmd.Parameters.Add("@votos", SqlDbType.Int).Value = obj.Votos;
                         cmd.Parameters.Add("@id_projeto", SqlDbType.Int).Value = obj.Id;
 
                         conn.Open();
@@ -159,8 +156,7 @@ namespace OpinemBem.DataAccess
                             Vantagens = row["vantagens"].ToString(),
                             Desvantagens = row["desvantagens"].ToString(),
                             TempoDisponivel = Convert.ToInt32(row["tempo_disponivel"]),
-                            Publicado = Convert.ToBoolean(row["publicado"]),
-                            Votos = Convert.ToInt32(row["votos"])
+                            Publicado = Convert.ToBoolean(row["publicado"])
                         };
                         return projeto;
                     }
@@ -200,8 +196,7 @@ namespace OpinemBem.DataAccess
                                 Vantagens = row["vantagens"].ToString(),
                                 Desvantagens = row["desvantagens"].ToString(),
                                 TempoDisponivel = Convert.ToInt32(row["tempo_disponivel"]),
-                                Publicado = Convert.ToBoolean(row["publicado"]),
-                                Votos = Convert.ToInt32(row["votos"])
+                                Publicado = Convert.ToBoolean(row["publicado"])
                             };
                             lst.Add(projetoDeLei);
                         }

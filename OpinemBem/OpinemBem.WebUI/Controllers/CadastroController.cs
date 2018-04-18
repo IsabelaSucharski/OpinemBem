@@ -1,9 +1,7 @@
 ﻿using OpinemBem.DataAccess;
 using OpinemBem.Models;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
@@ -16,10 +14,14 @@ namespace OpinemBem.WebUI.Controllers
             return View();
         }
 
-        public ActionResult SalvarUsuario (Usuario obj)
+        public ActionResult SalvarUsuario(Usuario obj)
         {
-            new UsuarioDAO().Inserir(obj);
-            return RedirectToAction("Index", "Login");
+            if (ModelState.IsValid)
+            {
+                new UsuarioDAO().Inserir(obj);
+                return RedirectToAction("Index", "Login");
+            }
+            return View("Index");
         }
 
         [HttpPost]
@@ -27,23 +29,17 @@ namespace OpinemBem.WebUI.Controllers
         {
             try
             {
-                if (!Directory.Exists(Server.MapPath(string.Format("~/Uploads/{0:yyyyMMdd}", DateTime.Now))))
-                    Directory.CreateDirectory(Server.MapPath(string.Format("~/Uploads/{0:yyyyMMdd}", DateTime.Now)));
+                if (!Directory.Exists(Server.MapPath("~/Uploads")))
+                    Directory.CreateDirectory(Server.MapPath("~/Uploads"));
 
                 foreach (string fileName in Request.Files)
                 {
                     HttpPostedFileBase f = Request.Files[fileName];
-                    string savedFileName = Path.Combine(Server.MapPath(string.Format("~/Uploads/{0:yyyyMMdd}", DateTime.Now)), Path.GetFileName(f.FileName));
+                    string savedFileName = Path.Combine(Server.MapPath("~/Uploads"), Path.GetFileName(f.FileName));
                     FileInfo fi = new FileInfo(savedFileName);
                     f.SaveAs(savedFileName);
 
-                    return Json(new
-                    {
-                        Nome = fi.Name,
-                        Caminho = fi.FullName,
-                        Extensao = fi.Extension,
-                        Tamanho = fi.Length
-                    });
+                    return Json(fi.Name);
                 }
                 return Json(null);
 

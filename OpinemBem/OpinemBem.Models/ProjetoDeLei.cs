@@ -16,6 +16,9 @@ namespace OpinemBem.Models
         public Usuario Usuario { get; set; }
         public int TempoDisponivel{ get; set; }
         public bool Publicado { get; set; }
-        public int Votos { get; set; }
+
+        public int VotosContra { get; set; }
+        public int VotosAFavor { get; set; }
+        public int TotalDeVotos { get; set; }
     }
 }

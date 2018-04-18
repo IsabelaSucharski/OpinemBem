@@ -28,9 +28,10 @@ namespace OpinemBem.WebUI.Controllers
             return View(lei);
         }
 
-        public ActionResult GerenciarLeisAdm()
+        public ActionResult GerenciarLeisAdm(int id)
         {
-            return View();
+            var lei = new ProjetoDeLeiDAO().BuscarPorId(id);
+            return View(lei);
         }
 
         public ActionResult SalvarLeisAdm(ProjetoDeLei obj)
