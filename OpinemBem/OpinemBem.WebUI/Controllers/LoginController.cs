@@ -12,20 +12,31 @@ namespace OpinemBem.WebUI.Controllers
             return View();
         }
 
-        public ActionResult Entrar(Usuario obj)
+        public ActionResult Entrar(LoginViewModel obj)
         {
-            var usuarioLogado = new UsuarioDAO().Logar(obj);
-
-            if (usuarioLogado == null)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Index", "Login");
+                var usuario = new Usuario()
+                {
+                    CPF = obj.CPF,
+                    Senha = obj.Senha
+                };
+
+                var usuarioLogado = new UsuarioDAO().Logar(usuario);
+
+                if (usuarioLogado == null)
+                {
+                    return RedirectToAction("Index", "Login");
+                }
+
+                //armazenando usuário logado no cache do browser
+                var userData = new JavaScriptSerializer().Serialize(usuarioLogado);
+                FormsAuthenticationUtil.SetCustomAuthCookie(usuarioLogado.Email, userData, false);
+
+                return RedirectToAction("ProjetoU", "Projetos");
             }
 
-            //armazenando usuário ligado no cache do browser
-            var userData = new JavaScriptSerializer().Serialize(usuarioLogado);
-            FormsAuthenticationUtil.SetCustomAuthCookie(usuarioLogado.Email, userData, false);
-
-            return RedirectToAction("ProjetoU", "Projetos");
+            return View("Index");
         }
 
         public ActionResult LogOff()

@@ -25,7 +25,7 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@data_nasc", SqlDbType.DateTime).Value = obj.DataNasc.HasValue ? obj.DataNasc : DateTime.Now;
                         cmd.Parameters.Add("@administrador", SqlDbType.Bit).Value = obj.Administrador;
                         cmd.Parameters.Add("@foto", SqlDbType.VarChar).Value = obj.Foto ?? string.Empty;
-                        cmd.Parameters.Add("@sexo", SqlDbType.Int).Value = obj.Sexo.HasValue ? Convert.ToInt32(obj.Sexo) : new Nullable<int>();
+                        cmd.Parameters.Add("@sexo", SqlDbType.Int).Value = obj.Sexo.HasValue ? (object)Convert.ToInt32(obj.Sexo) : DBNull.Value;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -60,7 +60,7 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@data_nasc", SqlDbType.DateTime).Value = obj.DataNasc.HasValue ? obj.DataNasc : DateTime.Now;
                         cmd.Parameters.Add("@administrador", SqlDbType.Bit).Value = obj.Administrador;
                         cmd.Parameters.Add("@foto", SqlDbType.VarChar).Value = obj.Foto ?? string.Empty;
-                        cmd.Parameters.Add("@sexo", SqlDbType.Int).Value = obj.Sexo.HasValue ? Convert.ToInt32(obj.Sexo) : new Nullable<int>();
+                        cmd.Parameters.Add("@sexo", SqlDbType.Int).Value = obj.Sexo.HasValue ? (object)Convert.ToInt32(obj.Sexo) : DBNull.Value;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();

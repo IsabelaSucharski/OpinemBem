@@ -1,5 +1,5 @@
 ﻿@using OpinemBem.Models
-@model Usuario
+@model LoginViewModel
 @{
     Layout = "~/Views/Shared/_LayoutInicioU.cshtml";
 }
@@ -10,17 +10,18 @@
 </div>
 <div class="row">
     <div class="col-md-4 col-md-offset-4">
-        <form action="@Url.Action("Entrar", "Login")" class="form-horizontal">
+        <form action="@Url.Action("Entrar", "Login")" class="form-horizontal" autocomplete="off">
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
             <div class="form-group">
                 <div class="col-md-12">
                     @Html.LabelFor(m => m.CPF, "CPF:", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.CPF, new { @class = "form-control", @placeholder = "Ex.: 000.000.000-00" })
+                    @Html.TextBoxFor(m => m.CPF, new { @id = "txtCpf", @class = "form-control", @placeholder = "Ex.: 000.000.000-00", @required = true })
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-12">
                     @Html.LabelFor(m => m.Senha, "Senha:", new { @class = "control-label" })
-                    @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
+                    @Html.PasswordFor(m => m.Senha, new { @class = "form-control", @required = true })
                 </div>
             </div>
             <div class="form-group">
@@ -34,3 +35,14 @@
         </form>
     </div>
 </div>
+@section Scripts
+{
+    <script src="@Url.Content("~/Scripts/moment-with-locales.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap-datetimepicker.js")"></script>
+    <script src="@Url.Content("~/Scripts/meiomask.js")"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#txtCpf").setMask("cpf");
+        });
+    </script>
+}
