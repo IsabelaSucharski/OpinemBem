@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace OpinemBem.WebUI.Controllers
 {
+    [Authorize]
     public class LeisController : Controller
     {
         public ActionResult AceitarLeisAdm()
@@ -21,9 +22,10 @@ namespace OpinemBem.WebUI.Controllers
             return View();
         }
 
-        public ActionResult ConcordaLeisU()
+        public ActionResult ConcordaLeisU(int id)
         {
-            return View();
+            var lei = new ProjetoDeLeiDAO().BuscarPorId(id);
+            return View(lei);
         }
 
         public ActionResult GerenciarLeisAdm()

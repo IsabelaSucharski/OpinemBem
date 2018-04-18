@@ -10,7 +10,7 @@
 </div>
 <div class="row">
     <div class="col-md-4 col-md-offset-4">
-        <form class="form-horizontal">
+        <form action="@Url.Action("Entrar", "Login")" class="form-horizontal">
             <div class="form-group">
                 <div class="col-md-12">
                     @Html.LabelFor(m => m.CPF, "CPF:", new { @class = "control-label" })
@@ -28,9 +28,7 @@
                     <a href="@Url.Action("Index", "LoginAdm")" class="elements">Esqueceu senha?</a>
                 </div>
                 <div class="col-md-6 text-right">
-                    <a href=@Url.Action("ProjetoU", "Projetos")>
-                        <input type="button" class="btn btn-primary" value="Entrar" onclick="alert('Bem-Vindo ao Opinem Bem'); return true;" />
-                    </a>
+                    <button type="submit" class="btn btn-primary">Entrar</button>
                 </div>
             </div>
         </form>

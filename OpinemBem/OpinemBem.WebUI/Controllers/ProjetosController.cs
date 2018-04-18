@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace OpinemBem.WebUI.Controllers
 {
+    [Authorize]
     public class ProjetosController : Controller
     {
         public ActionResult AlterarProjetos()

@@ -1,10 +1,8 @@
-﻿using System;
+﻿using OpinemBem.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using OpinemBem.Models;
 
 namespace OpinemBem.DataAccess
 {
@@ -14,7 +12,8 @@ namespace OpinemBem.DataAccess
         {
             using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
             {
-                string strSQL = "INSERT INTO usuario (nome, cpf, email, senha, data_nasc, administrador, foto, caminho_foto, sexo) VALUES ( @nome, @cpf, @email, @senha, @data_nasc, @administrador, @foto, @caminho_foto, @sexo);";
+                string strSQL = @"INSERT INTO usuario (nome, cpf, email, senha, data_nasc, administrador, foto, sexo) 
+                                  VALUES ( @nome, @cpf, @email, @senha, @data_nasc, @administrador, @foto, @sexo);";
                 {
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {
@@ -27,7 +26,6 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@data_nasc", SqlDbType.DateTime).Value = obj.DataNasc;
                         cmd.Parameters.Add("@administrador", SqlDbType.Bit).Value = obj.Administrador;
                         cmd.Parameters.Add("@foto", SqlDbType.VarChar).Value = obj.Foto ?? string.Empty;
-                        cmd.Parameters.Add("@caminho_foto", SqlDbType.VarChar).Value = obj.CaminhoFoto ?? string.Empty;
                         cmd.Parameters.Add("@sexo", SqlDbType.Int).Value = obj.Sexo;
 
                         conn.Open();
@@ -55,7 +53,6 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@data_nasc", SqlDbType.DateTime).Value = obj.DataNasc;
                         cmd.Parameters.Add("@administrador", SqlDbType.Bit).Value = obj.Administrador;
                         cmd.Parameters.Add("@foto", SqlDbType.VarChar).Value = obj.Foto ?? string.Empty;
-                        cmd.Parameters.Add("@caminho_foto", SqlDbType.VarChar).Value = obj.CaminhoFoto ?? string.Empty;
                         cmd.Parameters.Add("@sexo", SqlDbType.Int).Value = obj.Sexo;
 
                         conn.Open();
@@ -75,8 +72,8 @@ namespace OpinemBem.DataAccess
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {
                         cmd.Connection = conn;
-
                         cmd.Parameters.Add("@id_usuario", SqlDbType.VarChar).Value = obj.Id;
+                        cmd.CommandText = strSQL;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -115,10 +112,9 @@ namespace OpinemBem.DataAccess
                             CPF = row["cpf"].ToString(),
                             Email = row["email"].ToString(),
                             Senha = row["senha"].ToString(),
-                            DataNasc = Convert.ToDateTime(row["data_nasc"]),
+                            DataNasc = row["data_nasc"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["data_nasc"]),
                             Administrador = Convert.ToBoolean(row["administrador"]),
                             Foto = row["foto"].ToString(),
-                            CaminhoFoto = row["caminho_foto"].ToString(),
                             Sexo = (Sexo)Convert.ToInt32(row["sexo"])
                         };
                         return usuario;
@@ -144,7 +140,6 @@ namespace OpinemBem.DataAccess
                         var dataReader = cmd.ExecuteReader();
                         var dt = new DataTable();
                         dt.Load(dataReader);
-
                         conn.Close();
 
                         foreach (DataRow row in dt.Rows)
@@ -156,10 +151,9 @@ namespace OpinemBem.DataAccess
                                 CPF = row["cpf"].ToString(),
                                 Email = row["email"].ToString(),
                                 Senha = row["senha"].ToString(),
-                                DataNasc = Convert.ToDateTime(row["data_nasc"]),
+                                DataNasc = row["data_nasc"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["data_nasc"]),
                                 Administrador = Convert.ToBoolean(row["administrador"]),
                                 Foto = row["foto"].ToString(),
-                                CaminhoFoto = row["caminho_foto"].ToString(),
                                 Sexo = (Sexo)Convert.ToInt32(row["sexo"])
                             };
 
@@ -168,6 +162,86 @@ namespace OpinemBem.DataAccess
                     }
                 }
                 return lst;
+            }
+        }
+
+        public Usuario Logar(Usuario obj)
+        {
+            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
+            {
+                string strSQL = @"SELECT * FROM USUARIO WHERE ADMINISTRADOR = 0 AND CPF = @CPF AND SENHA = @SENHA;";
+
+                using (SqlCommand cmd = new SqlCommand(strSQL))
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                    cmd.Parameters.Add("@CPF", SqlDbType.VarChar).Value = obj.CPF ?? string.Empty;
+                    cmd.Parameters.Add("@SENHA", SqlDbType.VarChar).Value = obj.Senha ?? string.Empty;
+                    cmd.CommandText = strSQL;
+                    var dataReader = cmd.ExecuteReader();
+                    var dt = new DataTable();
+                    dt.Load(dataReader);
+                    conn.Close();
+
+                    if (!(dt != null && dt.Rows.Count > 0))
+                        return null;
+
+                    var row = dt.Rows[0];
+                    var usuario = new Usuario()
+                    {
+                        Id = Convert.ToInt32(row["id_usuario"]),
+                        Nome = row["nome"].ToString(),
+                        CPF = row["cpf"].ToString(),
+                        Email = row["email"].ToString(),
+                        Senha = row["senha"].ToString(),
+                        DataNasc = row["data_nasc"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["data_nasc"]),
+                        Administrador = Convert.ToBoolean(row["administrador"]),
+                        Foto = row["foto"].ToString(),
+                        Sexo = (Sexo)Convert.ToInt32(row["sexo"])
+                    };
+
+                    return usuario;
+                }
+            }
+        }
+
+        public Usuario LogarAdm(Usuario obj)
+        {
+            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
+            {
+                string strSQL = @"SELECT * FROM USUARIO WHERE ADMINISTRADOR <> 0 AND CPF = @CPF AND SENHA = @SENHA;";
+
+                using (SqlCommand cmd = new SqlCommand(strSQL))
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                    cmd.Parameters.Add("@CPF", SqlDbType.VarChar).Value = obj.CPF ?? string.Empty;
+                    cmd.Parameters.Add("@SENHA", SqlDbType.VarChar).Value = obj.Senha ?? string.Empty;
+                    cmd.CommandText = strSQL;
+                    var dataReader = cmd.ExecuteReader();
+                    var dt = new DataTable();
+                    dt.Load(dataReader);
+                    conn.Close();
+
+                    if (!(dt != null && dt.Rows.Count > 0))
+                        return null;
+
+                    var row = dt.Rows[0];
+                    var usuario = new Usuario()
+                    {
+                        Id = Convert.ToInt32(row["id_usuario"]),
+                        Nome = row["nome"].ToString(),
+                        CPF = row["cpf"].ToString(),
+                        Email = row["email"].ToString(),
+                        Senha = row["senha"].ToString(),
+                        DataNasc = row["data_nasc"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["data_nasc"]),
+                        Administrador = Convert.ToBoolean(row["administrador"]),
+                        Foto = row["foto"].ToString(),
+                        Sexo = (Sexo)Convert.ToInt32(row["sexo"])
+                    };
+
+                    return usuario;
+                }
             }
         }
     }

@@ -10,7 +10,7 @@ namespace OpinemBem.DataAccess
 {
     public class ComentarioDAO
     {
-        public void Inserir(Comentario obj) 
+        public void Inserir(Comentario obj)
         {
             //Criando uma conexão com o banco de dados
             using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI"))
@@ -27,7 +27,7 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@id_projeto", SqlDbType.VarChar).Value = obj.ProjetoDeLei.Id;
                         cmd.Parameters.Add("@data_comentario", SqlDbType.DateTime).Value = obj.DataHora;
                         cmd.Parameters.Add("@mensagem", SqlDbType.VarChar).Value = obj.Mensagem;
-                        
+
 
                         //Abrindo conexão com o banco de dados
                         conn.Open();
@@ -38,7 +38,7 @@ namespace OpinemBem.DataAccess
                     }
                 }
             }
-        }           
+        }
 
         public void Atualizar(Comentario obj)
         {
@@ -146,9 +146,9 @@ namespace OpinemBem.DataAccess
                             {
                                 Id = Convert.ToInt32(row["id_comentario"]),
                                 Usuario = new Usuario() { Id = Convert.ToInt32(row["id_usuario"]) },
-                                ProjetoDeLei = new ProjetoDeLei() { Id = Convert.ToInt32(row["id_projeto"])},
+                                ProjetoDeLei = new ProjetoDeLei() { Id = Convert.ToInt32(row["id_projeto"]) },
                                 DataHora = Convert.ToDateTime(row["data_comentario"]),
-                                Mensagem = row["mensagem"].ToString()                            
+                                Mensagem = row["mensagem"].ToString()
                             };
                             lst.Add(Comentario);
                         }

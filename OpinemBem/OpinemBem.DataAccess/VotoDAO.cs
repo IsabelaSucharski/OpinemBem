@@ -51,7 +51,7 @@ namespace OpinemBem.DataAccess
                     }
                 }
             }
-        }       
+        }
 
         public Voto BuscarPorId(int id)
         {
@@ -77,8 +77,8 @@ namespace OpinemBem.DataAccess
                         var row = dt.Rows[0];
                         var voto = new Voto()
                         {
-                            Usuario = new Usuario() { Id = Convert.ToInt32(row["id_usuario"])},
-                            ProjetoDeLei = new ProjetoDeLei() { Id = Convert.ToInt32(row["id_projeto"])},
+                            Usuario = new Usuario() { Id = Convert.ToInt32(row["id_usuario"]) },
+                            ProjetoDeLei = new ProjetoDeLei() { Id = Convert.ToInt32(row["id_projeto"]) },
                             DataVoto = Convert.ToDateTime(row["data_voto"])
                         };
                         return voto;

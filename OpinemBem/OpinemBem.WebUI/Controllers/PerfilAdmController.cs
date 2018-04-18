@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace OpinemBem.WebUI.Controllers
 {
+    [Authorize]
     public class PerfilAdmController : Controller
     {
-        // GET: PerfilAdm
         public ActionResult Index()
         {
             return View();

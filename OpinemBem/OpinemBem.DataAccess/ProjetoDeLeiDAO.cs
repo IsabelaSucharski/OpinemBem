@@ -77,7 +77,7 @@ namespace OpinemBem.DataAccess
             }
         }
 
-        public void Publicar (ProjetoDeLei obj)
+        public void Publicar(ProjetoDeLei obj)
         {
             using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI"))
             {
@@ -121,12 +121,18 @@ namespace OpinemBem.DataAccess
         {
             using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI"))
             {
-                string strSQL = "SELECT * FROM projetos_de_lei where id_projeto = @id_projeto;";
+                string strSQL = @"SELECT 
+                                      P.*, 
+                                      C.NOME AS NOME_CATEGORIA
+                                  FROM PROJETO_DE_LEI P 
+                                  INNER JOIN CATEGORIA C ON (C.ID_CATEGORIA = P.ID_CATEGORIA)
+                                  WHERE P.ID_PROJETO = @ID_PROJETO;";
                 {
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {
                         conn.Open();
                         cmd.Connection = conn;
+                        cmd.Parameters.Add("@id_projeto", SqlDbType.Int).Value = id;
                         cmd.CommandText = strSQL;
 
                         var dataReader = cmd.ExecuteReader();
@@ -143,7 +149,11 @@ namespace OpinemBem.DataAccess
                         {
                             Id = Convert.ToInt32(row["id_projeto"]),
                             Nome = row["nome"].ToString(),
-                            Categoria = new Categoria() { Id = Convert.ToInt32(row["id_categoria"]) },
+                            Categoria = new Categoria()
+                            {
+                                Id = Convert.ToInt32(row["id_categoria"]),
+                                Nome = row["NOME_CATEGORIA"].ToString()
+                            },
                             Usuario = new Usuario() { Id = Convert.ToInt32(row["id_usuario"]) },
                             Descricao = row["desvantagens"].ToString(),
                             Vantagens = row["vantagens"].ToString(),
@@ -199,6 +209,6 @@ namespace OpinemBem.DataAccess
                 }
                 return lst;
             }
-        }        
+        }
     }
 }

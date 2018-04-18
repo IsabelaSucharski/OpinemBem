@@ -18,9 +18,11 @@ create table usuario
 	sexo integer
 );
 
-insert into usuario (nome, cpf, email, senha, administrador, sexo) values ('Administrador', '111.111.1111-11', 'admin@opinembem.com.br', '123', 1, 1);
+insert into usuario (nome, cpf, email, senha, administrador, sexo) 
+values ('Administrador', '111.111.111-11', 'admin@opinembem.com.br', '123', 1, 1);
 
---select * from usuario
+insert into usuario (nome, cpf, email, senha, administrador, sexo) 
+values ('Usuário 1', '222.222.222-22', 'usuario1@opinembem.com.br', '123', 0, 2);
 
 create table categoria
 (
@@ -28,22 +30,17 @@ create table categoria
 	nome varchar(200)	
 );
 
-insert into categoria values('Religião')
-insert into categoria values('Sociedade')
-insert into categoria values('Esporte')
-insert into categoria values('Indústria')
-insert into categoria values('Meio Ambiente')
-insert into categoria values('Saúde')
-insert into categoria values('Segurança')
-insert into categoria values('Crianças e Adolescentes')
-insert into categoria values('Mulher')
-insert into categoria values('Transporte')
-insert into categoria values('Educação')
-
-
---drop table projeto_de_lei
-
---select * from categoria
+insert into categoria values('Religião');
+insert into categoria values('Sociedade');
+insert into categoria values('Esporte');
+insert into categoria values('Indústria');
+insert into categoria values('Meio Ambiente');
+insert into categoria values('Saúde');
+insert into categoria values('Segurança');
+insert into categoria values('Crianças e Adolescentes');
+insert into categoria values('Mulher');
+insert into categoria values('Transporte');
+insert into categoria values('Educação');
 
 create table projeto_de_lei
 (
@@ -59,7 +56,6 @@ create table projeto_de_lei
 	votos int
 );
 
---select * from projeto_de_lei
 create table voto
 (
 	id_usuario int not null references usuario,
@@ -76,18 +72,3 @@ create table comentario
 	data_comentario datetime not null default getdate(),
 	mensagem varchar(max)
 );
-
---sexo int (eNUM NO C#),
---frentepli varchar(250),
---religiao varchar(250),
---email varchar(200) unique,
---nivel int
-
-
---select * from usuario;
-
---select * from projeto_de_lei
-
---select * from usuario
-
---alter table projeto_de_lei  drop column comentario;
