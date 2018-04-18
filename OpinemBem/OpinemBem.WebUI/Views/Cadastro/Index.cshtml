@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/jquery.fileupload.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/site.css")" rel="stylesheet" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -20,6 +21,7 @@
     <![endif]-->
     <script src="@Url.Content("~/Scripts/jquery-1.9.1.js")"></script>
     <script src="@Url.Content("~/Scripts/bootstrap.js")"></script>
+    @Scripts.Render("~/bundles/jqueryval")
 </head>
 <body>
     <div class="container-fluid">
@@ -35,7 +37,7 @@
                     <div class="form-group ">
                         <div class="col-md-12">
                             @Html.LabelFor(m => m.Nome, "Nome Completo:", new { @class = "control-label text-center" })
-                            @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+                            @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @required = true })
                         </div>
                     </div>
                     <div class="form-group">
@@ -45,13 +47,13 @@
                         </div>
                         <div class="col-md-6">
                             @Html.LabelFor(m => m.CPF, "CPF:", new { @class = "control-label" })
-                            @Html.TextBoxFor(m => m.CPF, new { @id = "txtCpf", @class = "form-control" })
+                            @Html.TextBoxFor(m => m.CPF, new { @id = "txtCpf", @class = "form-control", @required = true })
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-8">
                             @Html.LabelFor(m => m.Email, "Email :", new { @class = "control-label" })
-                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "opinebem@votebem.com" })
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "opinebem@votebem.com", @required = true })
                         </div>
                         <div class="col-md-4">
                             @Html.LabelFor(m => m.Sexo, "Sexo:", new { @class = "control-label" })
@@ -61,7 +63,7 @@
                     <div class="form-group ">
                         <div class="col-md-6">
                             @Html.LabelFor(m => m.Senha, "Senha:", new { @class = "control-label text-center" })
-                            @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
+                            @Html.PasswordFor(m => m.Senha, new { @class = "form-control", @required = true })
                         </div>
                         <div class="col-md-6">
                             @Html.LabelFor(m => m.ConfirmaSenha, "Confirmar Senha:", new { @class = "control-label text-center" })

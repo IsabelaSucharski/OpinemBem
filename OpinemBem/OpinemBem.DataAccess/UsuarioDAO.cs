@@ -25,7 +25,7 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@data_nasc", SqlDbType.DateTime).Value = obj.DataNasc.HasValue ? obj.DataNasc : DateTime.Now;
                         cmd.Parameters.Add("@administrador", SqlDbType.Bit).Value = obj.Administrador;
                         cmd.Parameters.Add("@foto", SqlDbType.VarChar).Value = obj.Foto ?? string.Empty;
-                        cmd.Parameters.Add("@sexo", SqlDbType.Int).Value = obj.Sexo;
+                        cmd.Parameters.Add("@sexo", SqlDbType.Int).Value = obj.Sexo.HasValue ? Convert.ToInt32(obj.Sexo) : new Nullable<int>();
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -39,7 +39,7 @@ namespace OpinemBem.DataAccess
         {
             using (SqlConnection conn = new SqlConnection("@Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI"))
             {
-                string strSQL = @"UPDATE usuario set 
+                string strSQL = @"UPDATE usuario SET 
                                     nome = @nome, 
                                     cpf = @cpf, 
                                     email = @email, 
@@ -60,7 +60,7 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@data_nasc", SqlDbType.DateTime).Value = obj.DataNasc.HasValue ? obj.DataNasc : DateTime.Now;
                         cmd.Parameters.Add("@administrador", SqlDbType.Bit).Value = obj.Administrador;
                         cmd.Parameters.Add("@foto", SqlDbType.VarChar).Value = obj.Foto ?? string.Empty;
-                        cmd.Parameters.Add("@sexo", SqlDbType.Int).Value = obj.Sexo;
+                        cmd.Parameters.Add("@sexo", SqlDbType.Int).Value = obj.Sexo.HasValue ? Convert.ToInt32(obj.Sexo) : new Nullable<int>();
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -122,8 +122,9 @@ namespace OpinemBem.DataAccess
                             DataNasc = row["data_nasc"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["data_nasc"]),
                             Administrador = Convert.ToBoolean(row["administrador"]),
                             Foto = row["foto"].ToString(),
-                            Sexo = (Sexo)Convert.ToInt32(row["sexo"])
+                            Sexo = row["sexo"] is DBNull ? new Nullable<Sexo>() : (Sexo)Convert.ToInt32(row["sexo"])
                         };
+
                         return usuario;
                     }
                 }
@@ -161,7 +162,7 @@ namespace OpinemBem.DataAccess
                                 DataNasc = row["data_nasc"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["data_nasc"]),
                                 Administrador = Convert.ToBoolean(row["administrador"]),
                                 Foto = row["foto"].ToString(),
-                                Sexo = (Sexo)Convert.ToInt32(row["sexo"])
+                                Sexo = row["sexo"] is DBNull ? new Nullable<Sexo>() : (Sexo)Convert.ToInt32(row["sexo"])
                             };
 
                             lst.Add(usuario);
@@ -205,7 +206,7 @@ namespace OpinemBem.DataAccess
                         DataNasc = row["data_nasc"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["data_nasc"]),
                         Administrador = Convert.ToBoolean(row["administrador"]),
                         Foto = row["foto"].ToString(),
-                        Sexo = (Sexo)Convert.ToInt32(row["sexo"])
+                        Sexo = row["sexo"] is DBNull ? new Nullable<Sexo>() : (Sexo)Convert.ToInt32(row["sexo"])
                     };
 
                     return usuario;
@@ -246,7 +247,7 @@ namespace OpinemBem.DataAccess
                         DataNasc = row["data_nasc"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["data_nasc"]),
                         Administrador = Convert.ToBoolean(row["administrador"]),
                         Foto = row["foto"].ToString(),
-                        Sexo = (Sexo)Convert.ToInt32(row["sexo"])
+                        Sexo = row["sexo"] is DBNull ? new Nullable<Sexo>() : (Sexo)Convert.ToInt32(row["sexo"])
                     };
 
                     return usuario;

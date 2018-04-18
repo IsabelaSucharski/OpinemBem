@@ -1,9 +1,5 @@
 ﻿using OpinemBem.DataAccess;
 using OpinemBem.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace OpinemBem.WebUI.Controllers
@@ -37,9 +33,13 @@ namespace OpinemBem.WebUI.Controllers
 
         public ActionResult SalvarProjetoU(ProjetoDeLei obj)
         {
-            obj.Usuario = new Usuario() { Id = 1 };
-            new ProjetoDeLeiDAO().Inserir(obj);
-            return RedirectToAction("ProjetoU", "Projetos");
+            if (ModelState.IsValid)
+            {
+                obj.Usuario = new Usuario() { Id = 1 };
+                new ProjetoDeLeiDAO().Inserir(obj);
+                return RedirectToAction("ProjetoU", "Projetos");
+            }
+            return View("CadProjetos");
         }
 
         public ActionResult ProjetoAdm()
