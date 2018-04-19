@@ -1,25 +1,28 @@
 ﻿@using OpinemBem.Models
 @model List<Categoria>
-    @{
-        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-    }
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
 
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <table class="table table-bordered">
-                <thead>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <a class="btn btn-primary" href="@Url.Action("Cadastro", "Categoria")">Nova Categoria</a>
+        <br />
+        <br />
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center">Nome da Categoria</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Categoria item in Model)
+                {
                     <tr>
-                        <th class="text-center">Nome da Categoria</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (Categoria item in Model)
-                    {
-                        <tr>
-                            <td>@item.Nome</td>
+                        <td>@item.Nome</td>
                     </tr>
                 }
-                </tbody>
-            </table>
-        </div>
+            </tbody>
+        </table>
     </div>
+</div>
