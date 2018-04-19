@@ -158,8 +158,6 @@ namespace OpinemBem.DataAccess
                     }
                 }
             }
-
-
             return lst;
         }
     }

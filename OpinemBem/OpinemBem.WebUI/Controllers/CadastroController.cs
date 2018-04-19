@@ -16,6 +16,7 @@ namespace OpinemBem.WebUI.Controllers
 
         public ActionResult SalvarUsuario(Usuario obj)
         {
+            //valida os campos relacionados à classe
             if (ModelState.IsValid)
             {
                 new UsuarioDAO().Inserir(obj);
