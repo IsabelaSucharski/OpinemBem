@@ -10,31 +10,31 @@
             <div class="form-group">
                 <div class="col-md-12">
                     @Html.LabelFor(m => m.Nome, "Nome:", new { @class = "control-label text-center" })
-                    @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @size = "47" })
+                    <p>@Model.Nome</p>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-12">
                     @Html.LabelFor(m => m.Categoria.Id, "Categoria:", new { @class = "control-label text-center" })
-                    @Html.DropDownListFor(m => m.Categoria.Id, new SelectList(ViewBag.Categorias ?? new List<Categoria>(), "Id", "Nome"), "--[SELECIONE]--", new { @class = "form-control" })
+                    <p>@Model.Categoria.Nome</p>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-12">
                     @Html.LabelFor(m => m.Descricao, "Descrição:", new { @class = "control-label text-center" })
-                    @Html.TextAreaFor(m => m.Descricao, new { @class = "form-control", @size = "47" })
+                    <p>@Model.Descricao</p>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-12">
                     @Html.LabelFor(m => m.Vantagens, "Vantagens:", new { @class = "control-label text-center" })
-                    @Html.TextAreaFor(m => m.Vantagens, new { @class = "form-control", @size = "47" })
+                    <p>@Model.Vantagens</p>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-12">
                     @Html.LabelFor(m => m.Desvantagens, "Desvantagens:", new { @class = "control-label text-center" })
-                    @Html.TextAreaFor(m => m.Desvantagens, new { @class = "form-control", @size = "47" })
+                    <p>@Model.Desvantagens</p>
                 </div>
             </div>
             <div class="form-group">

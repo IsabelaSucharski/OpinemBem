@@ -36,12 +36,12 @@
                     {
                         <tr>
                             <td>
-                                <a href="@Url.Action("ConcordaLeisAdm", "Leis")">
+                                <a href="@Url.Action("ConcordaLeisAdm", "Leis", new { @id = item.Id })">
                                     @item.Nome
                                 </a>
                             </td>
                             <td>@item.TempoDisponivel</td>
-                            <td>@item.Categoria</td>
+                            <td>@item.Categoria.Id</td>
                             <td>0</td>
                         </tr>
                     }
