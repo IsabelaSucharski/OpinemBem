@@ -242,7 +242,6 @@
     <Content Include="Views\Leis\GerenciarLeisAdm.cshtml" />
     <Content Include="Views\PerfilU\Index.cshtml" />
     <Content Include="Views\PerfilAdm\Index.cshtml" />
-    <Content Include="Views\Leis\AceitarLeisAdm.cshtml" />
     <Content Include="Views\Leis\ConcordaLeisAdm.cshtml" />
     <Content Include="Views\Leis\ConcordaLeisU.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
@@ -250,6 +249,7 @@
     <Content Include="Views\Shared\_LayoutInicioAdmin.cshtml" />
     <Content Include="Views\Categoria\Cadastro.cshtml" />
     <Content Include="Views\Categoria\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutCadastroU.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\" />
