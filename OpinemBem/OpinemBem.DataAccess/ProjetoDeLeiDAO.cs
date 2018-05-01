@@ -1,10 +1,9 @@
 ﻿using OpinemBem.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 
 namespace OpinemBem.DataAccess
 {
@@ -12,7 +11,7 @@ namespace OpinemBem.DataAccess
     {
         public void Inserir(ProjetoDeLei obj)
         {
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 string strSQL = "INSERT INTO projeto_de_lei (nome, id_categoria, id_usuario, descricao, vantagens, desvantagens, tempo_disponivel, publicado) VALUES (@nome, @id_categoria, @id_usuario, @descricao, @vantagens, @desvantagens, @tempo_disponivel, @publicado);";
                 {
@@ -39,7 +38,7 @@ namespace OpinemBem.DataAccess
 
         public void Atualizar(ProjetoDeLei obj)
         {
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 string strSQL = @"UPDATE projeto_de_lei set 
                                     nome = @nome,
@@ -76,7 +75,7 @@ namespace OpinemBem.DataAccess
 
         public void Publicar(ProjetoDeLei obj)
         {
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 string strSQL = @"UPDATE projeto_de_lei set publicado where id_projeto = @id_projeto;";
                 {
@@ -97,7 +96,7 @@ namespace OpinemBem.DataAccess
 
         public void Deletar(ProjetoDeLei obj)
         {
-            using (SqlConnection conn = new SqlConnection(@"Initial catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 string strSQL = @"DELETE FROM  projeto_de_lei where id_projeto = @id_projeto;";
                 {
@@ -116,7 +115,7 @@ namespace OpinemBem.DataAccess
 
         public ProjetoDeLei BuscarPorId(int id)
         {
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 string strSQL = @"SELECT 
                                       P.*, 
@@ -168,7 +167,7 @@ namespace OpinemBem.DataAccess
         {
             var lst = new List<ProjetoDeLei>();
             {
-                using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
+                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
                 {
                     string strSQL = @"SELECT pl.*, c.nome as nome_categoria
                                       FROM projeto_de_lei pl
