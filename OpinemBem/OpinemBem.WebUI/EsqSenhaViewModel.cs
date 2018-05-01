@@ -15,6 +15,7 @@ namespace OpinemBem.WebUI
         [Required(ErrorMessage = "Campo 'Senha' é obrigatório!")]
         public string Senha { get; set; }
 
+        [Required(ErrorMessage = "Campo 'Confirmar Senha' é obrigatório!")]
         public string ConfirmaSenha { get; set; }
     }
 }

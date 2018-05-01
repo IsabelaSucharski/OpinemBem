@@ -30,7 +30,8 @@ create table cidade
 create table estado
 (
 	id_estado int identity(1,1) primary key,
-	nome varchar(50)
+	nome varchar(50),
+	sigla varchar(2)
 )
 
 

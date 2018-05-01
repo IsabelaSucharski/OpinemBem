@@ -12,6 +12,7 @@ namespace OpinemBem.WebUI.Controllers
     {
         public ActionResult Index()
         {
+            //vai buscar e aparecer todos na categ lst
             var lst = new CategoriaDAO().BuscarTodos();
             return View(lst);
         }
@@ -19,7 +20,7 @@ namespace OpinemBem.WebUI.Controllers
         public ActionResult SalvarCategoria(Categoria obj)
         {
             new CategoriaDAO().Inserir(obj);
-
+            //inserir o obj na lista de categoria
             return RedirectToAction("Index", "Categoria");
         }
 

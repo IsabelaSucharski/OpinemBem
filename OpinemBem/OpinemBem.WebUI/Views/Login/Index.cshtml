@@ -15,7 +15,7 @@
             <div class="form-group">
                 <div class="col-md-12">
                     @Html.LabelFor(m => m.CPF, "CPF:", new { @class = "control-label" })
-                    @Html.TextBoxFor(m => m.CPF, new { @id = "txtCpf", @class = "form-control", @placeholder = "Ex.: 000.000.000-00", @required = true })
+                    @Html.TextBoxFor(m => m.CPF, new { @id = "txtCpf", @class = "form-control", @placeholder = "000.000.000-00", @required = true })
                 </div>
             </div>
             <div class="form-group">
@@ -26,7 +26,7 @@
             </div>
             <div class="form-group">
                 <div class="col-md-6">
-                    <a href="@Url.Action("Index", "LoginAdm")" class="elements">Esqueceu senha?</a>
+                    <a href="@Url.Action("EsqSenha", "Login")" class="elements">Esqueceu senha?</a>
                 </div>
                 <div class="col-md-6 text-right">
                     <button type="submit" class="btn btn-primary">Entrar</button>

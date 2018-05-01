@@ -73,12 +73,12 @@
                     <div class="form-group ">
                         <div class="col-md-6">
                             @Html.LabelFor(m => m.Cidade.Id, "Cidade:", new { @class = "control-label text-center" })
-                            @*@Html.DropDownListFor(m => m.Cidade.Id, new SelectList(ViewBag.Cidade ?? new List<Cidade>(), "Id", "Nome"), "--[SELECIONE]--", new { @class = "form-control" })*@
+                            @Html.DropDownListFor(m => m.Cidade.Id, new SelectList(ViewBag.Cidade ?? new List<Cidade>(), "Id", "Nome"), "--[SELECIONE]--", new { @class = "form-control" })
 
                         </div>
                         <div class="col-md-6">
                             @Html.LabelFor(m => m.Estado.Id, "Estado:", new { @class = "control-label text-center" })
-                            @*@Html.DropDownListFor(m => m.Estado.Id, new SelectList(ViewBag.Estado ?? new List<Estado>(), "Id", "Nome"), "--[SELECIONE]--", new { @class = "form-control" })*@
+                            @Html.DropDownListFor(m => m.Estado.Id, new SelectList(ViewBag.Estado ?? new List<Estado>(), "Id", "Nome"), "--[SELECIONE]--", new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="form-group">

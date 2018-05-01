@@ -50,7 +50,9 @@ namespace OpinemBem.DataAccess
                                     data_nasc = @data_nasc, 
                                     administrador = @administrador, 
                                     foto = @foto, 
-                                    sexo = @sexo
+                                    sexo = @sexo,
+                                    id_estado = @id_estado,
+                                    id_cidade = id_cidade
                                 WHERE id_usuario = @id_usuario;";
                 {
                     using (SqlCommand cmd = new SqlCommand(strSQL))
@@ -64,6 +66,8 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@administrador", SqlDbType.Bit).Value = obj.Administrador;
                         cmd.Parameters.Add("@foto", SqlDbType.VarChar).Value = obj.Foto ?? string.Empty;
                         cmd.Parameters.Add("@sexo", SqlDbType.Int).Value = obj.Sexo.HasValue ? (object)Convert.ToInt32(obj.Sexo) : DBNull.Value;
+                        cmd.Parameters.Add("@id_cidade", SqlDbType.Int).Value = obj.Cidade.Id;
+                        cmd.Parameters.Add("@id_estado", SqlDbType.Int).Value = obj.Estado.Id;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -125,7 +129,17 @@ namespace OpinemBem.DataAccess
                             DataNasc = row["data_nasc"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["data_nasc"]),
                             Administrador = Convert.ToBoolean(row["administrador"]),
                             Foto = row["foto"].ToString(),
-                            Sexo = row["sexo"] is DBNull ? new Nullable<Sexo>() : (Sexo)Convert.ToInt32(row["sexo"])
+                            Sexo = row["sexo"] is DBNull ? new Nullable<Sexo>() : (Sexo)Convert.ToInt32(row["sexo"]),
+                            Estado = new Estado()
+                            {
+                                Id = Convert.ToInt32(row["id_estado"]),
+                                Nome = row["nome"].ToString()
+                            },
+                            Cidade = new Cidade()
+                            {
+                                Id=Convert.ToInt32(row["id_cidade"]),
+                                Nome = row["nome"].ToString()
+                            }
                         };
 
                         return usuario;
@@ -165,7 +179,17 @@ namespace OpinemBem.DataAccess
                                 DataNasc = row["data_nasc"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["data_nasc"]),
                                 Administrador = Convert.ToBoolean(row["administrador"]),
                                 Foto = row["foto"].ToString(),
-                                Sexo = row["sexo"] is DBNull ? new Nullable<Sexo>() : (Sexo)Convert.ToInt32(row["sexo"])
+                                Sexo = row["sexo"] is DBNull ? new Nullable<Sexo>() : (Sexo)Convert.ToInt32(row["sexo"]),
+                                Estado = new Estado()
+                                {
+                                    Id = Convert.ToInt32(row["id_estado"]),
+                                    Nome = row["nome"].ToString()
+                                },
+                                Cidade = new Cidade()
+                                {
+                                    Id = Convert.ToInt32(row["id_cidade"]),
+                                    Nome = row["nome"].ToString()
+                                }
                             };
 
                             lst.Add(usuario);
@@ -179,7 +203,7 @@ namespace OpinemBem.DataAccess
         public Usuario Logar(Usuario obj)
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
-            {
+            {//admin igual a 0 pq nao é um admin
                 string strSQL = @"SELECT * FROM USUARIO WHERE ADMINISTRADOR = 0 AND CPF = @CPF AND SENHA = @SENHA;";
 
                 using (SqlCommand cmd = new SqlCommand(strSQL))
@@ -209,7 +233,17 @@ namespace OpinemBem.DataAccess
                         DataNasc = row["data_nasc"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["data_nasc"]),
                         Administrador = Convert.ToBoolean(row["administrador"]),
                         Foto = row["foto"].ToString(),
-                        Sexo = row["sexo"] is DBNull ? new Nullable<Sexo>() : (Sexo)Convert.ToInt32(row["sexo"])
+                        Sexo = row["sexo"] is DBNull ? new Nullable<Sexo>() : (Sexo)Convert.ToInt32(row["sexo"]),
+                        Estado = new Estado()
+                        {
+                            Id = Convert.ToInt32(row["id_estado"]),
+                            Nome = row["nome"].ToString()
+                        },
+                        Cidade = new Cidade()
+                        {
+                            Id = Convert.ToInt32(row["id_cidade"]),
+                            Nome = row["nome"].ToString()
+                        }
                     };
 
                     return usuario;
@@ -220,7 +254,7 @@ namespace OpinemBem.DataAccess
         public Usuario LogarAdm(Usuario obj)
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
-            {
+            {//admmin diferernte de 0 = admin
                 string strSQL = @"SELECT * FROM USUARIO WHERE ADMINISTRADOR <> 0 AND CPF = @CPF AND SENHA = @SENHA;";
 
                 using (SqlCommand cmd = new SqlCommand(strSQL))
@@ -250,7 +284,17 @@ namespace OpinemBem.DataAccess
                         DataNasc = row["data_nasc"] is DBNull ? new Nullable<DateTime>() : Convert.ToDateTime(row["data_nasc"]),
                         Administrador = Convert.ToBoolean(row["administrador"]),
                         Foto = row["foto"].ToString(),
-                        Sexo = row["sexo"] is DBNull ? new Nullable<Sexo>() : (Sexo)Convert.ToInt32(row["sexo"])
+                        Sexo = row["sexo"] is DBNull ? new Nullable<Sexo>() : (Sexo)Convert.ToInt32(row["sexo"]),
+                        Estado = new Estado()
+                        {
+                            Id = Convert.ToInt32(row["id_estado"]),
+                            Nome = row["nome"].ToString()
+                        },
+                        Cidade = new Cidade()
+                        {
+                            Id = Convert.ToInt32(row["id_cidade"]),
+                            Nome = row["nome"].ToString()
+                        }
                     };
 
                     return usuario;

@@ -1,6 +1,7 @@
 ﻿using OpinemBem.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace OpinemBem.DataAccess
         public void Inserir(Estado obj)
         {
             //Criando uma conexão com o banco de dados
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 //Criando instrução sql para inserir na tabela de estado
                 string strSQL = @"INSERT INTO estado (nome) VALUES (@nome);";
@@ -39,7 +40,7 @@ namespace OpinemBem.DataAccess
         public void Atualizar(Estado obj)
         {
             //Criando uma conexão com o banco de dados
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 //Criando instrução sql para inserir na tabela de estado
                 string strSQL = @"UPDATE estado set nome = @nome where id_estado = @id_estado;";
@@ -65,7 +66,7 @@ namespace OpinemBem.DataAccess
         public void Deletar(Estado obj)
         {
             //Criando uma conexão com o banco de dados
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 //Criando instrução sql para inserir na tabela de estado
                 string strSQL = @"DELETE FROM estado where id_estado = @id_estado;";
@@ -90,7 +91,7 @@ namespace OpinemBem.DataAccess
         public Estado BuscarPorId(int id)
         {
             //Criando uma conexão com o banco de dados
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 //Criando instrução sql para selecionar todos os registros na tabela de estado
                 string strSQL = @"SELECT * FROM estado where id_estado = @id_estado;";
@@ -129,7 +130,7 @@ namespace OpinemBem.DataAccess
             var lst = new List<Estado>();
 
             //Criando uma conexão com o banco de dados
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 //Criando instrução sql para selecionar todos os registros na tabela de estado
                 string strSQL = @"SELECT * FROM estado;";

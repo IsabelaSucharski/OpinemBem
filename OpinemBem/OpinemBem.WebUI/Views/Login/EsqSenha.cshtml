@@ -2,29 +2,48 @@
 @model EsqSenhaViewModel
 
 @{
-    Layout = "";
+    Layout = "~/Views/Shared/_LayoutInicioU.cshtml";
 }
 
 <div class="row">
     <div class="col-md-12">
-        <div class="form-horizontal">
+        <form action="@Url.Action("EsquecerSenha", "Login")" class="form-horizontal" autocomplete="off">
             <div class="form-group">
                 <div class="col-md-12">
                     @Html.LabelFor(m => m.Email, "Email:", new { @class = "control-label text-center" })
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.Email, new { @id = "txtEmail", @class = "form-control", @required = true })
                 </div>
+            </div>
+            <div>
                 <div class="col-md-12">
-                    @Html.LabelFor(m => m.Senha, "Nova Senha:", new { @class = "control-label text-center", @style = "font-size: 1.2em" })
-                    @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
+                    @Html.LabelFor(m => m.Senha, "Nova Senha:", new { @class = "control-label text-center"})
+                    @Html.PasswordFor(m => m.Senha, new { @id = "txtSenha", @class = "form-control", @required = true })
+                </div>
+            </div>
+            <div>
+                <div class="col-md-12">
+                    @Html.LabelFor(m => m.Senha, "Confirmar Senha:", new { @class = "control-label text-center" })
+                    @Html.PasswordFor(m => m.Senha, new { @id = "txtSenha", @class = "form-control", @required = true })
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-12 text-right">
                     <a href=@Url.Action("Index","PerfilU")>
-                        <input type="button" class="btn btn-primary" value="Alterar Senha" onclick="alert('Senha alterada com sucesso'); return true;" />
-                    </a>
+                        <input type="button" class="btn btn-primary" value="Alterar Senha" />
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
+@section Scripts
+{
+    <script src="@Url.Content("~/Scripts/moment-with-locales.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap-datetimepicker.js")"></script>
+    <script src="@Url.Content("~/Scripts/meiomask.js")"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#txtEmail").setMask("email");
+            $("#txtSenha").setMask("senha");
+        });
+    </script>
+}

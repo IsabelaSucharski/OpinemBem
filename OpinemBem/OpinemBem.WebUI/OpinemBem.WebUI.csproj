@@ -151,6 +151,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CadastroController.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
+    <Compile Include="Controllers\CidadeController.cs" />
+    <Compile Include="Controllers\EstadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeisController.cs" />
     <Compile Include="Controllers\LoginAdmController.cs" />
@@ -256,6 +258,8 @@
     <Content Include="Views\Shared\_LayoutCadastroU.cshtml" />
     <Content Include="Views\Login\EsqSenha.cshtml" />
     <Content Include="Views\Leis\AceitarLeisAdm.cshtml" />
+    <Content Include="Views\Cidade\CadastroC.cshtml" />
+    <Content Include="Views\Estado\CadastroE.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\" />

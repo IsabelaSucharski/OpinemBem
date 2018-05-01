@@ -113,7 +113,7 @@ namespace OpinemBem.DataAccess
                     var row = dt.Rows[0];
                     var categoria = new Categoria()
                     {
-                        Id = Convert.ToInt32(row["id"]),
+                        Id = Convert.ToInt32(row["id_categoria"]),
                         Nome = row["nome"].ToString()
                     };
 
