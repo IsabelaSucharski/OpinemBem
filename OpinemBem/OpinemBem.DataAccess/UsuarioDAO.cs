@@ -12,8 +12,8 @@ namespace OpinemBem.DataAccess
         {
             using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
             {
-                string strSQL = @"INSERT INTO usuario (nome, cpf, email, senha, data_nasc, administrador, foto, sexo) 
-                                  VALUES ( @nome, @cpf, @email, @senha, @data_nasc, @administrador, @foto, @sexo);";
+                string strSQL = @"INSERT INTO usuario (nome, cpf, email, senha, data_nasc, administrador, foto, sexo, id_estado, id_cidade) 
+                                  VALUES ( @nome, @cpf, @email, @senha, @data_nasc, @administrador, @foto, @sexo, @id_estado, @id_cidade);";
                 {
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {
@@ -26,6 +26,8 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@administrador", SqlDbType.Bit).Value = obj.Administrador;
                         cmd.Parameters.Add("@foto", SqlDbType.VarChar).Value = obj.Foto ?? string.Empty;
                         cmd.Parameters.Add("@sexo", SqlDbType.Int).Value = obj.Sexo.HasValue ? (object)Convert.ToInt32(obj.Sexo) : DBNull.Value;
+                        cmd.Parameters.Add("@id_cidade", SqlDbType.Int).Value = obj.Cidade.Id;
+                        cmd.Parameters.Add("@id_estado", SqlDbType.Int).Value = obj.Estado.Id;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();

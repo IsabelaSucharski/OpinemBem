@@ -18,6 +18,22 @@ create table usuario
 	sexo integer
 );
 
+alter table usuario add id_cidade int references cidade(id_cidade)
+alter table usuario add id_estado int references estado(id_estado)
+
+create table cidade
+(
+	id_cidade int identity(1,1) primary key,
+	nome varchar(50)
+)
+
+create table estado
+(
+	id_estado int identity(1,1) primary key,
+	nome varchar(50)
+)
+
+
 insert into usuario (nome, cpf, email, senha, administrador, sexo) 
 values ('Administrador', '111.111.111-11', 'admin@opinembem.com.br', '123', 1, 1);
 
