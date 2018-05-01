@@ -27,21 +27,21 @@
                     <tr>
                         <th>Nome do projeto</th>
                         <th>Tempo Disponível</th>
-                        <th>Código</th>
+                        <th>Categoria</th>
                         <th>Votos</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody>     
                     @foreach (ProjetoDeLei item in Model)
                     {
                         <tr>
                             <td>
-                                <a href="@Url.Action("ConcordaLeisAdm", "Leis")">
+                                <a href="@Url.Action("ConcordaLeisAdm", "Leis", new { @id = item.Id })">
                                     @item.Nome
                                 </a>
                             </td>
                             <td>@item.TempoDisponivel</td>
-                            <td>@item.Id</td>
+                            <td>@item.Categoria.Nome</td>
                             <td>0</td>
                         </tr>
                     }

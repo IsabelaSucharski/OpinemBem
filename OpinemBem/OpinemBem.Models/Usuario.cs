@@ -34,6 +34,11 @@ namespace OpinemBem.Models
 
         public string Foto { get; set; }
 
+        //public string Cidade { get; set; }
+
+        //public string Estado { get; set; }
+
+
         [ScriptIgnore]
         public List<ProjetoDeLei> Leis { get; set; }
 

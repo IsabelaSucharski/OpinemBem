@@ -10,5 +10,6 @@ namespace OpinemBem.Models
         public Usuario Usuario { get; set; }
         public ProjetoDeLei ProjetoDeLei { get; set; }
         public DateTime DataVoto { get; set; }
+        public string Valor { get; set; }
     }
 }

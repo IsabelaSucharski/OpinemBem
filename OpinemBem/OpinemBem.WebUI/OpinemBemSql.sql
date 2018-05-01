@@ -61,6 +61,7 @@ create table voto
 	id_usuario int not null references usuario,
 	id_projeto int not null references projeto_de_lei,
 	data_voto datetime not null default getdate(),
+	valor char(1),
 	constraint pk_voto primary key (id_usuario, id_projeto)
 );
 

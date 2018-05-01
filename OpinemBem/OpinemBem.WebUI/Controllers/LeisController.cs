@@ -17,9 +17,10 @@ namespace OpinemBem.WebUI.Controllers
             return View(lst);
         }
 
-        public ActionResult ConcordaLeisAdm()
+        public ActionResult ConcordaLeisAdm(int id)
         {
-            return View();
+            var lei = new ProjetoDeLeiDAO().BuscarPorId(id);
+            return View(lei);
         }
 
         public ActionResult ConcordaLeisU(int id)

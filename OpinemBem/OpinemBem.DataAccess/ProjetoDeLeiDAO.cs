@@ -169,7 +169,9 @@ namespace OpinemBem.DataAccess
             {
                 using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
                 {
-                    string strSQL = @"SELECT * FROM projeto_de_lei;";
+                    string strSQL = @"SELECT pl.*, c.nome as nome_categoria
+                                      FROM projeto_de_lei pl
+                                      inner join categoria c on (c.id_categoria = pl.id_categoria);";
 
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {
@@ -189,7 +191,11 @@ namespace OpinemBem.DataAccess
                             {
                                 Id = Convert.ToInt32(row["id_projeto"]),
                                 Nome = row["nome"].ToString(),
-                                Categoria = new Categoria() { Id = Convert.ToInt32(row["id_categoria"]) },
+                                Categoria = new Categoria()
+                                {
+                                    Id = Convert.ToInt32(row["id_categoria"]),
+                                    Nome = row["nome_categoria"].ToString()
+                                },
                                 Usuario = new Usuario() { Id = Convert.ToInt32(row["id_usuario"]) },
                                 Descricao = row["desvantagens"].ToString(),
                                 Vantagens = row["vantagens"].ToString(),

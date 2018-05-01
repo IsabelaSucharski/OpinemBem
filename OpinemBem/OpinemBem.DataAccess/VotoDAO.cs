@@ -13,7 +13,7 @@ namespace OpinemBem.DataAccess
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
-                string strSQL = "INSERT INTO voto (id_usuario, id_projeto, data_voto) VALUES ( @id_usuario, @id_projeto, @data_voto);";
+                string strSQL = "INSERT INTO voto (id_usuario, id_projeto, data_voto, valor) VALUES ( @id_usuario, @id_projeto, @data_voto, @valor);";
                 {
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {
@@ -22,6 +22,7 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@id_usuario", SqlDbType.Int).Value = obj.Usuario.Id;
                         cmd.Parameters.Add("@id_projeto", SqlDbType.Int).Value = obj.ProjetoDeLei.Id;
                         cmd.Parameters.Add("@data_voto", SqlDbType.DateTime).Value = obj.DataVoto;
+                        cmd.Parameters.Add("@valor", SqlDbType.VarChar).Value = obj.Valor;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -43,6 +44,7 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@id_usuario", SqlDbType.Int).Value = obj.Usuario.Id;
                         cmd.Parameters.Add("@id_projeto", SqlDbType.Int).Value = obj.ProjetoDeLei.Id;
                         cmd.Parameters.Add("@data_voto", SqlDbType.DateTime).Value = obj.DataVoto;
+                        cmd.Parameters.Add("@valor", SqlDbType.VarChar).Value = obj.Valor;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -78,7 +80,8 @@ namespace OpinemBem.DataAccess
                         {
                             Usuario = new Usuario() { Id = Convert.ToInt32(row["id_usuario"]) },
                             ProjetoDeLei = new ProjetoDeLei() { Id = Convert.ToInt32(row["id_projeto"]) },
-                            DataVoto = Convert.ToDateTime(row["data_voto"])
+                            DataVoto = Convert.ToDateTime(row["data_voto"]),
+                            Valor = row["valor"].ToString()
                         };
                         return voto;
                     }
@@ -112,7 +115,8 @@ namespace OpinemBem.DataAccess
                             {
                                 Usuario = new Usuario() { Id = Convert.ToInt32(row["id_usuario"]) },
                                 ProjetoDeLei = new ProjetoDeLei() { Id = Convert.ToInt32(row["id_projeto"]) },
-                                DataVoto = Convert.ToDateTime(row["data_voto"])
+                                DataVoto = Convert.ToDateTime(row["data_voto"]),
+                                Valor = row["valor"].ToString()
                             };
                             lst.Add(voto);
                         }

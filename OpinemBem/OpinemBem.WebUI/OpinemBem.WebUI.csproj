@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -158,6 +159,7 @@
     <Compile Include="Controllers\PerfilUController.cs" />
     <Compile Include="Controllers\ProjetosController.cs" />
     <Compile Include="CustomPrincipalSerializeModel.cs" />
+    <Compile Include="EsqSenhaViewModel.cs" />
     <Compile Include="FormsAuthenticationUtil.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -244,7 +246,6 @@
     <Content Include="Views\Leis\GerenciarLeisAdm.cshtml" />
     <Content Include="Views\PerfilU\Index.cshtml" />
     <Content Include="Views\PerfilAdm\Index.cshtml" />
-    <Content Include="Views\Leis\AceitarLeisAdm.cshtml" />
     <Content Include="Views\Leis\ConcordaLeisAdm.cshtml" />
     <Content Include="Views\Leis\ConcordaLeisU.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
@@ -252,6 +253,9 @@
     <Content Include="Views\Shared\_LayoutInicioAdmin.cshtml" />
     <Content Include="Views\Categoria\Cadastro.cshtml" />
     <Content Include="Views\Categoria\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutCadastroU.cshtml" />
+    <Content Include="Views\Login\EsqSenha.cshtml" />
+    <Content Include="Views\Leis\AceitarLeisAdm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\" />
@@ -287,7 +291,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54238</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

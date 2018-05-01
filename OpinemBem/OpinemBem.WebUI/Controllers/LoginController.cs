@@ -45,5 +45,19 @@ namespace OpinemBem.WebUI.Controllers
 
             return RedirectToAction("Index", "Login");
         }
+
+        //public ActionResult EsquecerSenha(EsqSenhaViewModel obj)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var usuario = new Usuario()
+        //        {
+        //            Email = obj.Email,
+        //            Senha = obj.Senha,
+        //            ConfirmaSenha = obj.ConfirmaSenha
+        //        };
+        //    }
+        //    return RedirectToAction("LoginU", "Login");
+        //}
     }
 }
