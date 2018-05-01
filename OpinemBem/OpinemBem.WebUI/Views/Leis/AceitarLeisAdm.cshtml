@@ -1,0 +1,44 @@
+﻿@using OpinemBem.Models
+@model List<ProjetoDeLei>
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Pesquisar..." />
+            <span class="input-group-btn">
+                <button class="btn btn-primary" type="button">Procurar</button>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2" style="padding-top: 25px;">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nome do projeto</th>
+                    <th>Tempo Disponível</th>
+                    <th>Categoria</th>
+                    <th>Votos</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (ProjetoDeLei item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a href="@Url.Action("GerenciarLeisAdm", "Leis", new { @id = item.Id })">
+                                @item.Nome
+                            </a>
+                        </td>
+                        <td>@item.TempoDisponivel</td>
+                        <td>@item.Categoria.Nome</td>
+                        <td>0</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
