@@ -1,6 +1,7 @@
 ﻿using OpinemBem.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -10,7 +11,7 @@ namespace OpinemBem.DataAccess
     {
         public void Inserir(Usuario obj)
         {
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 string strSQL = @"INSERT INTO usuario (nome, cpf, email, senha, data_nasc, administrador, foto, sexo) 
                                   VALUES ( @nome, @cpf, @email, @senha, @data_nasc, @administrador, @foto, @sexo);";
@@ -72,7 +73,7 @@ namespace OpinemBem.DataAccess
 
         public void Deletar(Usuario obj)
         {
-            using (SqlConnection conn = new SqlConnection("@Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 string strSQL = @"DELETE FROM usuario where id_usuario = @id_usuario";
                 {
@@ -92,7 +93,7 @@ namespace OpinemBem.DataAccess
 
         public Usuario BuscarPorId(int id)
         {
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 string strSQL = "SELECT * FROM usuario where id_usuario = @id_usuario;";
                 {
@@ -135,7 +136,7 @@ namespace OpinemBem.DataAccess
         {
             var lst = new List<Usuario>();
             {
-                using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
+                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
                 {
                     string strSQL = @"SELECT * FROM usuario;";
 
@@ -175,7 +176,7 @@ namespace OpinemBem.DataAccess
 
         public Usuario Logar(Usuario obj)
         {
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 string strSQL = @"SELECT * FROM USUARIO WHERE ADMINISTRADOR = 0 AND CPF = @CPF AND SENHA = @SENHA;";
 
@@ -216,7 +217,7 @@ namespace OpinemBem.DataAccess
 
         public Usuario LogarAdm(Usuario obj)
         {
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 string strSQL = @"SELECT * FROM USUARIO WHERE ADMINISTRADOR <> 0 AND CPF = @CPF AND SENHA = @SENHA;";
 

@@ -1,6 +1,7 @@
 ﻿using OpinemBem.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -11,7 +12,7 @@ namespace OpinemBem.DataAccess
         public void Inserir(Categoria obj)
         {
             //Criando uma conexão com o banco de dados
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 //Criando instrução sql para inserir na tabela de categorias
                 string strSQL = @"INSERT INTO categoria (nome) VALUES (@nome);";
@@ -36,7 +37,7 @@ namespace OpinemBem.DataAccess
         public void Atualizar(Categoria obj)
         {
             //Criando uma conexão com o banco de dados
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 //Criando instrução sql para inserir na tabela de categorias
                 string strSQL = @"UPDATE categoria set nome = @nome where id_categoria = @id_categoria;";
@@ -62,7 +63,7 @@ namespace OpinemBem.DataAccess
         public void Deletar(Categoria obj)
         {
             //Criando uma conexão com o banco de dados
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 //Criando instrução sql para inserir na tabela de categorias
                 string strSQL = @"DELETE FROM categoria where id_categoria = @id_categoria;";
@@ -87,7 +88,7 @@ namespace OpinemBem.DataAccess
         public Categoria BuscarPorId(int id)
         {
             //Criando uma conexão com o banco de dados
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 //Criando instrução sql para selecionar todos os registros na tabela de Categorias
                 string strSQL = @"SELECT * FROM categoria where id_categoria = @id_categoria;";
@@ -126,7 +127,7 @@ namespace OpinemBem.DataAccess
             var lst = new List<Categoria>();
 
             //Criando uma conexão com o banco de dados
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 //Criando instrução sql para selecionar todos os registros na tabela de Categorias
                 string strSQL = @"SELECT * FROM categoria;";

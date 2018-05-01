@@ -1,10 +1,9 @@
-﻿using System;
+﻿using OpinemBem.Models;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using OpinemBem.Models;
 
 namespace OpinemBem.DataAccess
 {
@@ -12,7 +11,7 @@ namespace OpinemBem.DataAccess
     {
         public void Inserir(Voto obj)
         {
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 string strSQL = "INSERT INTO voto (id_usuario, id_projeto, data_voto) VALUES ( @id_usuario, @id_projeto, @data_voto);";
                 {
@@ -34,7 +33,7 @@ namespace OpinemBem.DataAccess
 
         public void Atualizar(Voto obj)
         {
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 string strSQL = "UPDATE voto set voto = @voto where id_projeto = @id_projeto and id_usuario = @id_usuario";
                 {
@@ -55,7 +54,7 @@ namespace OpinemBem.DataAccess
 
         public Voto BuscarPorId(int id)
         {
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 string strSQL = "SELECT * FROM projetos_de_lei where id_projeto = @id_projeto;";
                 {
@@ -91,7 +90,7 @@ namespace OpinemBem.DataAccess
         {
             var lst = new List<Voto>();
             {
-                using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
+                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
                 {
                     string strSQL = @"SELECT * FROM projeto_de_lei;";
 

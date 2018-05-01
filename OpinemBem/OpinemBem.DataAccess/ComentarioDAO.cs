@@ -1,10 +1,9 @@
 ﻿using OpinemBem.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 
 namespace OpinemBem.DataAccess
 {
@@ -13,7 +12,7 @@ namespace OpinemBem.DataAccess
         public void Inserir(Comentario obj)
         {
             //Criando uma conexão com o banco de dados
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 //Criando instrução sql para inserir na tabela de categorias
                 string strSQL = "INSERT INTO comentario (id_usuario, id_projeto, data_comentario, mensagem) VALUES (@id_usuario, @id_projeto, @data_comentario, @mensagem;";
@@ -42,7 +41,7 @@ namespace OpinemBem.DataAccess
 
         public void Atualizar(Comentario obj)
         {
-            using (SqlConnection conn = new SqlConnection("@Iniatial Catalog= OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 string strSQL = @"UPDATE comentario set comentario = @comentario where id_comentario = @id_comentario;";
                 {
@@ -66,7 +65,7 @@ namespace OpinemBem.DataAccess
 
         public void Deletar(Comentario obj)
         {
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 string strSQL = @"DELETE FROM comentario where id_comentario = @id_comentario;";
                 {
@@ -85,7 +84,7 @@ namespace OpinemBem.DataAccess
 
         public Comentario BuscarPorId(int id)
         {
-            using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 string strSQL = @"SELECT * FROM comentario where id_comentario = @id_comentario;";
                 {
@@ -124,7 +123,7 @@ namespace OpinemBem.DataAccess
         {
             var lst = new List<Comentario>();
             {
-                using (SqlConnection conn = new SqlConnection(@"Initial Catalog=OpinemBem; Data Source=localhost; Integrated Security=SSPI;"))
+                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
                 {
                     string strSQL = @"SELECT * FROM comentario;";
 
