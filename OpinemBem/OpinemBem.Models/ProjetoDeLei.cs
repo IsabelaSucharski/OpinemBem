@@ -26,10 +26,10 @@ namespace OpinemBem.Models
         [Required(ErrorMessage = "Campo 'Desvantagens' é obrigatório!")]
         public string Desvantagens { get; set; }
 
-        public Usuario Usuario { get; set; }
-
         [Required(ErrorMessage = "Campo 'Tempo Disponível' é obrigatório!")]
         public int TempoDisponivel { get; set; }
+
+        public Usuario Usuario { get; set; }
 
         public bool Publicado { get; set; }
 
@@ -44,6 +44,9 @@ namespace OpinemBem.Models
 
         [ScriptIgnore]
         public Voto Voto { get; set; }
+
+        [ScriptIgnore]
+        public List<Comentario> Comentarios { get; set; }
 
         [ScriptIgnore]
         public decimal PercAFavor
@@ -65,6 +68,11 @@ namespace OpinemBem.Models
                     return decimal.Zero;
                 return (this.VotosContra * 100m) / (this.TotalDeVotos);
             }
+        }
+
+        public ProjetoDeLei()
+        {
+            this.Comentarios = new List<Comentario>();
         }
     }
 }

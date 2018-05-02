@@ -20,6 +20,8 @@ namespace OpinemBem.WebUI.Controllers
         public ActionResult ConcordaLeisAdm(int id)
         {
             var lei = new ProjetoDeLeiDAO().BuscarPorId(id);
+            lei.Voto = new VotoDAO().BuscarVoto(id, ((Usuario)User).Id);
+            lei.Comentarios = new ComentarioDAO().BuscarPorProjeto(id);
             return View(lei);
         }
 
@@ -27,12 +29,15 @@ namespace OpinemBem.WebUI.Controllers
         {
             var lei = new ProjetoDeLeiDAO().BuscarPorId(id);
             lei.Voto = new VotoDAO().BuscarVoto(id, ((Usuario)User).Id);
+            lei.Comentarios = new ComentarioDAO().BuscarPorProjeto(id);
             return View(lei);
         }
 
         public ActionResult GerenciarLeisAdm(int id)
         {
             var lei = new ProjetoDeLeiDAO().BuscarPorId(id);
+            lei.Voto = new VotoDAO().BuscarVoto(id, ((Usuario)User).Id);
+            lei.Comentarios = new ComentarioDAO().BuscarPorProjeto(id);
             return View(lei);
         }
 
@@ -40,6 +45,15 @@ namespace OpinemBem.WebUI.Controllers
         {
             new ProjetoDeLeiDAO().Inserir(obj);
             return RedirectToAction("AceitasLeisAdm", "Leis");
+        }
+
+        public ActionResult EnviarPost(Comentario obj)
+        {
+            obj.DataHora = DateTime.Now;
+            obj.Usuario = new Usuario() { Id = ((Usuario)User).Id };
+            new ComentarioDAO().Inserir(obj);
+
+            return RedirectToAction("ConcordaLeisU", "Leis", new { @id = obj.ProjetoDeLei.Id });
         }
     }
 }

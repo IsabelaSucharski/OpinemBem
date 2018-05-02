@@ -101,7 +101,11 @@ namespace OpinemBem.DataAccess
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
-                string strSQL = "SELECT * FROM usuario where id_usuario = @id_usuario;";
+                string strSQL = @"SELECT U.*, E.NOME AS NOME_ESTADO, C.NOME AS NOME_CIDADE 
+                                  FROM USUARIO U
+                                  LEFT JOIN ESTADO E ON (E.ID_ESTADO = U.ID_ESTADO)
+                                  LEFT JOIN CIDADE C ON(C.ID_CIDADE = C.ID_CIDADE) 
+                                  WHERE ID_USUARIO = @ID_USUARIO;";
                 {
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {
@@ -154,7 +158,10 @@ namespace OpinemBem.DataAccess
             {
                 using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
                 {
-                    string strSQL = @"SELECT * FROM usuario;";
+                    string strSQL = @"SELECT U.*, E.NOME AS NOME_ESTADO, C.NOME AS NOME_CIDADE 
+                                      FROM USUARIO U
+                                      LEFT JOIN ESTADO E ON (E.ID_ESTADO = U.ID_ESTADO)
+                                      LEFT JOIN CIDADE C ON (C.ID_CIDADE = C.ID_CIDADE);";
 
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {
@@ -205,7 +212,11 @@ namespace OpinemBem.DataAccess
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 //admin igual a 0 pq nao é um admin
-                string strSQL = @"SELECT * FROM USUARIO WHERE ADMINISTRADOR = 0 AND CPF = @CPF AND SENHA = @SENHA;";
+                string strSQL = @"SELECT U.*, E.NOME AS NOME_ESTADO, C.NOME AS NOME_CIDADE 
+                                  FROM USUARIO U
+                                  LEFT JOIN ESTADO E ON (E.ID_ESTADO = U.ID_ESTADO)
+                                  LEFT JOIN CIDADE C ON (C.ID_CIDADE = C.ID_CIDADE)
+                                  WHERE U.ADMINISTRADOR = 0 AND U.CPF = @CPF AND U.SENHA = @SENHA;";
 
                 using (SqlCommand cmd = new SqlCommand(strSQL))
                 {
@@ -257,7 +268,11 @@ namespace OpinemBem.DataAccess
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 //admmin diferente de 0 = admin
-                string strSQL = @"SELECT * FROM USUARIO WHERE ADMINISTRADOR <> 0 AND CPF = @CPF AND SENHA = @SENHA;";
+                string strSQL = @"SELECT U.*, E.NOME AS NOME_ESTADO, C.NOME AS NOME_CIDADE 
+                                  FROM USUARIO U
+                                  LEFT JOIN ESTADO E ON (E.ID_ESTADO = U.ID_ESTADO)
+                                  LEFT JOIN CIDADE C ON (C.ID_CIDADE = C.ID_CIDADE)
+                                  WHERE U.ADMINISTRADOR <> 0 AND U.CPF = @CPF AND U.SENHA = @SENHA;";
 
                 using (SqlCommand cmd = new SqlCommand(strSQL))
                 {

@@ -183,10 +183,12 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\avatar-usuario.jpg" />
+    <Content Include="Images\avatar_2x.png" />
     <Content Include="Images\exem.png" />
     <Content Include="Images\exemcategoria.png" />
     <Content Include="Images\opinemmbem.png" />
-    <Content Include="Images\_s_a12Cb12Cc12Cd12Ce0f0g64h2E709C081970i74j27k64lF5mF5.jpg" />
+    <Content Include="Images\user-win10.png" />
+    <Content Include="Images\fundo.jpg" />
     <Content Include="OpinemBemSql.sql" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
