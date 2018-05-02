@@ -21,7 +21,7 @@ namespace OpinemBem.WebUI.Controllers
 
         public ActionResult SalvarProjetoAdm(ProjetoDeLei obj)
         {
-            obj.Usuario = new Usuario() { Id = 1 };
+            obj.Usuario = new Usuario() { Id = ((Usuario)User).Id };
             new ProjetoDeLeiDAO().Inserir(obj);
             return RedirectToAction("ProjetoAdm", "Projetos");
         }
@@ -36,7 +36,7 @@ namespace OpinemBem.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                obj.Usuario = new Usuario() { Id = 1 };
+                obj.Usuario = new Usuario() { Id = ((Usuario)User).Id };
                 new ProjetoDeLeiDAO().Inserir(obj);
                 return RedirectToAction("ProjetoU", "Projetos");
             }

@@ -7,12 +7,23 @@
     <div class="col-md-3" style="border-right: 2px solid #000;">
         <div class="row">
             <div class="col-md-12 text-center">
-                <img src="@Url.Content("~/Images/avatar-usuario.jpg")" width="200" height="150" />
+                <img src="@Url.Content(string.Format("~/Uploads/{0}", Model.Foto))" width="200" />
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12" style="border-bottom: 2px solid #000">
-                @Html.LabelFor(m => m.Nome, "Nome: João da Silva", new { @class = "control-label text-center", @style = "font-size: 1.7em" })
+            <div class="col-md-12 text-center">
+                <br />
+                @Html.LabelFor(m => m.Nome, string.Format("Nome: {0}", Model.Nome), new { @class = "control-label text-center" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                @Html.LabelFor(m => m.CPF, string.Format("CPF: {0}", Model.CPF), new { @class = "control-label text-center" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center" style="border-bottom: 2px solid #000;">
+                @Html.LabelFor(m => m.Email, string.Format("E-mail: {0}", Model.Email), new { @class = "control-label text-center" })
             </div>
         </div>
         <div class="row">
@@ -20,14 +31,14 @@
                 <div class="form-horizontal">
                     <div class="form-group">
                         <div class="col-md-12">
-                            @Html.LabelFor(m => m.Senha, "Senha Atual:", new { @class = "control-label text-center", @style = "font-size: 1.2em" })
+                            @Html.LabelFor(m => m.Senha, "Nova Senha:", new { @class = "control-label text-center" })
                             @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12 text-right">
-                            <a href=@Url.Action("Index","PerfilU")>
-                                <input type="button" class="btn btn-primary" value="Alterar Senha" onclick="alert('Senha alterada com sucesso'); return true;" />
+                            <a class="btn btn-primary btn-block" href="@Url.Action("Index", "PerfilU")">
+                                Alterar Senha
                             </a>
                         </div>
                     </div>
@@ -39,32 +50,60 @@
         <div class="row">
             <div class="col-md-12">
                 <form class="form-horizontal">
-                    <div class="form-group" style="border-bottom: 2px solid #000; padding-bottom: 20px;">
-                        <div class="col-md-6">
-                            <label class="control-label">Nivel do Usuário: 15</label>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="control-label">Progresso:</label>
-                            <progress max="100" value="50" title="50%"></progress>
+                    <div class="form-group" style="border-bottom: 2px solid #000;">
+                        <div class="col-md-12">
+                            <table class="table table-bordered">
+                                <tbody class="text-center">
+                                    <tr>
+                                        <td style="width: 50%;">
+                                            <label class="control-label">Nivel do Usuário: 15</label>
+                                        </td>
+                                        <td style="width: 50%;">
+                                            <label class="control-label">Progresso:</label>
+                                            <progress max="100" value="50" title="50%"></progress>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <label class="control-label">Projetos:</label>
                         </div>
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label class="control-label">Votos Contra:</label>
-                                    <progress max="100" value="30" title="30%">30%</progress>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label class="control-label">Votos a Favor:</label>
-                                    <progress max="100" value="70" title="70%">70%</progress>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Projeto de Lei</th>
+                                        <th class="text-center">Categoria</th>
+                                        <th class="text-center">Total de Votos</th>
+                                        <th>&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                    @foreach (var lei in Model.Leis)
+                                    {
+                                        <tr>
+                                            <td style="width: 25%; vertical-align: middle;" rowspan="2">@lei.Nome</td>
+                                            <td style="width: 20%; vertical-align: middle;" rowspan="2">@lei.Categoria.Nome</td>
+                                            <td style="width: 15%; vertical-align: middle;" rowspan="2">@lei.TotalDeVotos</td>
+                                            <td style="width: 40%; vertical-align: middle;">
+                                                <label class="control-label">Votos Contra:</label>
+                                                <progress max="100" value="@(lei.PercContra)" title="@(lei.PercContra)%">@(lei.PercContra)%</progress>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 40%; vertical-align: middle;">
+                                                <label class="control-label">Votos a Favor:</label>
+                                                <progress max="100" value="@(lei.PercAFavor)" title="@(lei.PercAFavor)%">@(lei.PercAFavor)%</progress>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </form>
@@ -72,5 +111,3 @@
         </div>
     </div>
 </div>
-
-

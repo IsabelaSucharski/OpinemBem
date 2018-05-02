@@ -158,7 +158,8 @@ namespace OpinemBem.DataAccess
                             TempoDisponivel = Convert.ToInt32(row["tempo_disponivel"]),
                             Publicado = Convert.ToBoolean(row["publicado"]),
                             VotosAFavor = Convert.ToInt32(row["votos_a_favor"]),
-                            VotosContra = Convert.ToInt32(row["votos_contra"])
+                            VotosContra = Convert.ToInt32(row["votos_contra"]),
+                            TotalDeVotos = Convert.ToInt32(row["total_votos"])
                         };
                         return projeto;
                     }
@@ -206,7 +207,8 @@ namespace OpinemBem.DataAccess
                                 TempoDisponivel = Convert.ToInt32(row["tempo_disponivel"]),
                                 Publicado = Convert.ToBoolean(row["publicado"]),
                                 VotosAFavor = Convert.ToInt32(row["votos_a_favor"]),
-                                VotosContra = Convert.ToInt32(row["votos_contra"])
+                                VotosContra = Convert.ToInt32(row["votos_contra"]),
+                                TotalDeVotos = Convert.ToInt32(row["total_votos"])
                             };
                             lst.Add(projetoDeLei);
                         }
@@ -258,7 +260,8 @@ namespace OpinemBem.DataAccess
                                 TempoDisponivel = Convert.ToInt32(row["tempo_disponivel"]),
                                 Publicado = Convert.ToBoolean(row["publicado"]),
                                 VotosAFavor = Convert.ToInt32(row["votos_a_favor"]),
-                                VotosContra = Convert.ToInt32(row["votos_contra"])
+                                VotosContra = Convert.ToInt32(row["votos_contra"]),
+                                TotalDeVotos = Convert.ToInt32(row["total_votos"])
                             };
                             lst.Add(projetoDeLei);
                         }

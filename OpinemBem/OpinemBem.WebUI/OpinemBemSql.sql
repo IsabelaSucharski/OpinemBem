@@ -89,7 +89,7 @@ create table comentario
 );
 go
 
--- criando campo calculado de quantidade de votos
+-- criando campo calculado de quantidade de votos contra ou à favor
 create function dbo.get_votos(@id int, @valor char(1)) returns int
 as 
 begin
@@ -103,10 +103,27 @@ begin
 end
 go
 
--- criando campo de quantidade de votos
+-- criando campo de quantidade de votos à favor
 alter table projeto_de_lei add votos_a_favor as dbo.get_votos(id_projeto, 'S');
 go
 
--- criando campo de quantidade de votos
+-- criando campo de quantidade de votos contra
 alter table projeto_de_lei add votos_contra as dbo.get_votos(id_projeto, 'N');
+go
+
+-- criando campo calculado de quantidade total de votos
+create function dbo.get_total(@id int) returns int
+as 
+begin
+    return ( 
+        select 
+			coalesce(count(*), 0) as qtd_voto
+		from voto v
+		where v.id_projeto = @id
+    );
+end
+go
+
+-- criando campo de quantidade de votos contra
+alter table projeto_de_lei add total_votos as dbo.get_total(id_projeto);
 go

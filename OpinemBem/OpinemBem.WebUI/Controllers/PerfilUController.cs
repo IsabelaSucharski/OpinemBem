@@ -13,8 +13,9 @@ namespace OpinemBem.WebUI.Controllers
     {
         public ActionResult Index()
         {
-            var lst = new ProjetoDeLeiDAO().BuscarPorUsuario(((Usuario)User).Id);
-            return View(lst);
+            var obj = new UsuarioDAO().BuscarPorId(((Usuario)User).Id);
+            obj.Leis = new ProjetoDeLeiDAO().BuscarPorUsuario(((Usuario)User).Id);
+            return View(obj);
         }
     }
 }

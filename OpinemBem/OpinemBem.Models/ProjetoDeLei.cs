@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Web.Script.Serialization;
 
 namespace OpinemBem.Models
 {
@@ -32,12 +33,38 @@ namespace OpinemBem.Models
 
         public bool Publicado { get; set; }
 
+        [ScriptIgnore]
         public int VotosContra { get; set; }
 
+        [ScriptIgnore]
         public int VotosAFavor { get; set; }
 
+        [ScriptIgnore]
         public int TotalDeVotos { get; set; }
 
+        [ScriptIgnore]
         public Voto Voto { get; set; }
+
+        [ScriptIgnore]
+        public decimal PercAFavor
+        {
+            get
+            {
+                if (!(this.TotalDeVotos > decimal.Zero))
+                    return decimal.Zero;
+                return (this.VotosAFavor * 100m) / (this.TotalDeVotos);
+            }
+        }
+
+        [ScriptIgnore]
+        public decimal PercContra
+        {
+            get
+            {
+                if (!(this.TotalDeVotos > decimal.Zero))
+                    return decimal.Zero;
+                return (this.VotosContra * 100m) / (this.TotalDeVotos);
+            }
+        }
     }
 }
