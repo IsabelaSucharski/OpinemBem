@@ -130,15 +130,15 @@ namespace OpinemBem.DataAccess
                             Administrador = Convert.ToBoolean(row["administrador"]),
                             Foto = row["foto"].ToString(),
                             Sexo = row["sexo"] is DBNull ? new Nullable<Sexo>() : (Sexo)Convert.ToInt32(row["sexo"]),
-                            Estado = new Estado()
+                            Estado = row["id_estado"] is DBNull ? null : new Estado()
                             {
                                 Id = Convert.ToInt32(row["id_estado"]),
-                                Nome = row["nome"].ToString()
+                                Nome = row["nome_estado"].ToString()
                             },
-                            Cidade = new Cidade()
+                            Cidade = row["id_cidade"] is DBNull ? null : new Cidade()
                             {
-                                Id=Convert.ToInt32(row["id_cidade"]),
-                                Nome = row["nome"].ToString()
+                                Id = Convert.ToInt32(row["id_cidade"]),
+                                Nome = row["nome_cidade"].ToString()
                             }
                         };
 
@@ -180,15 +180,15 @@ namespace OpinemBem.DataAccess
                                 Administrador = Convert.ToBoolean(row["administrador"]),
                                 Foto = row["foto"].ToString(),
                                 Sexo = row["sexo"] is DBNull ? new Nullable<Sexo>() : (Sexo)Convert.ToInt32(row["sexo"]),
-                                Estado = new Estado()
+                                Estado = row["id_estado"] is DBNull ? null : new Estado()
                                 {
                                     Id = Convert.ToInt32(row["id_estado"]),
-                                    Nome = row["nome"].ToString()
+                                    Nome = row["nome_estado"].ToString()
                                 },
-                                Cidade = new Cidade()
+                                Cidade = row["id_cidade"] is DBNull ? null : new Cidade()
                                 {
                                     Id = Convert.ToInt32(row["id_cidade"]),
-                                    Nome = row["nome"].ToString()
+                                    Nome = row["nome_cidade"].ToString()
                                 }
                             };
 
@@ -203,7 +203,8 @@ namespace OpinemBem.DataAccess
         public Usuario Logar(Usuario obj)
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
-            {//admin igual a 0 pq nao é um admin
+            {
+                //admin igual a 0 pq nao é um admin
                 string strSQL = @"SELECT * FROM USUARIO WHERE ADMINISTRADOR = 0 AND CPF = @CPF AND SENHA = @SENHA;";
 
                 using (SqlCommand cmd = new SqlCommand(strSQL))
@@ -234,15 +235,15 @@ namespace OpinemBem.DataAccess
                         Administrador = Convert.ToBoolean(row["administrador"]),
                         Foto = row["foto"].ToString(),
                         Sexo = row["sexo"] is DBNull ? new Nullable<Sexo>() : (Sexo)Convert.ToInt32(row["sexo"]),
-                        Estado = new Estado()
+                        Estado = row["id_estado"] is DBNull ? null : new Estado()
                         {
                             Id = Convert.ToInt32(row["id_estado"]),
-                            Nome = row["nome"].ToString()
+                            Nome = row["nome_estado"].ToString()
                         },
-                        Cidade = new Cidade()
+                        Cidade = row["id_cidade"] is DBNull ? null : new Cidade()
                         {
                             Id = Convert.ToInt32(row["id_cidade"]),
-                            Nome = row["nome"].ToString()
+                            Nome = row["nome_cidade"].ToString()
                         }
                     };
 
@@ -254,7 +255,8 @@ namespace OpinemBem.DataAccess
         public Usuario LogarAdm(Usuario obj)
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
-            {//admmin diferernte de 0 = admin
+            {
+                //admmin diferente de 0 = admin
                 string strSQL = @"SELECT * FROM USUARIO WHERE ADMINISTRADOR <> 0 AND CPF = @CPF AND SENHA = @SENHA;";
 
                 using (SqlCommand cmd = new SqlCommand(strSQL))
@@ -285,15 +287,15 @@ namespace OpinemBem.DataAccess
                         Administrador = Convert.ToBoolean(row["administrador"]),
                         Foto = row["foto"].ToString(),
                         Sexo = row["sexo"] is DBNull ? new Nullable<Sexo>() : (Sexo)Convert.ToInt32(row["sexo"]),
-                        Estado = new Estado()
+                        Estado = row["id_estado"] is DBNull ? null : new Estado()
                         {
                             Id = Convert.ToInt32(row["id_estado"]),
-                            Nome = row["nome"].ToString()
+                            Nome = row["nome_estado"].ToString()
                         },
-                        Cidade = new Cidade()
+                        Cidade = row["id_cidade"] is DBNull ? null : new Cidade()
                         {
                             Id = Convert.ToInt32(row["id_cidade"]),
-                            Nome = row["nome"].ToString()
+                            Nome = row["nome_cidade"].ToString()
                         }
                     };
 

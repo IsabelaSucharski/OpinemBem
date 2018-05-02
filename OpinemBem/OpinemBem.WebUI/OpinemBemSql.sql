@@ -4,6 +4,20 @@ go
 use OpinemBem
 go
 
+create table estado
+(
+	id_estado int identity(1,1) primary key,
+	nome varchar(100) not null,
+	sigla varchar(2) not null
+);
+
+create table cidade
+(
+	id_cidade int identity(1,1) primary key,
+	nome varchar(100) not null,
+	id_estado int references estado (id_estado),
+);
+
 create table usuario
 (
 	id_usuario int identity(1,1) primary key,
@@ -14,26 +28,10 @@ create table usuario
 	data_nasc datetime,
 	administrador bit,
 	foto varchar(1000),
-	caminho_foto varchar(3000),
+	id_estado int references estado (id_estado),
+	id_cidade int references cidade (id_cidade),
 	sexo integer
 );
-
-alter table usuario add id_cidade int references cidade(id_cidade)
-alter table usuario add id_estado int references estado(id_estado)
-
-create table cidade
-(
-	id_cidade int identity(1,1) primary key,
-	nome varchar(50)
-)
-
-create table estado
-(
-	id_estado int identity(1,1) primary key,
-	nome varchar(50),
-	sigla varchar(2)
-)
-
 
 insert into usuario (nome, cpf, email, senha, administrador, sexo) 
 values ('Administrador', '111.111.111-11', 'admin@opinembem.com.br', '123', 1, 1);
@@ -90,3 +88,26 @@ create table comentario
 	data_comentario datetime not null default getdate(),
 	mensagem varchar(max)
 );
+go
+
+-- criando campo calculado de quantidade de votos
+create function dbo.get_votos(@id int, @valor char(1)) returns int
+as 
+begin
+    return ( 
+        select 
+			count(*) as qtd_voto
+		from voto v
+		where v.id_projeto = @id
+		and v.valor = @valor
+    );
+end
+go
+
+-- criando campo de quantidade de votos
+alter table projeto_de_lei add votos_a_favor as dbo.get_votos(id_projeto, 'S');
+go
+
+-- criando campo de quantidade de votos
+alter table projeto_de_lei add votos_contra as dbo.get_votos(id_projeto, 'N');
+go

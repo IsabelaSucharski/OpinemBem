@@ -13,7 +13,8 @@ namespace OpinemBem.DataAccess
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
-                string strSQL = "INSERT INTO projeto_de_lei (nome, id_categoria, id_usuario, descricao, vantagens, desvantagens, tempo_disponivel, publicado) VALUES (@nome, @id_categoria, @id_usuario, @descricao, @vantagens, @desvantagens, @tempo_disponivel, @publicado);";
+                string strSQL = @"INSERT INTO projeto_de_lei (nome, id_categoria, id_usuario, descricao, vantagens, desvantagens, tempo_disponivel, publicado) 
+                                  VALUES (@nome, @id_categoria, @id_usuario, @descricao, @vantagens, @desvantagens, @tempo_disponivel, @publicado);";
                 {
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {
@@ -155,7 +156,9 @@ namespace OpinemBem.DataAccess
                             Vantagens = row["vantagens"].ToString(),
                             Desvantagens = row["desvantagens"].ToString(),
                             TempoDisponivel = Convert.ToInt32(row["tempo_disponivel"]),
-                            Publicado = Convert.ToBoolean(row["publicado"])
+                            Publicado = Convert.ToBoolean(row["publicado"]),
+                            VotosAFavor = Convert.ToInt32(row["votos_a_favor"]),
+                            VotosContra = Convert.ToInt32(row["votos_contra"])
                         };
                         return projeto;
                     }
@@ -201,7 +204,9 @@ namespace OpinemBem.DataAccess
                                 Vantagens = row["vantagens"].ToString(),
                                 Desvantagens = row["desvantagens"].ToString(),
                                 TempoDisponivel = Convert.ToInt32(row["tempo_disponivel"]),
-                                Publicado = Convert.ToBoolean(row["publicado"])
+                                Publicado = Convert.ToBoolean(row["publicado"]),
+                                VotosAFavor = Convert.ToInt32(row["votos_a_favor"]),
+                                VotosContra = Convert.ToInt32(row["votos_contra"])
                             };
                             lst.Add(projetoDeLei);
                         }

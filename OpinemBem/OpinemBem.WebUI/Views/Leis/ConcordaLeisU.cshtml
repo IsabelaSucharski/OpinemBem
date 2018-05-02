@@ -44,23 +44,12 @@
             </div>
             <div class="form-group">
                 <div class="col-md-6 text-right">
-                    <a href=@Url.Action("ProjetoU", "Projetos")>
-                        <input type="submit" class="btn btn-success btn-lg" value="Sim" onclick="alert('Voto cadastrado com sucesso!'); return true;" />
-                    </a>
+                    <a class="btn btn-success btn-lg" href=@Url.Action("Votar", "Projetos", new { @id = Model.Id, @voto = "S" })>Sim</a>
                 </div>
                 <div class="col-md-6 text-left">
-                    <a href=@Url.Action("ProjetoU", "Projetos")>
-                        <input type="submit" class="btn btn-danger btn-lg" value="Não" onclick="alert('Voto cadastrado com sucesso!'); return true;" />
-                    </a>
+                    <a class="btn btn-danger btn-lg" href=@Url.Action("Votar", "Projetos", new { @id = Model.Id, @voto = "N" })>Não</a>
                 </div>
             </div>
-            @*<div class="form-group">
-                <div class="col-md-12">
-                    @Html.LabelFor(m => m.Nome, "Comentários:", new { @class = "control-label text-center" })
-                    @Html.TextAreaFor(m => m.Nome, new { @class = "form-control", @size = "47" })
-                </div>
-            </div>*@
-
         </form>
     </div>
 </div>

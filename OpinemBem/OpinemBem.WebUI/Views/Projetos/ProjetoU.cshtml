@@ -22,7 +22,8 @@
                         <th>Nome do projeto</th>
                         <th>Tempo Disponível</th>
                         <th>Categoria</th>
-                        <th>Votos</th>
+                        <th>Votos À Favor</th>
+                        <th>Votos Contra</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,7 +37,8 @@
                             </td>
                             <td>@item.TempoDisponivel</td>
                             <td>@item.Categoria.Nome</td>
-                            <td>0</td>
+                            <td>@item.VotosAFavor</td>
+                            <td>@item.VotosContra</td>
                         </tr>
                     }
                 </tbody>
