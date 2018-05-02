@@ -12,6 +12,7 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
+                    <th class="text-center">Cód.</th>
                     <th class="text-center">Nome da Categoria</th>
                 </tr>
             </thead>
@@ -19,6 +20,7 @@
                 @foreach (Categoria item in Model)
                 {
                     <tr>
+                        <td class="text-center">@item.Id</td>
                         <td>@item.Nome</td>
                     </tr>
                 }
