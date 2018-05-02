@@ -37,5 +37,7 @@ namespace OpinemBem.Models
         public int VotosAFavor { get; set; }
 
         public int TotalDeVotos { get; set; }
+
+        public Voto Voto { get; set; }
     }
 }

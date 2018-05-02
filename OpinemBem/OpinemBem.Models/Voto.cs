@@ -7,6 +7,7 @@ namespace OpinemBem.Models
 {
     public class Voto
     {
+        public int Id { get; set; }
         public Usuario Usuario { get; set; }
         public ProjetoDeLei ProjetoDeLei { get; set; }
         public DateTime DataVoto { get; set; }

@@ -15,7 +15,7 @@ create table cidade
 (
 	id_cidade int identity(1,1) primary key,
 	nome varchar(100) not null,
-	id_estado int references estado (id_estado),
+	id_estado int references estado (id_estado)
 );
 
 create table usuario
@@ -67,17 +67,16 @@ create table projeto_de_lei
 	vantagens varchar(max),
 	desvantagens varchar(max),
 	tempo_disponivel varchar(10),
-	publicado bit not null default 0,
-	votos int
+	publicado bit not null default 0
 );
 
 create table voto
 (
+	id_voto int identity(1,1) primary key,
 	id_usuario int not null references usuario,
 	id_projeto int not null references projeto_de_lei,
 	data_voto datetime not null default getdate(),
-	valor char(1),
-	constraint pk_voto primary key (id_usuario, id_projeto)
+	valor char(1)
 );
 
 create table comentario

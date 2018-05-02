@@ -42,14 +42,32 @@
                     <label class="control-label">Você concorda com esse projeto?</label>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-md-6 text-right">
-                    <a class="btn btn-success btn-lg" href=@Url.Action("Votar", "Projetos", new { @id = Model.Id, @voto = "S" })>Sim</a>
+            @if (Model != null && Model.Voto != null)
+            {
+                <div class="form-group">
+                    <div class="col-md-12 text-center">
+                        @if (!string.IsNullOrWhiteSpace(Model.Voto.Valor) && Model.Voto.Valor == "S")
+                        {
+                            <div class="alert alert-success" role="alert"> <strong>SIM!</strong> Você votou 'Sim' para o projeto de lei '@Model.Nome'.</div>
+                        }
+                        else if (!string.IsNullOrWhiteSpace(Model.Voto.Valor) && Model.Voto.Valor == "N")
+                        {
+                            <div class="alert alert-danger" role="alert"> <strong>NÃO!</strong> Você votou 'Não' para o projeto de lei '@Model.Nome'.</div>
+                        }
+                    </div>
                 </div>
-                <div class="col-md-6 text-left">
-                    <a class="btn btn-danger btn-lg" href=@Url.Action("Votar", "Projetos", new { @id = Model.Id, @voto = "N" })>Não</a>
+            }
+            else
+            {
+                <div class="form-group">
+                    <div class="col-md-6 text-right">
+                        <a class="btn btn-success btn-lg" href=@Url.Action("Votar", "Projetos", new { @id = Model.Id, @voto = "S" }) onclick="if (!confirm('Deseja confirmar seu voto?')) return false;">Sim</a>
+                    </div>
+                    <div class="col-md-6 text-left">
+                        <a class="btn btn-danger btn-lg" href=@Url.Action("Votar", "Projetos", new { @id = Model.Id, @voto = "N" }) onclick="if (!confirm('Deseja confirmar seu voto?')) return false;">Não</a>
+                    </div>
                 </div>
-            </div>
+            }
         </form>
     </div>
 </div>

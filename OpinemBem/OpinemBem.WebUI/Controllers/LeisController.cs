@@ -26,6 +26,7 @@ namespace OpinemBem.WebUI.Controllers
         public ActionResult ConcordaLeisU(int id)
         {
             var lei = new ProjetoDeLeiDAO().BuscarPorId(id);
+            lei.Voto = new VotoDAO().BuscarVoto(id, ((Usuario)User).Id);
             return View(lei);
         }
 

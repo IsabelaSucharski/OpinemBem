@@ -58,12 +58,13 @@ namespace OpinemBem.DataAccess
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
-                string strSQL = "SELECT * FROM projetos_de_lei where id_projeto = @id_projeto;";
+                string strSQL = "SELECT * FROM voto where id_projeto = @id_projeto;";
                 {
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {
                         conn.Open();
                         cmd.Connection = conn;
+                        cmd.Parameters.Add("@id_projeto", SqlDbType.Int).Value = id;
                         cmd.CommandText = strSQL;
 
                         var dataReader = cmd.ExecuteReader();
@@ -78,6 +79,7 @@ namespace OpinemBem.DataAccess
                         var row = dt.Rows[0];
                         var voto = new Voto()
                         {
+                            Id = Convert.ToInt32(row["id_voto"]),
                             Usuario = new Usuario() { Id = Convert.ToInt32(row["id_usuario"]) },
                             ProjetoDeLei = new ProjetoDeLei() { Id = Convert.ToInt32(row["id_projeto"]) },
                             DataVoto = Convert.ToDateTime(row["data_voto"]),
@@ -113,6 +115,7 @@ namespace OpinemBem.DataAccess
                         {
                             var voto = new Voto()
                             {
+                                Id = Convert.ToInt32(row["id_voto"]),
                                 Usuario = new Usuario() { Id = Convert.ToInt32(row["id_usuario"]) },
                                 ProjetoDeLei = new ProjetoDeLei() { Id = Convert.ToInt32(row["id_projeto"]) },
                                 DataVoto = Convert.ToDateTime(row["data_voto"]),
@@ -123,6 +126,44 @@ namespace OpinemBem.DataAccess
                     }
                 }
                 return lst;
+            }
+        }
+
+        public Voto BuscarVoto(int projeto, int usuario)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
+            {
+                string strSQL = "SELECT top 1 * FROM voto where id_projeto = @id_projeto and id_usuario = @id_usuario;";
+                {
+                    using (SqlCommand cmd = new SqlCommand(strSQL))
+                    {
+                        conn.Open();
+                        cmd.Connection = conn;
+                        cmd.Parameters.Add("@id_projeto", SqlDbType.Int).Value = projeto;
+                        cmd.Parameters.Add("@id_usuario", SqlDbType.Int).Value = usuario;
+                        cmd.CommandText = strSQL;
+
+                        var dataReader = cmd.ExecuteReader();
+                        var dt = new DataTable();
+                        dt.Load(dataReader);
+
+                        conn.Close();
+
+                        if (!(dt != null && dt.Rows.Count > 0))
+                            return null;
+
+                        var row = dt.Rows[0];
+                        var voto = new Voto()
+                        {
+                            Id = Convert.ToInt32(row["id_voto"]),
+                            Usuario = new Usuario() { Id = Convert.ToInt32(row["id_usuario"]) },
+                            ProjetoDeLei = new ProjetoDeLei() { Id = Convert.ToInt32(row["id_projeto"]) },
+                            DataVoto = Convert.ToDateTime(row["data_voto"]),
+                            Valor = row["valor"].ToString()
+                        };
+                        return voto;
+                    }
+                }
             }
         }
     }

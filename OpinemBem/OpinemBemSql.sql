@@ -4,6 +4,20 @@ go
 use OpinemBem
 go
 
+create table estado
+(
+	id_estado int identity(1,1) primary key,
+	nome varchar(100) not null,
+	sigla varchar(2) not null
+);
+
+create table cidade
+(
+	id_cidade int identity(1,1) primary key,
+	nome varchar(100) not null,
+	id_estado int references estado (id_estado)
+);
+
 create table usuario
 (
 	id_usuario int identity(1,1) primary key,
@@ -14,13 +28,16 @@ create table usuario
 	data_nasc datetime,
 	administrador bit,
 	foto varchar(1000),
-	caminho_foto varchar(3000),
+	id_estado int references estado (id_estado),
+	id_cidade int references cidade (id_cidade),
 	sexo integer
 );
 
-insert into usuario (nome, cpf, email, senha, administrador, sexo) values ('Administrador', '111.111.1111-11', 'admin@opinembem.com.br', '123', 1, 1);
+insert into usuario (nome, cpf, email, senha, administrador, sexo) 
+values ('Administrador', '111.111.111-11', 'admin@opinembem.com.br', '123', 1, 1);
 
---select * from usuario
+insert into usuario (nome, cpf, email, senha, administrador, sexo) 
+values ('Usuário 1', '222.222.222-22', 'usuario1@opinembem.com.br', '123', 0, 2);
 
 create table categoria
 (
@@ -28,22 +45,17 @@ create table categoria
 	nome varchar(200)	
 );
 
-insert into categoria values('Religião')
-insert into categoria values('Sociedade')
-insert into categoria values('Esporte')
-insert into categoria values('Indústria')
-insert into categoria values('Meio Ambiente')
-insert into categoria values('Saúde')
-insert into categoria values('Segurança')
-insert into categoria values('Crianças e Adolescentes')
-insert into categoria values('Mulher')
-insert into categoria values('Transporte')
-insert into categoria values('Educação')
-
-
---drop table projeto_de_lei
-
---select * from categoria
+insert into categoria values('Religião');
+insert into categoria values('Sociedade');
+insert into categoria values('Esporte');
+insert into categoria values('Indústria');
+insert into categoria values('Meio Ambiente');
+insert into categoria values('Saúde');
+insert into categoria values('Segurança');
+insert into categoria values('Crianças e Adolescentes');
+insert into categoria values('Mulher');
+insert into categoria values('Transporte');
+insert into categoria values('Educação');
 
 create table projeto_de_lei
 (
@@ -55,17 +67,16 @@ create table projeto_de_lei
 	vantagens varchar(max),
 	desvantagens varchar(max),
 	tempo_disponivel varchar(10),
-	publicado bit not null default 0,
-	votos int
+	publicado bit not null default 0
 );
 
---select * from projeto_de_lei
 create table voto
 (
+	id_voto int identity(1,1) primary key,
 	id_usuario int not null references usuario,
 	id_projeto int not null references projeto_de_lei,
 	data_voto datetime not null default getdate(),
-	constraint pk_voto primary key (id_usuario, id_projeto)
+	valor char(1)
 );
 
 create table comentario
@@ -76,18 +87,26 @@ create table comentario
 	data_comentario datetime not null default getdate(),
 	mensagem varchar(max)
 );
+go
 
---sexo int (eNUM NO C#),
---frentepli varchar(250),
---religiao varchar(250),
---email varchar(200) unique,
---nivel int
+-- criando campo calculado de quantidade de votos
+create function dbo.get_votos(@id int, @valor char(1)) returns int
+as 
+begin
+    return ( 
+        select 
+			coalesce(count(*), 0) as qtd_voto
+		from voto v
+		where v.id_projeto = @id
+		and v.valor = @valor
+    );
+end
+go
 
+-- criando campo de quantidade de votos
+alter table projeto_de_lei add votos_a_favor as dbo.get_votos(id_projeto, 'S');
+go
 
---select * from usuario;
-
---select * from projeto_de_lei
-
---select * from usuario
-
---alter table projeto_de_lei  drop column comentario;
+-- criando campo de quantidade de votos
+alter table projeto_de_lei add votos_contra as dbo.get_votos(id_projeto, 'N');
+go
