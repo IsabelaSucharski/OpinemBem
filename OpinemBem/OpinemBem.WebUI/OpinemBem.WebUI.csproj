@@ -160,14 +160,14 @@
     <Compile Include="Controllers\PerfilAdmController.cs" />
     <Compile Include="Controllers\PerfilUController.cs" />
     <Compile Include="Controllers\ProjetosController.cs" />
-    <Compile Include="CustomPrincipalSerializeModel.cs" />
-    <Compile Include="EsqSenhaViewModel.cs" />
-    <Compile Include="FormsAuthenticationUtil.cs" />
+    <Compile Include="Helpers\CustomPrincipalSerializeModel.cs" />
+    <Compile Include="ViewModels\EsqSenhaViewModel.cs" />
+    <Compile Include="Helpers\FormsAuthenticationUtil.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="HtmlHelper.cs" />
-    <Compile Include="LoginViewModel.cs" />
+    <Compile Include="Helpers\HtmlHelper.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
