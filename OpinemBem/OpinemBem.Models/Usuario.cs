@@ -26,8 +26,6 @@ namespace OpinemBem.Models
         [Required(ErrorMessage = "Campo 'Senha' é obrigatório!")]
         public string Senha { get; set; }
 
-        public string ConfirmaSenha { get; set; }
-
         public Sexo? Sexo { get; set; }
 
         public bool Administrador { get; set; }

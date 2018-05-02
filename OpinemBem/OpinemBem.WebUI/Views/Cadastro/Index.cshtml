@@ -1,9 +1,9 @@
 ﻿@using OpinemBem.Models
-@model Usuario
+@model CadastroViewModel
 @{
     Layout = "";
 }
--<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <title>Opinem Bem</title>
@@ -43,7 +43,7 @@
                     <div class="form-group">
                         <div class="col-md-6">
                             @Html.LabelFor(m => m.DataNasc, "Data de Nascimento:", new { @class = "control-label" })
-                            @Html.TextBoxFor(m => m.DataNasc, new { @id = "txtDataNasc", @class = "form-control", @placeholder = "DD/MM/YYYY" })
+                            @Html.TextBoxFor(m => m.DataNasc, new { @id = "txtDataNasc", @class = "form-control", @placeholder = "dd/MM/yyyy" })
                         </div>
                         <div class="col-md-6">
                             @Html.LabelFor(m => m.CPF, "CPF:", new { @class = "control-label" })
@@ -51,13 +51,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             @Html.LabelFor(m => m.Email, "Email :", new { @class = "control-label" })
                             @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "opinebem@votebem.com", @required = true })
-                        </div>
-                        <div class="col-md-4">
-                            @Html.LabelFor(m => m.Sexo, "Sexo:", new { @class = "control-label" })
-                            @Html.EnumDropDownListFor(m => m.Sexo, "-- [SELECIONE] --", new { @id = "ddlSexo", @class = "form-control" })
                         </div>
                     </div>
                     <div class="form-group ">
@@ -66,19 +62,18 @@
                             @Html.PasswordFor(m => m.Senha, new { @class = "form-control", @required = true })
                         </div>
                         <div class="col-md-6">
-                            @Html.LabelFor(m => m.ConfirmaSenha, "Confirmar Senha:", new { @class = "control-label text-center" })
-                            @Html.PasswordFor(m => m.ConfirmaSenha, new { @class = "form-control" })
+                            @Html.LabelFor(m => m.Sexo, "Sexo:", new { @class = "control-label" })
+                            @Html.EnumDropDownListFor(m => m.Sexo, "-- [SELECIONE] --", new { @id = "ddlSexo", @class = "form-control" })
                         </div>
                     </div>
                     <div class="form-group ">
                         <div class="col-md-6">
-                            @Html.LabelFor(m => m.Cidade.Id, "Cidade:", new { @class = "control-label text-center" })
-                            @Html.DropDownListFor(m => m.Cidade.Id, new SelectList(ViewBag.Cidade ?? new List<Cidade>(), "Id", "Nome"), "--[SELECIONE]--", new { @class = "form-control" })
-
+                            @Html.LabelFor(m => m.EstadoId, "UF:", new { @class = "control-label text-center" })
+                            @Html.DropDownListFor(m => m.EstadoId, new SelectList(ViewBag.Estados ?? new List<Estado>(), "Id", "Nome"), "--[SELECIONE]--", new { @id = "ddlEstado", @class = "form-control", @data_url = Url.Action("GetCidades", "Cadastro") })
                         </div>
                         <div class="col-md-6">
-                            @Html.LabelFor(m => m.Estado.Id, "Estado:", new { @class = "control-label text-center" })
-                            @Html.DropDownListFor(m => m.Estado.Id, new SelectList(ViewBag.Estado ?? new List<Estado>(), "Id", "Nome"), "--[SELECIONE]--", new { @class = "form-control" })
+                            @Html.LabelFor(m => m.CidadeId, "Cidade:", new { @class = "control-label text-center" })
+                            @Html.DropDownListFor(m => m.CidadeId, new SelectList(ViewBag.Cidades ?? new List<Cidade>(), "Id", "Nome"), "--[SELECIONE]--", new { @id = "ddlCidade", @class = "form-control" })
                         </div>
                     </div>
                     <div class="form-group">
@@ -140,6 +135,46 @@
                         alert(result);
                     }
                 });
+            });
+
+            $("#ddlEstado").change(function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                if ($(this).val() != "" && $(this).val() != undefined) {
+                    var url = $(this).data("url");
+                    $.ajax({
+                        url: url,
+                        data: {
+                            uf: $("#ddlEstado option:selected").val()
+                        },
+                        method: "POST",
+                        dataType: "json",
+                        cache: false,
+                        success: function (result) {
+                            console.log(result);
+                            $("#ddlCidade option").each(function () {
+                                if ($(this).val() != "") {
+                                    $(this).remove();
+                                }
+                            });
+
+                            var options = "";
+                            for (var i = 0; i < result.length; i++) {
+                                options += '<option value="' + result[i].Id + '">' + result[i].Nome + '</option>';
+                            }
+                            $("#ddlCidade").append(options);
+                        },
+                        error: function (result) {
+                            alert(result);
+                        }
+                    });
+                } else {
+                    $("#ddlCidade option").each(function () {
+                        if ($(this).val() != "") {
+                            $(this).remove();
+                        }
+                    });
+                }
             });
         });
     </script>
