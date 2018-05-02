@@ -96,7 +96,7 @@ as
 begin
     return ( 
         select 
-			count(*) as qtd_voto
+			coalesce(count(*), 0) as qtd_voto
 		from voto v
 		where v.id_projeto = @id
 		and v.valor = @valor

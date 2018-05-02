@@ -23,8 +23,15 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Início", "ProjetoAdm", "Projetos")</li>
                     <li>@Html.ActionLink("Perfil", "Index", "PerfilAdm")</li>  
-                    <li>@Html.ActionLink("Aceitar Leis", "AceitarLeisAdm", "Leis")</li>  
-                    <li>@Html.ActionLink("Categorias", "Index", "Categoria")</li>
+                    <li>@Html.ActionLink("Aceitar Leis", "AceitarLeisAdm", "Leis")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configurações <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Categorias", "Index", "Categoria")</li>
+                            <li>@Html.ActionLink("Estados", "Index", "Estado")</li>
+                            <li>@Html.ActionLink("Cidades", "Index", "Cidade")</li>
+                        </ul>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>@Html.ActionLink("Cadastrar Leis", "CadProjetoAdm", "Projetos")</li>
