@@ -56,5 +56,10 @@ namespace OpinemBem.WebUI.Controllers
         //        };
         //    return RedirectToAction("LoginU", "Login");
         //}
+
+        public ActionResult EsqSenha()
+        {
+            return View();
+        }
     }
 }
