@@ -263,6 +263,8 @@
     <Content Include="Views\Leis\AceitarLeisAdm.cshtml" />
     <Content Include="Views\Cidade\CadastroC.cshtml" />
     <Content Include="Views\Estado\CadastroE.cshtml" />
+    <Content Include="Views\Estado\Index.cshtml" />
+    <Content Include="Views\Cidade\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\" />

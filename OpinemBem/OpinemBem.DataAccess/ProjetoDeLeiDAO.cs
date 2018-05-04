@@ -152,7 +152,7 @@ namespace OpinemBem.DataAccess
                                 Nome = row["NOME_CATEGORIA"].ToString()
                             },
                             Usuario = new Usuario() { Id = Convert.ToInt32(row["id_usuario"]) },
-                            Descricao = row["desvantagens"].ToString(),
+                            Descricao = row["descricao"].ToString(),
                             Vantagens = row["vantagens"].ToString(),
                             Desvantagens = row["desvantagens"].ToString(),
                             TempoDisponivel = Convert.ToInt32(row["tempo_disponivel"]),
@@ -173,9 +173,11 @@ namespace OpinemBem.DataAccess
             {
                 using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
                 {
-                    string strSQL = @"SELECT pl.*, c.nome as nome_categoria
-                                      FROM projeto_de_lei pl
-                                      inner join categoria c on (c.id_categoria = pl.id_categoria);";
+                    string strSQL = @"SELECT 
+                                        P.*, 
+                                        C.NOME AS NOME_CATEGORIA
+                                    FROM PROJETO_DE_LEI P 
+                                    INNER JOIN CATEGORIA C ON (C.ID_CATEGORIA = P.ID_CATEGORIA;";
 
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {
@@ -201,7 +203,7 @@ namespace OpinemBem.DataAccess
                                     Nome = row["nome_categoria"].ToString()
                                 },
                                 Usuario = new Usuario() { Id = Convert.ToInt32(row["id_usuario"]) },
-                                Descricao = row["desvantagens"].ToString(),
+                                Descricao = row["descricao"].ToString(),
                                 Vantagens = row["vantagens"].ToString(),
                                 Desvantagens = row["desvantagens"].ToString(),
                                 TempoDisponivel = Convert.ToInt32(row["tempo_disponivel"]),
@@ -229,6 +231,8 @@ namespace OpinemBem.DataAccess
                                       INNER JOIN categoria c ON (c.id_categoria = pl.id_categoria)
                                       WHERE id_usuario = @id_usuario;";
 
+
+
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {
                         conn.Open();
@@ -254,7 +258,7 @@ namespace OpinemBem.DataAccess
                                     Nome = row["nome_categoria"].ToString()
                                 },
                                 Usuario = new Usuario() { Id = Convert.ToInt32(row["id_usuario"]) },
-                                Descricao = row["desvantagens"].ToString(),
+                                Descricao = row["descricao"].ToString(),
                                 Vantagens = row["vantagens"].ToString(),
                                 Desvantagens = row["desvantagens"].ToString(),
                                 TempoDisponivel = Convert.ToInt32(row["tempo_disponivel"]),

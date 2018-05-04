@@ -92,7 +92,12 @@ namespace OpinemBem.DataAccess
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 //Criando instrução sql para selecionar todos os registros na tabela de cidade
-                string strSQL = @"SELECT * FROM cidade where id_cidade = @id_cidade;";
+                string strSQL = @"SELECT 
+                                        C.*,
+                                        E.NOME AS NOME_ESTADO
+                                 FROM CIDADE C
+                                 INNER JOIN ESTADO E ON (E.ID_ESTADO = C.ID_ESTADO)
+                                 WHERE C.ID_DIDADE = @ID_PROJETO;";
 
                 //Criando um comando sql que será executado na base de dados
                 using (SqlCommand cmd = new SqlCommand(strSQL))
@@ -134,7 +139,12 @@ namespace OpinemBem.DataAccess
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 //Criando instrução sql para selecionar todos os registros na tabela de cidade
-                string strSQL = @"SELECT * FROM cidade;";
+                string strSQL = @"SELECT 
+                                        C.*,
+                                        E. NOME AS NOME_ESTADO
+                                 FROM CIDADE C
+                                 INNER JOIN ESTADO E ON (E.ID_ESTADO = C.ID_ESTADO)
+                                 WHERE C.ID_DIDADE = @ID_PROJETO;";
 
                 //Criando um comando sql que será executado na base de dados
                 using (SqlCommand cmd = new SqlCommand(strSQL))
