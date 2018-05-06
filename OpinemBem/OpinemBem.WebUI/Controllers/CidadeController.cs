@@ -13,7 +13,9 @@ namespace OpinemBem.WebUI.Controllers
         // GET: Cidade
         public ActionResult Index()
         {
-            return View();
+            //vai buscar e aparecer todos na categ lst
+            var lst = new CidadeDAO().BuscarTodos();
+            return View(lst);
         }
 
         public ActionResult SalvarCidade(Cidade obj)
@@ -21,6 +23,11 @@ namespace OpinemBem.WebUI.Controllers
             new CidadeDAO().Inserir(obj);
             //inserir o obj na lista de categoria
             return RedirectToAction("Index", "Estado");
+        }
+
+        public ActionResult CadastroC()
+        {
+            return View();
         }
     }
 }

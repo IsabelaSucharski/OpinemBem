@@ -13,7 +13,9 @@ namespace OpinemBem.WebUI.Controllers
         // GET: Estado
         public ActionResult Index()
         {
-            return View();
+            //vai buscar e aparecer todos na categ lst
+            var lst = new EstadoDAO().BuscarTodos();
+            return View(lst);
         }
 
         public ActionResult SalvarEstado(Estado obj)
@@ -21,6 +23,11 @@ namespace OpinemBem.WebUI.Controllers
             new EstadoDAO().Inserir(obj);
             //inserir o obj na lista de categoria
             return RedirectToAction("Index", "Estado");
+        }
+
+        public ActionResult CadastroE()
+        {
+            return View();
         }
     }
 }
