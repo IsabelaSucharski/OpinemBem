@@ -265,6 +265,7 @@
     <Content Include="Views\Estado\CadastroE.cshtml" />
     <Content Include="Views\Estado\Index.cshtml" />
     <Content Include="Views\Cidade\Index.cshtml" />
+    <Content Include="Views\Home\SobreOB.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\" />
