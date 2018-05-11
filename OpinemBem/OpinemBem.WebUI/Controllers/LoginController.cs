@@ -51,8 +51,7 @@ namespace OpinemBem.WebUI.Controllers
         //        var usuario = new Usuario()
         //        {
         //            Email = obj.Email,
-        //            Senha = obj.Senha,
-        //            ConfirmaSenha = obj.ConfirmaSenha
+        //            Senha = obj.Senha
         //        };
         //    return RedirectToAction("LoginU", "Login");
         //}

@@ -63,6 +63,7 @@ create table projeto_de_lei
 	nome varchar(500),
 	id_categoria int not null references categoria (id_categoria),
 	id_usuario int not null references usuario(id_usuario),
+	data_cadastro datetime not null default getdate(),
 	descricao varchar(max),
 	vantagens varchar(max),
 	desvantagens varchar(max),
