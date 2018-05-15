@@ -12,13 +12,7 @@ namespace OpinemBem.WebUI.Controllers
         {
             return View();
         }
-
-        public ActionResult CadProjetoAdm()
-        {
-            ViewBag.Categorias = new CategoriaDAO().BuscarTodos();
-            return View();
-        }
-
+    
         public ActionResult SalvarProjetoAdm(ProjetoDeLei obj)
         {
             obj.Usuario = new Usuario() { Id = ((Usuario)User).Id };

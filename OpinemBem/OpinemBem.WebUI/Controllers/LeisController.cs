@@ -15,15 +15,7 @@ namespace OpinemBem.WebUI.Controllers
         {
             var lst = new ProjetoDeLeiDAO().BuscarTodos();
             return View(lst);
-        }
-
-        public ActionResult ConcordaLeisAdm(int id)
-        {
-            var lei = new ProjetoDeLeiDAO().BuscarPorId(id);
-            lei.Voto = new VotoDAO().BuscarVoto(id, ((Usuario)User).Id);
-            lei.Comentarios = new ComentarioDAO().BuscarPorProjeto(id);
-            return View(lei);
-        }
+        }        
 
         public ActionResult ConcordaLeisU(int id)
         {

@@ -49,7 +49,7 @@ namespace OpinemBem.DataAccess
                                     vantagens = @vantagens,
                                     desvantagens = @desvantagens,
                                     tempo_disponivel = @tempo_disponivel,
-                                    publilcado = @publicado
+                                    publicado = @publicado
                                 WHERE id_projeto = @id_projeto;";
                 {
                     using (SqlCommand cmd = new SqlCommand(strSQL))
