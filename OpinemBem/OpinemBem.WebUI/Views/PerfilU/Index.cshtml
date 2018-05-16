@@ -7,7 +7,14 @@
     <div class="col-md-3" style="border-right: 2px solid #000;">
         <div class="row">
             <div class="col-md-12 text-center">
-                <img src="@Url.Content(string.Format("~/Uploads/{0}", Model.Foto))" width="200" />
+                @if (!string.IsNullOrWhiteSpace(Model.Foto))
+                {
+                    <img src="@Url.Content(string.Format("~/Uploads/{0}", Model.Foto))" width="200" />
+                }
+                else
+                {
+                    <img class="img-circle" src="@Url.Content("~/Images/avatar_2x.png")" width="150" height="150">
+                }
             </div>
         </div>
         <div class="row">
@@ -56,14 +63,10 @@
                                 <tbody class="text-center">
                                     <tr>
                                         <td style="width: 50%;">
-                                            <label class="control-label">Quantidade de Projetos Votados: 15</label>
+                                            <label class="control-label">Quantidade de Projetos Votados: @Model.Leis.Where(x => x.Publicado && x.TotalDeVotos > 0).Count()</label>
                                         </td>
                                         <td style="width: 50%;">
-                                            <label class="control-label">Quantidade de Projetos Cadastrados: 15</label>
-                                        </td>
-                                        <td style="width: 50%;">
-                                            <label class="control-label">Progresso:</label>
-                                            <progress max="100" value="50" title="50%"></progress>
+                                            <label class="control-label">Quantidade de Projetos Cadastrados: @Model.Leis.Count</label>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -72,7 +75,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <label class="control-label">Projetos:</label>
+                            <label class="control-label">Meus projetos:</label>
                         </div>
                     </div>
                     <div class="form-group">
@@ -82,6 +85,7 @@
                                     <tr>
                                         <th class="text-center">Projeto de Lei</th>
                                         <th class="text-center">Categoria</th>
+                                        <th class="text-center">Publicado?</th>
                                         <th class="text-center">Total de Votos</th>
                                         <th>&nbsp;</th>
                                     </tr>
@@ -90,16 +94,17 @@
                                     @foreach (var lei in Model.Leis)
                                     {
                                         <tr>
-                                            <td style="width: 25%; vertical-align: middle;" rowspan="2">@lei.Nome</td>
-                                            <td style="width: 20%; vertical-align: middle;" rowspan="2">@lei.Categoria.Nome</td>
-                                            <td style="width: 15%; vertical-align: middle;" rowspan="2">@lei.TotalDeVotos</td>
-                                            <td style="width: 40%; vertical-align: middle;">
+                                            <td style="width: 20%; vertical-align: middle;" rowspan="2">@lei.Nome</td>
+                                            <td style="width: 15%; vertical-align: middle;" rowspan="2">@lei.Categoria.Nome</td>
+                                            <td style="width: 5%; vertical-align: middle;" rowspan="2">@(lei.Publicado ? "Sim" : "Não")</td>
+                                            <td style="width: 10%; vertical-align: middle;" rowspan="2">@lei.TotalDeVotos</td>
+                                            <td style="width: 25%; vertical-align: middle;">
                                                 <label class="control-label">Votos Contra:</label>
                                                 <progress max="100" value="@(lei.PercContra)" title="@(lei.PercContra)%">@(lei.PercContra)%</progress>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td style="width: 40%; vertical-align: middle;">
+                                            <td style="width: 25%; vertical-align: middle;">
                                                 <label class="control-label">Votos a Favor:</label>
                                                 <progress max="100" value="@(lei.PercAFavor)" title="@(lei.PercAFavor)%">@(lei.PercAFavor)%</progress>
                                             </td>

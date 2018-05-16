@@ -78,14 +78,13 @@ namespace OpinemBem.DataAccess
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
-                string strSQL = @"UPDATE projeto_de_lei set publicado where id_projeto = @id_projeto;";
+                string strSQL = @"UPDATE projeto_de_lei SET publicado = @publicado WHERE id_projeto = @id_projeto;";
                 {
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {
                         cmd.Connection = conn;
-
-                        cmd.Parameters.Add("@id_projeto", SqlDbType.Int).Value = obj.Id;
                         cmd.Parameters.Add("@publicado", SqlDbType.Bit).Value = obj.Publicado;
+                        cmd.Parameters.Add("@id_projeto", SqlDbType.Int).Value = obj.Id;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -177,7 +176,7 @@ namespace OpinemBem.DataAccess
                                         P.*, 
                                         C.NOME AS NOME_CATEGORIA
                                     FROM PROJETO_DE_LEI P 
-                                    INNER JOIN CATEGORIA C ON (C.ID_CATEGORIA = P.ID_CATEGORIA;";
+                                    INNER JOIN CATEGORIA C ON (C.ID_CATEGORIA = P.ID_CATEGORIA);";
 
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {
@@ -238,6 +237,114 @@ namespace OpinemBem.DataAccess
                         conn.Open();
                         cmd.Connection = conn;
                         cmd.Parameters.Add("@id_usuario", SqlDbType.Int).Value = usuario;
+                        cmd.CommandText = strSQL;
+
+                        var dataReader = cmd.ExecuteReader();
+                        var dt = new DataTable();
+                        dt.Load(dataReader);
+
+                        conn.Close();
+
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            var projetoDeLei = new ProjetoDeLei()
+                            {
+                                Id = Convert.ToInt32(row["id_projeto"]),
+                                Nome = row["nome"].ToString(),
+                                Categoria = new Categoria()
+                                {
+                                    Id = Convert.ToInt32(row["id_categoria"]),
+                                    Nome = row["nome_categoria"].ToString()
+                                },
+                                Usuario = new Usuario() { Id = Convert.ToInt32(row["id_usuario"]) },
+                                Descricao = row["descricao"].ToString(),
+                                Vantagens = row["vantagens"].ToString(),
+                                Desvantagens = row["desvantagens"].ToString(),
+                                TempoDisponivel = Convert.ToInt32(row["tempo_disponivel"]),
+                                Publicado = Convert.ToBoolean(row["publicado"]),
+                                VotosAFavor = Convert.ToInt32(row["votos_a_favor"]),
+                                VotosContra = Convert.ToInt32(row["votos_contra"]),
+                                TotalDeVotos = Convert.ToInt32(row["total_votos"])
+                            };
+                            lst.Add(projetoDeLei);
+                        }
+                    }
+                }
+                return lst;
+            }
+        }
+
+        public List<ProjetoDeLei> BuscarPublicados()
+        {
+            var lst = new List<ProjetoDeLei>();
+            {
+                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
+                {
+                    string strSQL = @"SELECT 
+                                        P.*, 
+                                        C.NOME AS NOME_CATEGORIA
+                                    FROM PROJETO_DE_LEI P 
+                                    INNER JOIN CATEGORIA C ON (C.ID_CATEGORIA = P.ID_CATEGORIA)
+                                    WHERE P.PUBLICADO <> 0;";
+
+                    using (SqlCommand cmd = new SqlCommand(strSQL))
+                    {
+                        conn.Open();
+                        cmd.Connection = conn;
+                        cmd.CommandText = strSQL;
+
+                        var dataReader = cmd.ExecuteReader();
+                        var dt = new DataTable();
+                        dt.Load(dataReader);
+
+                        conn.Close();
+
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            var projetoDeLei = new ProjetoDeLei()
+                            {
+                                Id = Convert.ToInt32(row["id_projeto"]),
+                                Nome = row["nome"].ToString(),
+                                Categoria = new Categoria()
+                                {
+                                    Id = Convert.ToInt32(row["id_categoria"]),
+                                    Nome = row["nome_categoria"].ToString()
+                                },
+                                Usuario = new Usuario() { Id = Convert.ToInt32(row["id_usuario"]) },
+                                Descricao = row["descricao"].ToString(),
+                                Vantagens = row["vantagens"].ToString(),
+                                Desvantagens = row["desvantagens"].ToString(),
+                                TempoDisponivel = Convert.ToInt32(row["tempo_disponivel"]),
+                                Publicado = Convert.ToBoolean(row["publicado"]),
+                                VotosAFavor = Convert.ToInt32(row["votos_a_favor"]),
+                                VotosContra = Convert.ToInt32(row["votos_contra"]),
+                                TotalDeVotos = Convert.ToInt32(row["total_votos"])
+                            };
+                            lst.Add(projetoDeLei);
+                        }
+                    }
+                }
+                return lst;
+            }
+        }
+
+        public List<ProjetoDeLei> BuscarNaoPublicados()
+        {
+            var lst = new List<ProjetoDeLei>();
+            {
+                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
+                {
+                    string strSQL = @"SELECT 
+                                        P.*, 
+                                        C.NOME AS NOME_CATEGORIA
+                                    FROM PROJETO_DE_LEI P 
+                                    INNER JOIN CATEGORIA C ON (C.ID_CATEGORIA = P.ID_CATEGORIA)
+                                    WHERE P.PUBLICADO = 0;";
+
+                    using (SqlCommand cmd = new SqlCommand(strSQL))
+                    {
+                        conn.Open();
+                        cmd.Connection = conn;
                         cmd.CommandText = strSQL;
 
                         var dataReader = cmd.ExecuteReader();

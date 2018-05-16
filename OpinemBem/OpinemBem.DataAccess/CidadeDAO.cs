@@ -97,7 +97,7 @@ namespace OpinemBem.DataAccess
                                         E.NOME AS NOME_ESTADO
                                  FROM CIDADE C
                                  INNER JOIN ESTADO E ON (E.ID_ESTADO = C.ID_ESTADO)
-                                 WHERE C.ID_DIDADE = @ID_PROJETO;";
+                                 WHERE C.ID_CIDADE = @ID_CIDADE;";
 
                 //Criando um comando sql que será executado na base de dados
                 using (SqlCommand cmd = new SqlCommand(strSQL))
@@ -143,8 +143,7 @@ namespace OpinemBem.DataAccess
                                         C.*,
                                         E. NOME AS NOME_ESTADO
                                  FROM CIDADE C
-                                 INNER JOIN ESTADO E ON (E.ID_ESTADO = C.ID_ESTADO)
-                                 WHERE C.ID_DIDADE = @ID_PROJETO;";
+                                 INNER JOIN ESTADO E ON (E.ID_ESTADO = C.ID_ESTADO);";
 
                 //Criando um comando sql que será executado na base de dados
                 using (SqlCommand cmd = new SqlCommand(strSQL))
@@ -163,14 +162,14 @@ namespace OpinemBem.DataAccess
                     //Percorrendo todos os registros encontrados na base de dados e adicionando em uma lista
                     foreach (DataRow row in dt.Rows)
                     {
-                        var Cidade = new Cidade()
+                        var cidade = new Cidade()
                         {
                             Id = Convert.ToInt32(row["id_cidade"]),
                             Nome = row["nome"].ToString(),
                             Estado = new Estado() { Id = Convert.ToInt32(row["id_estado"]) }
                         };
 
-                        lst.Add(Cidade);
+                        lst.Add(cidade);
                     }
                 }
             }

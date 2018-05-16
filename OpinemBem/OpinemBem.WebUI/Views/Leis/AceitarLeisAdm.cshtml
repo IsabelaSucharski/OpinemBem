@@ -22,15 +22,18 @@
 <div class="row">
     <div class="col-md-8 col-md-offset-2" style="padding-top: 25px;">
         <table class="table table-bordered">
-            <thead>
+            <thead class="text-center">
                 <tr>
-                    <th>Nome do projeto</th>
-                    <th>Tempo Disponível</th>
-                    <th>Categoria</th>
-                    <th>Votos</th>
+                    <th class="text-center" style="vertical-align: middle;">Nome do projeto</th>
+                    <th class="text-center" style="vertical-align: middle;">Tempo Disponível</th>
+                    <th class="text-center" style="vertical-align: middle;">Categoria</th>
+                    <th class="text-center" style="vertical-align: middle;">Votos à Favor</th>
+                    <th class="text-center" style="vertical-align: middle;">Votos Contra</th>
+                    <th class="text-center" style="vertical-align: middle;">Total de Votos</th>
+                    <th class="text-center" style="vertical-align: middle;">Publicado?</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="text-center">
                 @foreach (ProjetoDeLei item in Model)
                 {
                     <tr>
@@ -41,7 +44,10 @@
                         </td>
                         <td>@item.TempoDisponivel</td>
                         <td>@item.Categoria.Nome</td>
-                        <td>0</td>
+                        <td>@item.VotosAFavor</td>
+                        <td>@item.VotosContra</td>
+                        <td>@item.TotalDeVotos</td>
+                        <td>@(item.Publicado ? "Sim" : "Não")</td>
                     </tr>
                 }
             </tbody>

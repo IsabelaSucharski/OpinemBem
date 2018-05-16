@@ -12,7 +12,7 @@ namespace OpinemBem.WebUI.Controllers
         {
             return View();
         }
-    
+
         public ActionResult SalvarProjetoAdm(ProjetoDeLei obj)
         {
             obj.Usuario = new Usuario() { Id = ((Usuario)User).Id };
@@ -45,7 +45,7 @@ namespace OpinemBem.WebUI.Controllers
 
         public ActionResult ProjetoU()
         {
-            var lst = new ProjetoDeLeiDAO().BuscarTodos();
+            var lst = new ProjetoDeLeiDAO().BuscarPublicados();
             return View(lst);
         }
 
@@ -62,6 +62,14 @@ namespace OpinemBem.WebUI.Controllers
             new VotoDAO().Inserir(obj);
 
             return RedirectToAction("ProjetoU", "Projetos");
+        }
+
+        public ActionResult Publicar(int id)
+        {
+            var obj = new ProjetoDeLei() { Id = id, Publicado = true };
+            new ProjetoDeLeiDAO().Publicar(obj);
+
+            return RedirectToAction("AceitarLeisAdm", "Leis");
         }
     }
 }

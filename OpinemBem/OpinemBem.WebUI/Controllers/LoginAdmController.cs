@@ -33,7 +33,7 @@ namespace OpinemBem.WebUI.Controllers
                 var userData = new JavaScriptSerializer().Serialize(usuarioLogado);
                 FormsAuthenticationUtil.SetCustomAuthCookie(usuarioLogado.Email, userData, false);
 
-                return RedirectToAction("ProjetoAdm", "Projetos");
+                return RedirectToAction("Index", "PerfilAdm");
             }
 
             return View("Index");
@@ -43,7 +43,7 @@ namespace OpinemBem.WebUI.Controllers
         {
             FormsAuthenticationUtil.SignOut();
 
-            return RedirectToAction("Index", "Login");
+            return RedirectToAction("Index", "LoginAdm");
         }
     }
 }

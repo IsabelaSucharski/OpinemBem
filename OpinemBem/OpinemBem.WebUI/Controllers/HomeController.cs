@@ -12,5 +12,10 @@ namespace OpinemBem.WebUI.Controllers
         {
             return RedirectToAction("Index", "Login");
         }
+
+        public ActionResult SobreOB()
+        {
+            return View();
+        }
     }
 }
