@@ -22,11 +22,12 @@ namespace OpinemBem.WebUI.Controllers
         {
             new CidadeDAO().Inserir(obj);
             //inserir o obj na lista de categoria
-            return RedirectToAction("Index", "Estado");
+            return RedirectToAction("Index", "Cidade");
         }
 
         public ActionResult CadastroC()
         {
+            ViewBag.Estados = new EstadoDAO().BuscarTodos();
             return View();
         }
     }

@@ -166,7 +166,11 @@ namespace OpinemBem.DataAccess
                         {
                             Id = Convert.ToInt32(row["id_cidade"]),
                             Nome = row["nome"].ToString(),
-                            Estado = new Estado() { Id = Convert.ToInt32(row["id_estado"]) }
+                            Estado = row["id_estado"] is DBNull ? null : new Estado()
+                            {
+                                Id = Convert.ToInt32(row["id_estado"]),
+                                Nome = row["nome"].ToString()
+                            }
                         };
 
                         lst.Add(cidade);

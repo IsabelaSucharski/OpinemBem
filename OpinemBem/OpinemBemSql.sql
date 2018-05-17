@@ -11,11 +11,13 @@ create table estado
 	sigla varchar(2) not null
 );
 
+--select * from projeto_de_lei
+
 create table cidade
 (
 	id_cidade int identity(1,1) primary key,
 	nome varchar(100) not null,
-	id_estado int references estado (id_estado)
+	id_estado int references estado (id_estado) 
 );
 
 create table usuario

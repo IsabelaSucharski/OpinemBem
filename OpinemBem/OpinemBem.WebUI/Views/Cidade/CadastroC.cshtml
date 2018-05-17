@@ -1,21 +1,27 @@
 ﻿@using OpinemBem.Models
 @model Cidade
 @{
-    Layout = "";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <div class="row">
-    <div class="col-md-12">
-        <form class="form-horizontal">
-            <div class="form-group">
+    <div class="col-md-8 col-md-offset-2">
+        <h1>Cadastro de Cidade</h1>
+        <form class="form-horizontal"  action="@Url.Action("SalvarCidade", "Cidade")">
+            <div class="form-group" >
                 <div class="col-md-12">
                     @Html.LabelFor(m => m.Nome, "Nome Cidade:", new { @class = "control-label" })
                     @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+                </div>
+                <div class="col-md-12">
+                    @Html.LabelFor(m => m.Estado.Id, "Estado:", new { @class = "control-label" })
+                    @Html.DropDownListFor(m => m.Estado.Id, new SelectList(ViewBag.Estados ?? new List<Estado>(), "Id", "Nome"), "--[SELECIONE]--", new { @id = "ddlEstado", @class = "form-control" })
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-12 text-right">
                     <input type="submit" class="btn btn-primary" value="Cadastrar" />
+                    <a class="btn btn-primary" href="@Url.Action("Index", "Cidade")">Cancelar</a>
                 </div>
             </div>
         </form>

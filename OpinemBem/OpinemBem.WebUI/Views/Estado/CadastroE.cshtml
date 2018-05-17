@@ -2,12 +2,13 @@
 @using OpinemBem.Models
 @model Estado
 @{ 
-    Layout = "";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <div class="row">
-    <div class="col-md-12">
-        <form class="form-horizontal">
+    <div class="col-md-8 col-md-offset-2">
+        <h1>Cadastro de Estado</h1>
+        <form class="form-horizontal"  action="@Url.Action("SalvarEstado", "Estado")">
             <div class="form-group">
                 <div class="col-md-12">
                     @Html.LabelFor(m => m.Nome, "Nome Estado:", new { @class = "control-label" })
@@ -21,6 +22,7 @@
             <div class="form-group">
                 <div class="col-md-12 text-right">
                     <input type="submit" class="btn btn-primary" value="Cadastrar" />
+                    <a class="btn btn-primary" href="@Url.Action("Index", "Estado")">Cancelar</a>
                 </div>
             </div>
         </form>

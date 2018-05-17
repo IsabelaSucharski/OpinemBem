@@ -15,7 +15,7 @@ namespace OpinemBem.DataAccess
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 //Criando instrução sql para inserir na tabela de estado
-                string strSQL = @"INSERT INTO estado (nome) VALUES (@nome);";
+                string strSQL = @"INSERT INTO estado (nome, sigla) VALUES (@nome, @sigla);";
 
                 //Criando um comando sql que será executado na base de dados
                 using (SqlCommand cmd = new SqlCommand(strSQL))
@@ -23,6 +23,7 @@ namespace OpinemBem.DataAccess
                     cmd.Connection = conn;
                     //Preenchendo os parâmetros da instrução sql
                     cmd.Parameters.Add("@nome", SqlDbType.VarChar).Value = obj.Nome;
+                    cmd.Parameters.Add("@sigla", SqlDbType.VarChar).Value = obj.Sigla;
 
                     //Abrindo conexão com o banco de dados
                     conn.Open();
@@ -152,7 +153,8 @@ namespace OpinemBem.DataAccess
                         var Estado = new Estado()
                         {
                             Id = Convert.ToInt32(row["id_estado"]),
-                            Nome = row["nome"].ToString()
+                            Nome = row["nome"].ToString(),
+                            Sigla = row["sigla"].ToString()
                         };
 
                         lst.Add(Estado);
