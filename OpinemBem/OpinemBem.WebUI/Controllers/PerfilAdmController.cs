@@ -14,7 +14,7 @@ namespace OpinemBem.WebUI.Controllers
         public ActionResult Index()
         {
             var usuarioLogado = new UsuarioDAO().BuscarPorId(((Usuario)User).Id);
-            return View(usuarioLogado);
+            return View(usuarioLogado);            
         }
     }
 }

@@ -4,118 +4,107 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="row">
-    <div class="col-md-3" style="border-right: 2px solid #000;">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                @if (!string.IsNullOrWhiteSpace(Model.Foto))
-                {
-                    <img src="@Url.Content(string.Format("~/Uploads/{0}", Model.Foto))" width="200" />
-                }
-                else
-                {
-                    <img class="img-circle" src="@Url.Content("~/Images/avatar_2x.png")" width="150" height="150">
-                }
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <br />
-                @Html.LabelFor(m => m.Nome, string.Format("Nome: {0}", Model.Nome), new { @class = "control-label text-center" })
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 text-center">
-                @Html.LabelFor(m => m.CPF, string.Format("CPF: {0}", Model.CPF), new { @class = "control-label text-center" })
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 text-center" style="border-bottom: 2px solid #000;">
-                @Html.LabelFor(m => m.Email, string.Format("E-mail: {0}", Model.Email), new { @class = "control-label text-center" })
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-horizontal">
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            @Html.LabelFor(m => m.Senha, "Nova Senha:", new { @class = "control-label text-center" })
-                            @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
-                        </div>
+    <div class="col-md-12">
+        <form>
+            <fieldset>
+                <legend>Dados do Usuário</legend>
+                <div class="col-md-4 text-center">
+                    @if (!string.IsNullOrWhiteSpace(Model.Foto))
+                    {
+                        <img src="@Url.Content(string.Format("~/Uploads/{0}", Model.Foto))" width="200" />
+                    }
+                    else
+                    {
+                        <img class="img-circle" src="@Url.Content("~/Images/avatar_2x.png")" width="150" height="150">
+                    }
+                </div>
+                <div class="col-md-4" style="padding-top: 15px;">
+                    <div class="col-md-12 text-left">
+                        <br />
+                        @Html.LabelFor(m => m.Nome, string.Format("Nome: {0}", Model.Nome), new { @class = "control-label text-center" })
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-12 text-right">
-                            <a class="btn btn-primary btn-block" href="@Url.Action("Index", "PerfilU")">
-                                Alterar Senha
-                            </a>
+                    <div class="col-md-12 text-left">
+                        @Html.LabelFor(m => m.CPF, string.Format("CPF: {0}", Model.CPF), new { @class = "control-label text-center" })
+                    </div>
+                    <div class="col-md-12 text-left">
+                        @Html.LabelFor(m => m.Email, string.Format("E-mail: {0}", Model.Email), new { @class = "control-label text-center" })
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.LabelFor(m => m.Senha, "Nova Senha:", new { @class = "control-label text-center" })
+                                @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12 text-right">
+                                <a class="btn btn-primary btn-block" href="@Url.Action("Index", "PerfilU")"> Alterar Senha</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </fieldset>
+        </form>
     </div>
-    <div class="col-md-9">
-        <div class="row">
-            <div class="col-md-12">
-                <form class="form-horizontal">
-                    <div class="form-group" style="border-bottom: 2px solid #000;">
-                        <div class="col-md-12">
-                            <table class="table table-bordered">
-                                <tbody class="text-center">
-                                    <tr>
-                                        <td style="width: 50%;">
-                                            <label class="control-label">Quantidade de Projetos Votados: @Model.Leis.Where(x => x.Publicado && x.TotalDeVotos > 0).Count()</label>
-                                        </td>
-                                        <td style="width: 50%;">
-                                            <label class="control-label">Quantidade de Projetos Cadastrados: @Model.Leis.Count</label>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <label class="control-label">Meus projetos:</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center">Projeto de Lei</th>
-                                        <th class="text-center">Categoria</th>
-                                        <th class="text-center">Publicado?</th>
-                                        <th class="text-center">Total de Votos</th>
-                                        <th>&nbsp;</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="text-center">
-                                    @foreach (var lei in Model.Leis)
-                                    {
+    <div class="col-md-12" style="padding-top: 25px;">        
+                <form class="form-horizontal" style="border-bottom: 5px;">         
+                    <fieldset> 
+                        <legend>Meus Projetos</legend>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <table class="table table-bordered">
+                                    <tbody class="text-center">
                                         <tr>
-                                            <td style="width: 20%; vertical-align: middle;" rowspan="2">@lei.Nome</td>
-                                            <td style="width: 15%; vertical-align: middle;" rowspan="2">@lei.Categoria.Nome</td>
-                                            <td style="width: 5%; vertical-align: middle;" rowspan="2">@(lei.Publicado ? "Sim" : "Não")</td>
-                                            <td style="width: 10%; vertical-align: middle;" rowspan="2">@lei.TotalDeVotos</td>
-                                            <td style="width: 25%; vertical-align: middle;">
-                                                <label class="control-label">Votos Contra:</label>
-                                                <progress max="100" value="@(lei.PercContra)" title="@(lei.PercContra)%">@(lei.PercContra)%</progress>
+                                            <td style="width: 50%;">
+                                                <label class="control-label">Quantidade de Projetos Votados: @Model.Leis.Where(x => x.Publicado && x.TotalDeVotos > 0).Count()</label>
+                                            </td>
+                                            <td style="width: 50%;">
+                                                <label class="control-label">Quantidade de Projetos Cadastrados: @Model.Leis.Count</label>
                                             </td>
                                         </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>        
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <table class="table table-bordered">
+                                    <thead>
                                         <tr>
-                                            <td style="width: 25%; vertical-align: middle;">
-                                                <label class="control-label">Votos a Favor:</label>
-                                                <progress max="100" value="@(lei.PercAFavor)" title="@(lei.PercAFavor)%">@(lei.PercAFavor)%</progress>
-                                            </td>
+                                            <th class="text-center">Projeto de Lei</th>
+                                            <th class="text-center">Categoria</th>
+                                            <th class="text-center">Publicado?</th>
+                                            <th class="text-center">Total de Votos</th>
+                                            <th>&nbsp;</th>
                                         </tr>
-                                    }
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody class="text-center">
+                                        @foreach (var lei in Model.Leis)
+                                        {
+                                            <tr>
+                                                <td style="width: 20%; vertical-align: middle;" rowspan="2">@lei.Nome</td>
+                                                <td style="width: 15%; vertical-align: middle;" rowspan="2">@lei.Categoria.Nome</td>
+                                                <td style="width: 5%; vertical-align: middle;" rowspan="2">@(lei.Publicado ? "Sim" : "Não")</td>
+                                                <td style="width: 10%; vertical-align: middle;" rowspan="2">@lei.TotalDeVotos</td>
+                                                <td style="width: 25%; vertical-align: middle;">
+                                                    <label class="control-label">Votos Contra:</label>
+                                                    <progress max="100" value="@(lei.PercContra)" title="@(lei.PercContra)%">@(lei.PercContra)%</progress>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 25%; vertical-align: middle;">
+                                                    <label class="control-label">Votos a Favor:</label>
+                                                    <progress max="100" value="@(lei.PercAFavor)" title="@(lei.PercAFavor)%">@(lei.PercAFavor)%</progress>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
+                    </fieldset>                   
                 </form>
             </div>
         </div>
-    </div>
-</div>

@@ -4,64 +4,54 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 <div class="row">
-    <div class="col-md-3" style="border-right: 2px solid #000;">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <img src="@Url.Content("~/Images/opinemmbem.png")" width="200" height="150" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12" style="border-bottom: 2px solid #000">
-                @Html.LabelFor(m => m.Nome, "Nome: João da Silva", new { @class = "control-label text-center", @style = "font-size: 1.7em" })
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-horizontal">
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            @Html.LabelFor(m => m.Senha, "Senha Atual:", new { @class = "control-label text-center", @style = "font-size: 1.2em" })
-                            @Html.PasswordFor(m => m.Senha, new { @class = "form-control", @size = "47" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-12 text-right">
-                            <a href=@Url.Action("Index","PerfilU")>
-                                <input type="button" class="btn btn-primary" value="Alterar Senha" onclick="alert('Senha alterada com sucesso'); return true;" />
-                            </a>
-                        </div>
-                    </div>
+    <div class="col-md-12">
+        <form>
+            <fieldset>
+                <legend>Dados Administrador</legend>
+                <div class="col-md-4 text-capitalize">
+                    <img src="@Url.Content("~/Images/avatar-usuario.jpg")" width="150" height="120" />
                 </div>
-            </div>
-        </div>
+                <div class="col-md-4 text-capitalize" style="padding-top: 15px;">
+                    @Html.LabelFor(m => m.Nome, "Nome: João da Silva", new { @class = "control-label text-center" })
+                </div>
+                <div class="col-md-4 text-capitalize" style="padding-top: 15px;">
+                    <label class="control-label">Quantidade de Projetos Cadastrados: @*@Model.Leis.Where(x => x.Publicado && x.TotalDeVotos > 0).Count()*@</label>
+                </div>
+            </fieldset>
+        </form>
     </div>
-    <div class="col-md-9">
-        <div class="row">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Nome do projeto</th>
-                        <th>Tempo Disponível</th>
-                        <th>Código</th>
-                        <th>Já votado?</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (ProjetoDeLei item in Model.Leis)
-                    {
+    <div class="col-md-12" style="padding-top: 25px;">
+        <form>
+            <fieldset>
+                <legend>Projetos Cadastrados</legend>
+                <table class="table table-bordered">
+                    <thead class="text-center">
                         <tr>
-                            <td>
-                                <a href="@Url.Action("ConcordaLeisAdm", "Leis")">
-                                    @item.Nome
-                                </a>
-                            </td>
-                            <td>@item.TempoDisponivel</td>
-                            <td>@item.Id</td>
-                            <td>0</td>
+                            <th class="text-center" style="vertical-align: middle;">Nome do Projeto</th>
+                            <th class="text-center" style="vertical-align: middle;">Tempo Disponível</th>
+                            <th class="text-center" style="vertical-align: middle;">Categoria</th>
+                            <th class="text-center" style="vertical-align: middle;">Votos à Favor</th>
+                            <th class="text-center" style="vertical-align: middle;">Votos Contra</th>
+                            <th class="text-center" style="vertical-align: middle;">Total de Votos</th>
+                            <th class="text-center" style="vertical-align: middle;">Publicado?</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody class="text-center">
+                        @foreach (ProjetoDeLei item in Model.Leis)
+                        {
+                            <tr>
+                                <td>@item.Nome</td>
+                                <td>@item.TempoDisponivel</td>
+                                <td>@item.Categoria.Nome</td>
+                                <td>@item.VotosAFavor</td>
+                                <td>@item.VotosContra</td>
+                                <td>@item.TotalDeVotos</td>
+                                <td>@(item.Publicado ? "Sim" : "Não")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </fieldset>
+        </form>
     </div>
 </div>
