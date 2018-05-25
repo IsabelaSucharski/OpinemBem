@@ -104,7 +104,7 @@ namespace OpinemBem.DataAccess
                 string strSQL = @"SELECT U.*, E.NOME AS NOME_ESTADO, C.NOME AS NOME_CIDADE 
                                   FROM USUARIO U
                                   LEFT JOIN ESTADO E ON (E.ID_ESTADO = U.ID_ESTADO)
-                                  LEFT JOIN CIDADE C ON(C.ID_CIDADE = C.ID_CIDADE) 
+                                  LEFT JOIN CIDADE C ON(C.ID_CIDADE = U.ID_CIDADE) 
                                   WHERE ID_USUARIO = @ID_USUARIO;";
                 {
                     using (SqlCommand cmd = new SqlCommand(strSQL))

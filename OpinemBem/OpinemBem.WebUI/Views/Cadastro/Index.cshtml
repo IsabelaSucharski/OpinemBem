@@ -63,7 +63,9 @@
                         </div>
                         <div class="col-md-6">
                             @Html.LabelFor(m => m.Sexo, "Sexo:", new { @class = "control-label" })
-                            @Html.EnumDropDownListFor(m => m.Sexo, "-- [SELECIONE] --", new { @id = "ddlSexo", @class = "form-control" })
+                            <br />
+                            @Html.RadioButtonFor(m => m.Sexo, "Feminino") Feminino
+                            @Html.RadioButtonFor(m => m.Sexo, "Masculino") Masculino
                         </div>
                     </div>
                     <div class="form-group ">

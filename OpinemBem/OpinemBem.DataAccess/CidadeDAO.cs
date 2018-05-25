@@ -142,8 +142,8 @@ namespace OpinemBem.DataAccess
                 string strSQL = @"SELECT 
                                         C.*,
                                         E. NOME AS NOME_ESTADO
-                                 FROM CIDADE C
-                                 INNER JOIN ESTADO E ON (E.ID_ESTADO = C.ID_ESTADO);";
+                                        FROM CIDADE C
+                                        INNER JOIN ESTADO E ON (E.ID_ESTADO = C.ID_ESTADO);";
 
                 //Criando um comando sql que será executado na base de dados
                 using (SqlCommand cmd = new SqlCommand(strSQL))

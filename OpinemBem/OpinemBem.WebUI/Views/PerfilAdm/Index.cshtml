@@ -15,7 +15,7 @@
                     @Html.LabelFor(m => m.Nome, "Nome: João da Silva", new { @class = "control-label text-center" })
                 </div>
                 <div class="col-md-4 text-capitalize" style="padding-top: 15px;">
-                    <label class="control-label">Quantidade de Projetos Cadastrados: @*@Model.Leis.Where(x => x.Publicado && x.TotalDeVotos > 0).Count()*@</label>
+                    <label class="control-label">Quantidade de Projetos Cadastrados: @Model.Leis.Count</label>
                 </div>
             </fieldset>
         </form>
