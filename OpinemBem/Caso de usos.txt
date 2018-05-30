@@ -1,0 +1,29 @@
+USUARIO
+-Cadastrar Login(OK)
+-Visualizar atividades no perfil(OK)
+-Cadastrar Projetos de Lei (OK)
+-Visualizar projetos de lei aceitos(OK)
+-Visualizar página de descrição do Projeto de Lei (OK)
+-Votar nos Projetos de Lei (OK)
+-Realizar cadastro de usuário (OK)
+
+
+
+
+-Visualizar votos nos Projetos(ADMINISTRADOR)
+-Logar no Sistema(ADMINISTRADOR)
+-Acessar perfil(ADMINISTRADOR)
+-Alterar senha(ADMINISTRADOR)
+
+ADMINISTRADOR
+-Cadastrar categoria (OK)
+-Cadastrar Estados (OK)
+-Cadastrar Cidades (OK)
+-Manter Projetos de Lei (OK)
+-Visualizar Projetos gerenciados por ele no perfil
+
+1.	U - realiza comentário;
+2.	U - vota no projeto (FA01);
+3.	S - armazena o voto;
+4.	S - armazena o comentário;
+S - redireciona para a página principal dos projetos de lei.

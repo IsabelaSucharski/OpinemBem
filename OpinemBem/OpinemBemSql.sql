@@ -130,3 +130,7 @@ go
 -- criando campo de quantidade de votos contra
 alter table projeto_de_lei add total_votos as dbo.get_total(id_projeto);
 go
+
+
+
+--http://opinembem.azurewebsites.net/Login
