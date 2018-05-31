@@ -6,7 +6,6 @@ O QUE PRECISA ARRUMAR:
 
 -o que vai ter no banco das classes(tela perfil?)
 
--verificacao do cpf
 
 -USUARIO TEM QUE TER CIDADE ESTADO
 

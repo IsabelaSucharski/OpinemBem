@@ -8,17 +8,27 @@ namespace OpinemBem.WebUI.Controllers
     [Authorize]
     public class ProjetosController : Controller
     {
-        public ActionResult AlterarProjetos()
+
+        public ActionResult AlterarProjetos(int id)
         {
-            return View();
+            var lei = new ProjetoDeLeiDAO().BuscarPorId(id);                
+            return View(id);       
         }
 
-        public ActionResult SalvarProjetoAdm(ProjetoDeLei obj)
+        public ActionResult AtualizarP(ProjetoDeLei obj)
         {
-            obj.Usuario = new Usuario() { Id = ((Usuario)User).Id };
-            new ProjetoDeLeiDAO().Inserir(obj);
-            return RedirectToAction("ProjetoAdm", "Projetos");
+            new ProjetoDeLeiDAO().Atualizar(obj);
+            return View("AlterarProjetos");
+            //return RedirectToAction("AceitarLeisAdm","Leis");
+
         }
+        
+
+        public ActionResult ExcluirProjetos(ProjetoDeLei obj)
+        {
+            new ProjetoDeLeiDAO().Deletar(obj);
+            return View();
+        }       
 
         public ActionResult CadProjetos()
         {
@@ -68,7 +78,6 @@ namespace OpinemBem.WebUI.Controllers
         {
             var obj = new ProjetoDeLei() { Id = id, Publicado = true };
             new ProjetoDeLeiDAO().Publicar(obj);
-
             return RedirectToAction("AceitarLeisAdm", "Leis");
         }
     }

@@ -123,7 +123,11 @@ namespace OpinemBem.DataAccess
                     {
                         Id = Convert.ToInt32(row["id_cidade"]),
                         Nome = row["nome"].ToString(),
-                        Estado = new Estado() { Id = Convert.ToInt32(row["id_estado"]) }
+                        Estado = new Estado()
+                        {
+                            Id = Convert.ToInt32(row["id_estado"]),
+                            Nome = row["nome"].ToString()
+                        }
                     };
 
                     return cidade;
@@ -188,7 +192,12 @@ namespace OpinemBem.DataAccess
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
                 //Criando instrução sql para selecionar todos os registros na tabela de cidade
-                string strSQL = @"SELECT * FROM cidade where id_estado = @id_estado;";
+                string strSQL = @"SELECT 
+                                        C.*,
+                                        E. NOME AS NOME_ESTADO
+                                        FROM CIDADE C
+                                        INNER JOIN ESTADO E ON (E.ID_ESTADO = C.ID_ESTADO) 
+                                        WHERE id_estado = @id_estado;";
 
                 //Criando um comando sql que será executado na base de dados
                 using (SqlCommand cmd = new SqlCommand(strSQL))
@@ -213,7 +222,11 @@ namespace OpinemBem.DataAccess
                         {
                             Id = Convert.ToInt32(row["id_cidade"]),
                             Nome = row["nome"].ToString(),
-                            Estado = new Estado() { Id = Convert.ToInt32(row["id_estado"]) }
+                            Estado = new Estado()
+                            {
+                                Id = Convert.ToInt32(row["id_estado"]),
+                                Nome = row["nome"].ToString()
+                            }
                         };
 
                         lst.Add(Cidade);

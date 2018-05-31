@@ -33,7 +33,7 @@ namespace OpinemBem.WebUI.Controllers
         public ActionResult SalvarLeisAdm(ProjetoDeLei obj)
         {
             new ProjetoDeLeiDAO().Inserir(obj);
-            return RedirectToAction("AceitasLeisAdm", "Leis");
+            return RedirectToAction("AceitarLeisAdm", "Leis");
         }
 
         public ActionResult EnviarPost(Comentario obj)

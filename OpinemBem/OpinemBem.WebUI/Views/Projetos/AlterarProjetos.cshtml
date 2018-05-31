@@ -6,40 +6,41 @@
 <div class="row">
     <div class="col-md-9 col-md-offset-3">
         <h1>Projeto de Lei</h1>
-        <form class="form-horizontal">
+        <form class="form-horizontal" action="@Url.Action("AtualizarP", "Projetos")>
+            @Html.HiddenFor(m => m.Id)
             <div class="form-group">
                 <div class="col-md-12">
                     @Html.LabelFor(m => m.Nome, "Nome:", new { @class = "control-label text-center" })
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    @*@Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @size = "47" })*@
+                    <p>@Model.Nome</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.LabelFor(m => m.Categoria.Id, "Categoria:", new { @class = "control-label text-center" })
+                    <p>@Model.Categoria.Nome</p>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-12">
                     @Html.LabelFor(m => m.Descricao, "Descrição:", new { @class = "control-label text-center" })
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    @*@Html.TextAreaFor(m => m.Descricao, new { @class = "form-control", @size = "47" })*@
+                    <p>@Model.Descricao</p>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-12">
                     @Html.LabelFor(m => m.Vantagens, "Vantagens:", new { @class = "control-label text-center" })
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    @*@Html.TextAreaFor(m => m.Vantagens, new { @class = "form-control", @size = "47" })*@
+                    <p>@Model.Vantagens</p>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-12">
                     @Html.LabelFor(m => m.Desvantagens, "Desvantagens:", new { @class = "control-label text-center" })
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    @*@Html.TextAreaFor(m => m.Desvantagens, new { @class = "form-control", @size = "47" })*@
+                    <p>@Model.Desvantagens</p>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-12 text-right">
-                    <a href=@Url.Action("AceitarLeisAdm", "Leis")>
-                        <input type="submit" class="btn btn-primary" value="Alterar"  />
-                    </a>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
                 </div>
             </div>
         </form>

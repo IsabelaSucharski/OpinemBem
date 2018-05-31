@@ -98,7 +98,7 @@ namespace OpinemBem.DataAccess
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
-                string strSQL = @"DELETE FROM  projeto_de_lei where id_projeto = @id_projeto;";
+                string strSQL = @"DELETE FROM projeto_de_lei where id_projeto = @id_projeto;";
                 {
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {
@@ -148,7 +148,7 @@ namespace OpinemBem.DataAccess
                             Categoria = new Categoria()
                             {
                                 Id = Convert.ToInt32(row["id_categoria"]),
-                                Nome = row["NOME_CATEGORIA"].ToString()
+                                Nome = row["nome"].ToString()
                             },
                             Usuario = new Usuario() { Id = Convert.ToInt32(row["id_usuario"]) },
                             Descricao = row["descricao"].ToString(),
