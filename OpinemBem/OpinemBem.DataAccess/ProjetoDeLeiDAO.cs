@@ -120,9 +120,9 @@ namespace OpinemBem.DataAccess
                 string strSQL = @"SELECT 
                                       P.*, 
                                       C.NOME AS NOME_CATEGORIA
-                                  FROM PROJETO_DE_LEI P 
-                                  INNER JOIN CATEGORIA C ON (C.ID_CATEGORIA = P.ID_CATEGORIA)
-                                  WHERE P.ID_PROJETO = @ID_PROJETO;";
+                                      FROM PROJETO_DE_LEI P 
+                                      INNER JOIN CATEGORIA C ON (C.ID_CATEGORIA = P.ID_CATEGORIA)
+                                      WHERE P.ID_PROJETO = @ID_PROJETO;";
                 {
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {
@@ -148,7 +148,7 @@ namespace OpinemBem.DataAccess
                             Categoria = new Categoria()
                             {
                                 Id = Convert.ToInt32(row["id_categoria"]),
-                                Nome = row["nome"].ToString()
+                                Nome = row["nome_categoria"].ToString()
                             },
                             Usuario = new Usuario() { Id = Convert.ToInt32(row["id_usuario"]) },
                             Descricao = row["descricao"].ToString(),
@@ -175,8 +175,8 @@ namespace OpinemBem.DataAccess
                     string strSQL = @"SELECT 
                                         P.*, 
                                         C.NOME AS NOME_CATEGORIA
-                                    FROM PROJETO_DE_LEI P 
-                                    INNER JOIN CATEGORIA C ON (C.ID_CATEGORIA = P.ID_CATEGORIA);";
+                                        FROM PROJETO_DE_LEI P 
+                                        INNER JOIN CATEGORIA C ON (C.ID_CATEGORIA = P.ID_CATEGORIA);";
 
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {

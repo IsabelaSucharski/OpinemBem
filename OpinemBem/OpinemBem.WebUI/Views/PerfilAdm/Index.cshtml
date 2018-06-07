@@ -41,7 +41,11 @@
                         @foreach (ProjetoDeLei item in Model.Leis)
                         {
                             <tr>
-                                <td>@item.Nome</td>
+                                <td>
+                                    <a href="@Url.Action("GerenciarLeisAdm", "Leis", new { @id = item.Id })">
+                                        @item.Nome
+                                    </a>
+                                </td>
                                 <td>@item.TempoDisponivel</td>
                                 <td>@item.Categoria.Nome</td>
                                 <td>@item.VotosAFavor</td>
@@ -51,10 +55,7 @@
                                 <td>
                                     <a href="@Url.Action("AlterarProjetos", "Projetos")">
                                         <span class="glyphicon glyphicon-pencil"></span>
-                                    </a>
-                                    <a @Url.Action("ExcluirProjetos","Projetos") style="padding-left: 5px;">
-                                        <span class="glyphicon glyphicon-remove"></span>
-                                    </a>
+                                    </a>                                                                       
                                 </td>
                             </tr>
                         }

@@ -11,24 +11,17 @@ namespace OpinemBem.WebUI.Controllers
 
         public ActionResult AlterarProjetos(int id)
         {
-            var lei = new ProjetoDeLeiDAO().BuscarPorId(id);                
-            return View(id);       
+            var lei = new ProjetoDeLeiDAO().BuscarPorId(id);    
+            ViewBag.Categorias = new CategoriaDAO().BuscarTodos();
+            return View(lei);       
         }
 
         public ActionResult AtualizarP(ProjetoDeLei obj)
         {
             new ProjetoDeLeiDAO().Atualizar(obj);
-            return View("AlterarProjetos");
-            //return RedirectToAction("AceitarLeisAdm","Leis");
-
-        }
-        
-
-        public ActionResult ExcluirProjetos(ProjetoDeLei obj)
-        {
-            new ProjetoDeLeiDAO().Deletar(obj);
-            return View();
-        }       
+            //**return View*/("AlterarProjetos");*/
+            return RedirectToAction("AceitarLeisAdm", "Leis");
+        }                    
 
         public ActionResult CadProjetos()
         {
@@ -80,5 +73,13 @@ namespace OpinemBem.WebUI.Controllers
             new ProjetoDeLeiDAO().Publicar(obj);
             return RedirectToAction("AceitarLeisAdm", "Leis");
         }
+
+        public ActionResult ExcluirProjeto(int id)
+        {
+            var obj = new ProjetoDeLei() { Id = id };
+            new ProjetoDeLeiDAO().Deletar(obj);
+            return RedirectToAction("AceitarLeisAdm", "Leis");
+        }
+
     }
 }

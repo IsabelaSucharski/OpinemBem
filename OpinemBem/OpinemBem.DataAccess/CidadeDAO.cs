@@ -126,7 +126,7 @@ namespace OpinemBem.DataAccess
                         Estado = new Estado()
                         {
                             Id = Convert.ToInt32(row["id_estado"]),
-                            Nome = row["nome"].ToString()
+                            Nome = row["NOME_ESTADO"].ToString()
                         }
                     };
 
@@ -173,7 +173,7 @@ namespace OpinemBem.DataAccess
                             Estado = row["id_estado"] is DBNull ? null : new Estado()
                             {
                                 Id = Convert.ToInt32(row["id_estado"]),
-                                Nome = row["nome"].ToString()
+                                Nome = row["NOME_ESTADO"].ToString()
                             }
                         };
 
@@ -225,7 +225,7 @@ namespace OpinemBem.DataAccess
                             Estado = new Estado()
                             {
                                 Id = Convert.ToInt32(row["id_estado"]),
-                                Nome = row["nome"].ToString()
+                                Nome = row["NOME_ESTADO"].ToString()
                             }
                         };
 

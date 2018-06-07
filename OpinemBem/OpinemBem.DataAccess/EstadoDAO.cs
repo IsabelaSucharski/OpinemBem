@@ -153,8 +153,7 @@ namespace OpinemBem.DataAccess
                         var Estado = new Estado()
                         {
                             Id = Convert.ToInt32(row["id_estado"]),
-                            Nome = row["nome"].ToString(),
-                            Sigla = row["sigla"].ToString()
+                            Nome = row["nome"].ToString()
                         };
 
                         lst.Add(Estado);
