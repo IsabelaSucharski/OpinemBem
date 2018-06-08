@@ -1,32 +1,3 @@
-USU
-
-na pagina ConcordarleiU mostrar por quem e quando foi cadastrado o projeto
-
-excluir comentario na pag lei
-
-
-
-ADMIN
-
-no perfil adm - status do projeto - alterado ou excluido alem do que ja tem ******
-
--- alterar projeto na tela gerenciar projeto admin [habilitar campos na tela gerenciar para alterar projeto]
-
--- excluir na tela gerenciar projeto admin
-
--- salvar na tela gerenciar projeto admin 
-
-AceitarLeisAdm - ARRUMAR A TABLE
-
-perfil do administrador mudar as table
-colocar a table do inicio no perfil dele
-
-
-
-
-
-*****perfil nao aparece o projeto que ele aceitou 
-
 **** nova senha no perfil U nao salva
 
 ** usuario nao vota na propria lei
@@ -35,14 +6,20 @@ colocar a table do inicio no perfil dele
 
 ** cad U problema na data
 
-** INDEX CIDADE NAO ENTRA NOME DO ESTADO (no cidadeDAO colocar left join em vez do inner no estado igual no usuarioDAO pra carregar estado e cidade?)
- 
 ** esquecer senha
 
 ** pag projeto lei mostrar usuario
 
+**gerenciar leis - botao aceitar/excluir em vez dos icones
+
+** Tempo disponível pra votação diminui
+
 **nome administrador do banco de dados
-[cidadeDAO - atualizar, parametro id_cidade ou id_estado]
-[usuarioDAO - buscar po id - left join cidade c]
-** pesquisar barra
+
+
+
+
+EXCLUIR E ALTERAR PROJETO
+ 
+BARRA PESQUISAR
 
