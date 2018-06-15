@@ -10,16 +10,13 @@
 
 ** pag projeto lei mostrar usuario
 
-**gerenciar leis - botao aceitar/excluir em vez dos icones
-
 ** Tempo disponível pra votação diminui
 
 **nome administrador do banco de dados
 
 
 
+EXCLUIR COMENTARIO
 
-EXCLUIR E ALTERAR PROJETO
- 
-BARRA PESQUISAR
+alterar foto perfil nao completo - tirar da doc
 

@@ -1,6 +1,7 @@
 ﻿using OpinemBem.DataAccess;
 using OpinemBem.Models;
 using System;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace OpinemBem.WebUI.Controllers
@@ -8,20 +9,18 @@ namespace OpinemBem.WebUI.Controllers
     [Authorize]
     public class ProjetosController : Controller
     {
-
-        public ActionResult AlterarProjetos(int id)
+        public ActionResult AlterarProjeto(int id)
         {
-            var lei = new ProjetoDeLeiDAO().BuscarPorId(id);    
+            var lei = new ProjetoDeLeiDAO().BuscarPorId(id);
             ViewBag.Categorias = new CategoriaDAO().BuscarTodos();
-            return View(lei);       
+            return View(lei);
         }
 
         public ActionResult AtualizarP(ProjetoDeLei obj)
         {
             new ProjetoDeLeiDAO().Atualizar(obj);
-            //**return View*/("AlterarProjetos");*/
-            return RedirectToAction("AceitarLeisAdm", "Leis");
-        }                    
+            return RedirectToAction("Index", "PerfilAdm");
+        }
 
         public ActionResult CadProjetos()
         {
@@ -78,8 +77,13 @@ namespace OpinemBem.WebUI.Controllers
         {
             var obj = new ProjetoDeLei() { Id = id };
             new ProjetoDeLeiDAO().Deletar(obj);
-            return RedirectToAction("AceitarLeisAdm", "Leis");
+            return RedirectToAction("Index", "PerfilAdm");
         }
 
+        public ActionResult Buscar(string campoTexto)
+        {
+            var lst = new ProjetoDeLeiDAO().BuscarPublicados().Where(p => p.Nome.Contains(campoTexto)).ToList();
+            return View("ProjetoU", lst);
+        }
     }
 }

@@ -134,3 +134,5 @@ go
 
 
 --http://opinembem.azurewebsites.net/Login
+
+select * from voto

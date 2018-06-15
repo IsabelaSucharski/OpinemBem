@@ -41,15 +41,13 @@ namespace OpinemBem.DataAccess
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
-                string strSQL = @"UPDATE projeto_de_lei set 
+                string strSQL = @"UPDATE projeto_de_lei SET 
                                     nome = @nome,
                                     id_categoria = @id_categoria,
-                                    id_usuario = @id_usuario,
                                     descricao = @descricao,
                                     vantagens = @vantagens,
                                     desvantagens = @desvantagens,
-                                    tempo_disponivel = @tempo_disponivel,
-                                    publicado = @publicado
+                                    tempo_disponivel = @tempo_disponivel
                                 WHERE id_projeto = @id_projeto;";
                 {
                     using (SqlCommand cmd = new SqlCommand(strSQL))
@@ -58,12 +56,10 @@ namespace OpinemBem.DataAccess
 
                         cmd.Parameters.Add("@nome", SqlDbType.VarChar).Value = obj.Nome;
                         cmd.Parameters.Add("@id_categoria", SqlDbType.Int).Value = obj.Categoria.Id;
-                        cmd.Parameters.Add("@id_usuario", SqlDbType.Int).Value = obj.Usuario.Id;
                         cmd.Parameters.Add("@descricao", SqlDbType.VarChar).Value = obj.Descricao;
                         cmd.Parameters.Add("@vantagens", SqlDbType.VarChar).Value = obj.Vantagens;
                         cmd.Parameters.Add("@desvantagens", SqlDbType.VarChar).Value = obj.Desvantagens;
                         cmd.Parameters.Add("@tempo_disponivel", SqlDbType.Int).Value = obj.TempoDisponivel;
-                        cmd.Parameters.Add("@publicado", SqlDbType.Bit).Value = obj.Publicado;
                         cmd.Parameters.Add("@id_projeto", SqlDbType.Int).Value = obj.Id;
 
                         conn.Open();
@@ -98,7 +94,9 @@ namespace OpinemBem.DataAccess
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Db"].ConnectionString))
             {
-                string strSQL = @"DELETE FROM projeto_de_lei where id_projeto = @id_projeto;";
+                string strSQL = @"DELETE FROM comentario WHERE id_projeto = @id_projeto;
+                                  DELETE FROM voto WHERE id_projeto = @id_projeto;
+                                  DELETE FROM projeto_de_lei where id_projeto = @id_projeto;";
                 {
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {

@@ -245,7 +245,7 @@
     <Content Include="Views\LoginAdm\Index.cshtml" />
     <Content Include="Views\Cadastro\Index.cshtml" />
     <Content Include="Views\Projetos\CadProjetos.cshtml" />
-    <Content Include="Views\Projetos\AlterarProjetos.cshtml" />
+    <Content Include="Views\Projetos\AlterarProjeto.cshtml" />
     <Content Include="Views\Leis\GerenciarLeisAdm.cshtml" />
     <Content Include="Views\PerfilU\Index.cshtml" />
     <Content Include="Views\PerfilAdm\Index.cshtml" />

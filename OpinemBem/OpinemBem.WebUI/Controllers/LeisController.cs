@@ -1,6 +1,7 @@
 ﻿using OpinemBem.DataAccess;
 using OpinemBem.Models;
 using System;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace OpinemBem.WebUI.Controllers
@@ -44,6 +45,19 @@ namespace OpinemBem.WebUI.Controllers
             new ComentarioDAO().Inserir(obj);
 
             return RedirectToAction("ConcordaLeisU", "Leis", new { @id = obj.ProjetoDeLei.Id });
+        }
+
+        public ActionResult ExcluirPost(int id)
+        {
+            var obj = new Comentario() { Id = id };
+            new ComentarioDAO().Deletar(obj);
+            return RedirectToAction("ConcordaLeisU", "Leis");
+        }
+
+        public ActionResult Buscar(string campoTexto)
+        {
+            var lst = new ProjetoDeLeiDAO().BuscarNaoPublicados().Where(p => p.Nome.Contains(campoTexto)).ToList();
+            return View("AceitarLeisAdm", lst);
         }
     }
 }

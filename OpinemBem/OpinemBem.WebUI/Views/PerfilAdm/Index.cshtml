@@ -53,9 +53,12 @@
                                 <td>@item.TotalDeVotos</td>
                                 <td>@(item.Publicado ? "Sim" : "Não")</td>
                                 <td>
-                                    <a href="@Url.Action("AlterarProjetos", "Projetos")">
+                                    <a href="@Url.Action("AlterarProjeto", "Projetos", new { @id = item.Id })">
                                         <span class="glyphicon glyphicon-pencil"></span>
-                                    </a>                                                                       
+                                    </a>
+                                    <a href="@Url.Action("ExcluirProjeto", "Projetos", new { @id = item.Id })" onclick="javascript: if (!(confirm('Deseja realmente excluir este projeto?'))) return false;">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </a>
                                 </td>
                             </tr>
                         }
