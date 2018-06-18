@@ -6,7 +6,6 @@ USUARIO
 -Visualizar página de descrição do Projeto de Lei (OK)
 -Votar nos Projetos de Lei (OK)
 -Realizar comentários(OK)
-[-Excluir Comentário] sera que coloca? 
 -Visualizar dados pessoais (OK)
 -Alterar Foto do perfil (OK)
 
