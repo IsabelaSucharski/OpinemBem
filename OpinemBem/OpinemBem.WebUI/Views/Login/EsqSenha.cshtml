@@ -30,8 +30,11 @@
             </div>
             <div class="form-group">
                 <div class="col-md-12 text-right">
-                    <a href=@Url.Action("Index","PerfilU")>
-                        <input type="button" class="btn btn-primary" value="Alterar Senha" />
+                    <a href=@Url.Action("Index","Login")>
+                        <input type="submit" class="btn btn-primary" value="Alterar Senha" />
+                        </a>
+                    <a class="btn btn-primary" href="@Url.Action("Index", "Login")">Cancelar</a>
+                    
                 </div>
             </div>
         </form>
