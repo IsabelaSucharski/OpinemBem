@@ -23,6 +23,7 @@ namespace OpinemBem.WebUI.Controllers
                 };
 
                 var usuarioLogado = new UsuarioDAO().Logar(usuario);
+                usuarioLogado = new UsuarioDAO().ValidarCPF();
 
                 if (usuarioLogado == null)
                 {
