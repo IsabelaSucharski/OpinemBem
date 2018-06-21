@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpinemBem.Models", "OpinemB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpinemBem.DataAccess", "OpinemBem.DataAccess\OpinemBem.DataAccess.csproj", "{2EEC2D09-949B-4CC6-9879-B4060A787F54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteCategoria", "TesteCategoria\TesteCategoria.csproj", "{04AAE1B3-66E8-4DE1-80F2-75713EEBB7B6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{2EEC2D09-949B-4CC6-9879-B4060A787F54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EEC2D09-949B-4CC6-9879-B4060A787F54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2EEC2D09-949B-4CC6-9879-B4060A787F54}.Release|Any CPU.Build.0 = Release|Any CPU
-		{04AAE1B3-66E8-4DE1-80F2-75713EEBB7B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{04AAE1B3-66E8-4DE1-80F2-75713EEBB7B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{04AAE1B3-66E8-4DE1-80F2-75713EEBB7B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{04AAE1B3-66E8-4DE1-80F2-75713EEBB7B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

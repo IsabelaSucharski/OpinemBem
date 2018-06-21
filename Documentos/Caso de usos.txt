@@ -1,0 +1,23 @@
+USUARIO
+-Cadastrar Login(OK)
+-Visualizar atividades realizadas no site(OK)
+-Cadastrar Projetos de Lei (OK)
+-Visualizar projetos de lei a votar(OK)
+-Visualizar página de descrição do Projeto de Lei (OK)
+-Votar nos Projetos de Lei (OK)
+-Realizar comentários(OK)
+-Visualizar dados pessoais (OK)
+-Alterar Foto do perfil (OK)
+
+-Visualizar votos nos Projetos(ADMINISTRADOR) (OK)
+-Logar no Sistema(ADMINISTRADOR) (OK)
+-Acessar perfil(ADMINISTRADOR)(OK)
+-Alterar senha(ADMINISTRADOR)(OK)
+
+ADMINISTRADOR
+-Cadastrar categoria (OK)
+-Cadastrar Estados (OK)
+-Cadastrar Cidades (OK)
+-Manter/Gerenciar Projetos de Lei (OK)
+-Visualizar Projetos gerenciados no perfil (OK)
+
