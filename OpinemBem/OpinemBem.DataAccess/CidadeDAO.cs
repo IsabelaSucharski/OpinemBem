@@ -193,11 +193,11 @@ namespace OpinemBem.DataAccess
             {
                 //Criando instrução sql para selecionar todos os registros na tabela de cidade
                 string strSQL = @"SELECT 
-                                        C.*,
-                                        E. NOME AS NOME_ESTADO
-                                        FROM CIDADE C
-                                        INNER JOIN ESTADO E ON (E.ID_ESTADO = C.ID_ESTADO) 
-                                        WHERE id_estado = @id_estado;";
+                                    C.*,
+                                    E. NOME AS NOME_ESTADO
+                                  FROM CIDADE C
+                                  INNER JOIN ESTADO E ON (E.ID_ESTADO = C.ID_ESTADO) 
+                                  WHERE C.ID_ESTADO = @ID_ESTADO;";
 
                 //Criando um comando sql que será executado na base de dados
                 using (SqlCommand cmd = new SqlCommand(strSQL))
@@ -205,7 +205,7 @@ namespace OpinemBem.DataAccess
                     //Abrindo conexão com o banco de dados
                     conn.Open();
                     cmd.Connection = conn;
-                    cmd.Parameters.Add("@id_estado", SqlDbType.Int).Value = uf;
+                    cmd.Parameters.Add("@ID_ESTADO", SqlDbType.Int).Value = uf;
                     cmd.CommandText = strSQL;
 
                     //Executando instrução sql

@@ -36,10 +36,10 @@ create table usuario
 );
 
 insert into usuario (nome, cpf, email, senha, administrador, sexo) 
-values ('Administrador', '111.111.111-11', 'admin@opinembem.com.br', '123', 1, 1);
+values ('Administrador', '852.765.277-33', 'admin@opinembem.com.br', '123', 1, 1);
 
 insert into usuario (nome, cpf, email, senha, administrador, sexo) 
-values ('Usuário 1', '222.222.222-22', 'usuario1@opinembem.com.br', '123', 0, 2);
+values ('Usuário 1', '261.501.522-27', 'usuario1@opinembem.com.br', '123', 0, 2);
 
 create table categoria
 (
