@@ -133,6 +133,18 @@ go
 
 
 
+bulk insert estado
+from 'C:\Users\Aluno\Documents\GitHub\OpinemBem\OpinemBem\Estados.txt'
+with	
+(
+	codepage = 'ACP'
+)
+
+bulk insert cidade
+from 'C:\Users\Aluno\Documents\GitHub\OpinemBem\OpinemBem\Cidades.txt'
+with	
+(
+	codepage = 'ACP'
+)
 --http://opinembem.azurewebsites.net/Login
 
-select * from voto
