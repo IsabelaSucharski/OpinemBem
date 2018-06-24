@@ -20,7 +20,6 @@ namespace OpinemBem.WebUI.Controllers
             var lei = new ProjetoDeLeiDAO().BuscarPorId(id);
             lei.Voto = new VotoDAO().BuscarVoto(id, ((Usuario)User).Id);
             lei.Comentarios = new ComentarioDAO().BuscarPorProjeto(id);
-            //lei.Categoria = new CategoriaDAO().BuscarPorId(id);
             return View(lei);
         }
 

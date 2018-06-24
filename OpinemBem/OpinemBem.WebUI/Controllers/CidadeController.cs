@@ -25,6 +25,13 @@ namespace OpinemBem.WebUI.Controllers
             return RedirectToAction("Index", "Cidade");
         }
 
+        public ActionResult ExcluirCidade(int id)
+        {
+            var obj = new Cidade() { Id = id };
+            new CidadeDAO().Deletar(obj);
+            return RedirectToAction("Index", "Cidade");
+        }
+
         public ActionResult CadastroC()
         {
             ViewBag.Estados = new EstadoDAO().BuscarTodos();

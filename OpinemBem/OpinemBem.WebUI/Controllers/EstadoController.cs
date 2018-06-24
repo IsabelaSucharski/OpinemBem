@@ -25,6 +25,13 @@ namespace OpinemBem.WebUI.Controllers
             return RedirectToAction("Index", "Estado");
         }
 
+        public ActionResult ExcluirEstado(int id)
+        {
+            var obj = new Estado() { Id = id };
+            new EstadoDAO().Deletar(obj);
+            return RedirectToAction("Index", "Estado");
+        }
+
         public ActionResult CadastroE()
         {
             return View();

@@ -16,6 +16,7 @@
                     <th class="text-center">Cód.</th>
                     <th class="text-center">Nome da Cidade</th>
                     <th class="text-center">Estado</th>
+                    <th class="text-center"></th>
                 </tr>
             </thead>
             <tbody>
@@ -25,6 +26,11 @@
                         <td class="text-center">@item.Id</td>
                         <td>@item.Nome</td>
                         <td>@item.Estado.Nome</td> 
+                        <td>
+                            <a href="@Url.Action("ExclirCidade", "Cidade", new { @id = item.Id })" onclick="javascript: if (!(confirm('Deseja realmente excluir esta cidade?'))) return false;">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </a>
+                        </td>
                     </tr>
                 }
             </tbody>

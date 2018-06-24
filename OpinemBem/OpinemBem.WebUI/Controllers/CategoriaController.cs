@@ -24,6 +24,13 @@ namespace OpinemBem.WebUI.Controllers
             return RedirectToAction("Index", "Categoria");
         }
 
+        public ActionResult ExcluirCategoria(int id)
+        {
+            var obj = new Categoria() { Id = id };
+            new CategoriaDAO().Deletar(obj);
+            return RedirectToAction("Index", "Categoria");
+        }
+
         public ActionResult Cadastro()
         {
             return View();

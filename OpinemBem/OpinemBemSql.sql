@@ -73,6 +73,11 @@ create table projeto_de_lei
 	publicado bit not null default 0
 );
 
+
+--insert into projeto_de_lei (nome,id_categoria,id_usuario,descricao,vantagens,desvantagens,tempo_disponivel) 
+--values ('Melhroia 1',1,1,'melhoria','melhoria','melhoria',12)
+
+select * from projeto_de_lei
 create table voto
 (
 	id_voto int identity(1,1) primary key,
@@ -147,4 +152,3 @@ with
 	codepage = 'ACP'
 )
 --http://opinembem.azurewebsites.net/Login
-
