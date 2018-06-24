@@ -9,8 +9,7 @@ namespace OpinemBem.WebUI.Controllers
     public class LoginController : Controller
     {
         public ActionResult Index()
-        {
-            //validar emai no cadastro
+        {            
             return View();
         }
 
@@ -57,6 +56,25 @@ namespace OpinemBem.WebUI.Controllers
         public ActionResult EsqSenha()
         {
             return View();
+        }
+
+        public ActionResult SalvarSenha(EsqSenhaViewModel obj)
+        {
+            if (ModelState.IsValid)
+            {
+                var usuario = new Usuario()
+                {
+                    Email = obj.Email,
+                    Senha = obj.Senha
+                };
+
+                if (!ValidarEmail(obj.Email))
+                {
+                    ViewBag.MsgErro = "E-mail inválido!";
+                    return View("EsqSenha");
+                }
+            }
+            return View("EsqSenha");
         }
 
         private bool ValidarCPF(string cpf)

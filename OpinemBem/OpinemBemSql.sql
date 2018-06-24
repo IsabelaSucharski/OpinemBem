@@ -36,10 +36,10 @@ create table usuario
 );
 
 insert into usuario (nome, cpf, email, senha, administrador, sexo) 
-values ('Administrador', '852.765.277-33', 'admin@opinembem.com.br', '123', 1, 1);
+values ('Administrador', '581.182.929-91', 'admin@opinembem.com.br', '123', 1, 1);
 
 insert into usuario (nome, cpf, email, senha, administrador, sexo) 
-values ('Usuário 1', '261.501.522-27', 'usuario1@opinembem.com.br', '123', 0, 2);
+values ('Usuário 1', '123.118.619-48', 'usuario1@opinembem.com.br', '123', 0, 2);
 
 create table categoria
 (
@@ -134,14 +134,14 @@ go
 
 
 bulk insert estado
-from 'C:\Users\Aluno\Documents\GitHub\OpinemBem\OpinemBem\Estados.txt'
+from 'D:\Documents\GitHub\OpinemBem\OpinemBem\Estados.txt'
 with	
 (
 	codepage = 'ACP'
 )
 
 bulk insert cidade
-from 'C:\Users\Aluno\Documents\GitHub\OpinemBem\OpinemBem\Cidades.txt'
+from 'D:\Documents\GitHub\OpinemBem\OpinemBem\Cidades.txt'
 with	
 (
 	codepage = 'ACP'

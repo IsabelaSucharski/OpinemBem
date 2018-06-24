@@ -11,22 +11,11 @@
                 <div class="col-md-4 text-center">
                     @if (!string.IsNullOrWhiteSpace(Model.Foto))
                     {
-                        <img src="@Url.Content(string.Format("~/Uploads/{0}", Model.Foto))" width="200" />
+                        <img src="@Url.Content(string.Format("~/Uploads/{0}", Model.Foto))" class="img-circle text-center" width="200" />
                     }
                     else
                     {
-                        <img class="img-circle" src="@Url.Content("~/Images/avatar_2x.png")" width="150" height="150">
-                        @*<br />
-                        @Html.LabelFor(m => m.Foto, "Trocar Foto:", new { @id = "lblFoto", @class = "control-label" })
-                        <div class="input-group">
-                            @Html.TextBoxFor(m => m.Foto, new { @id = "txtFoto", @class = "form-control", @maxlength = 1000, @readonly = true })
-                            <span class="input-group-btn">
-                                <span class="btn btn-default fileinput-button">
-                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                    <input id="fupArquivo" type="file" name="files[]" multiple="multiple" data-url="@Url.Action("Upload", "Cadastro")" />
-                                </span>
-                            </span>
-                        </div>*@
+                        <img class="img-circle text-center" src="@Url.Content("~/Images/avatar_2x.png")" width="150" height="150">                                             
                     }
                 </div>
                 <div class="col-md-4" style="padding-top: 15px;">
