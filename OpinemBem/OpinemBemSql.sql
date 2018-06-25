@@ -1,7 +1,7 @@
 create database OpinemBem
 go
 
-use master
+use OpinemBem
 go
 
 create table estado
@@ -10,8 +10,6 @@ create table estado
 	nome varchar(100) not null,
 	sigla varchar(2) not null
 );
-
---select * from projeto_de_lei
 
 create table cidade
 (
@@ -135,8 +133,6 @@ go
 -- criando campo de quantidade de votos contra
 alter table projeto_de_lei add total_votos as dbo.get_total(id_projeto);
 go
-
-
 
 --bulk insert estado
 --from 'D:\Documents\GitHub\OpinemBem\OpinemBem\Estados.txt'
