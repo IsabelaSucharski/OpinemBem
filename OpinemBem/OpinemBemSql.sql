@@ -1,7 +1,7 @@
 create database OpinemBem
 go
 
-use OpinemBem
+use master
 go
 
 create table estado
@@ -77,7 +77,7 @@ create table projeto_de_lei
 --insert into projeto_de_lei (nome,id_categoria,id_usuario,descricao,vantagens,desvantagens,tempo_disponivel) 
 --values ('Melhroia 1',1,1,'melhoria','melhoria','melhoria',12)
 
-select * from projeto_de_lei
+--select * from projeto_de_lei
 create table voto
 (
 	id_voto int identity(1,1) primary key,
@@ -138,17 +138,17 @@ go
 
 
 
-bulk insert estado
-from 'D:\Documents\GitHub\OpinemBem\OpinemBem\Estados.txt'
-with	
-(
-	codepage = 'ACP'
-)
+--bulk insert estado
+--from 'D:\Documents\GitHub\OpinemBem\OpinemBem\Estados.txt'
+--with	
+--(
+--	codepage = 'ACP'
+--)
 
-bulk insert cidade
-from 'D:\Documents\GitHub\OpinemBem\OpinemBem\Cidades.txt'
-with	
-(
-	codepage = 'ACP'
-)
+--bulk insert cidade
+--from 'D:\Documents\GitHub\OpinemBem\OpinemBem\Cidades.txt'
+--with	
+--(
+--	codepage = 'ACP'
+--)
 --http://opinembem.azurewebsites.net/Login
