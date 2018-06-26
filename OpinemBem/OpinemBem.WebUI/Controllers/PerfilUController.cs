@@ -18,5 +18,10 @@ namespace OpinemBem.WebUI.Controllers
             obj.Leis = new ProjetoDeLeiDAO().BuscarPublicados();
             return View(obj);
         }
+
+        //public ActionResult AtualizarSenha()
+        //{
+
+        //}
     }
 }
