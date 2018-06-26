@@ -15,7 +15,7 @@ create table cidade
 (
 	id_cidade int identity(1,1) primary key,
 	nome varchar(100) not null,
-	id_estado int references estado (id_estado)
+	id_estado int references estado (id_estado) 
 );
 
 create table usuario
@@ -34,10 +34,10 @@ create table usuario
 );
 
 insert into usuario (nome, cpf, email, senha, administrador, sexo) 
-values ('Administrador', '111.111.111-11', 'admin@opinembem.com.br', '123', 1, 1);
+values ('Administrador', '581.182.929-91', 'admin@opinembem.com.br', '123', 1, 1);
 
 insert into usuario (nome, cpf, email, senha, administrador, sexo) 
-values ('Usuário 1', '222.222.222-22', 'usuario1@opinembem.com.br', '123', 0, 2);
+values ('Usuário 1', '123.118.619-48', 'usuario1@opinembem.com.br', '123', 0, 2);
 
 create table categoria
 (
@@ -63,6 +63,7 @@ create table projeto_de_lei
 	nome varchar(500),
 	id_categoria int not null references categoria (id_categoria),
 	id_usuario int not null references usuario(id_usuario),
+	data_cadastro datetime not null default getdate(),
 	descricao varchar(max),
 	vantagens varchar(max),
 	desvantagens varchar(max),
@@ -70,6 +71,11 @@ create table projeto_de_lei
 	publicado bit not null default 0
 );
 
+
+--insert into projeto_de_lei (nome,id_categoria,id_usuario,descricao,vantagens,desvantagens,tempo_disponivel) 
+--values ('Melhroia 1',1,1,'melhoria','melhoria','melhoria',12)
+
+--select * from projeto_de_lei
 create table voto
 (
 	id_voto int identity(1,1) primary key,
@@ -127,3 +133,18 @@ go
 -- criando campo de quantidade de votos contra
 alter table projeto_de_lei add total_votos as dbo.get_total(id_projeto);
 go
+
+--bulk insert estado
+--from 'D:\Documents\GitHub\OpinemBem\OpinemBem\Estados.txt'
+--with	
+--(
+--	codepage = 'ACP'
+--)
+
+--bulk insert cidade
+--from 'D:\Documents\GitHub\OpinemBem\OpinemBem\Cidades.txt'
+--with	
+--(
+--	codepage = 'ACP'
+--)
+--http://opinembem.azurewebsites.net/Login
