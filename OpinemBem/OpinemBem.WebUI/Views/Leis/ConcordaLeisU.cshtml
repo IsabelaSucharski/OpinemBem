@@ -42,6 +42,11 @@
                     <label class="control-label">Você concorda com esse projeto?</label>
                 </div>
             </div>
+            @*@if (var usuarioLogado.Usuario.Id =! ProjetoDeLei.Usuario.Id)
+            {
+                
+            }*@
+
             @if (Model != null && Model.Voto != null)
             {
                 <div class="form-group">
@@ -106,7 +111,14 @@
                     <hr />
                     <div class="row">
                         <div class="col-md-3 text-center-lg">
-                            <img class="img-circle" src="@Url.Content("~/Images/avatar_2x.png")" width="100" height="100">
+                            @if (!string.IsNullOrWhiteSpace(post.Usuario.Foto))
+                            {
+                                <img class="img-circle" src="@Url.Content(string.Format("~/Uploads/{0}", post.Usuario.Foto))" style="width: 100px;" />
+                            }
+                            else
+                            {
+                                <img class="img-circle" src="@Url.Content("~/Images/avatar_2x.png")" style="width: 100px;" />
+                            }                            
                         </div>
                         <div class="col-md-8">
                             <h4 style="font-weight: bold;">@post.Usuario.Nome</h4>

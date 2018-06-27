@@ -161,7 +161,7 @@ namespace OpinemBem.DataAccess
                     string strSQL = @"SELECT U.*, E.NOME AS NOME_ESTADO, C.NOME AS NOME_CIDADE 
                                       FROM USUARIO U
                                       LEFT JOIN ESTADO E ON (E.ID_ESTADO = U.ID_ESTADO)
-                                      LEFT JOIN CIDADE C ON (C.ID_CIDADE = C.ID_CIDADE);";  
+                                      LEFT JOIN CIDADE C ON (C.ID_CIDADE = U.ID_CIDADE);";  
 
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {
@@ -190,12 +190,12 @@ namespace OpinemBem.DataAccess
                                 Estado = row["id_estado"] is DBNull ? null : new Estado()
                                 {
                                     Id = Convert.ToInt32(row["id_estado"]),
-                                    Nome = row["nome"].ToString()
+                                    Nome = row["NOME_ESTADO"].ToString()
                                 },
                                 Cidade = row["id_cidade"] is DBNull ? null : new Cidade()
                                 {
                                     Id = Convert.ToInt32(row["id_cidade"]),
-                                    Nome = row["nome"].ToString()
+                                    Nome = row["NOME_CIDADE"].ToString()
                                 }
                             };
 

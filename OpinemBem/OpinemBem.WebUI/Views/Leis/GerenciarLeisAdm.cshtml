@@ -42,11 +42,25 @@
                     <label class="control-label">Deseja publicar este projeto?</label>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-md-12">
-                    <a class="btn btn-success" href="@Url.Action("Publicar", "Projetos", new { @id = Model.Id })" onclick="if(!confirm('Deseja publicar este projeto?')) return false;">Publicar</a>                   
+            @if (Model != null && Model.Publicado != false)
+            {
+                <div class="form-group">
+                    <div class="col-md-12 text-center">
+                        @if (Model.Publicado == true)
+                        {
+                            <div class="alert alert-success" role="alert"> <strong>PUBLICADO!</strong> O projeto de lei '@Model.Nome' está pronto pra ser votado.</div>
+                        }
+                    </div>
                 </div>
-            </div>
+            }
+            else
+            {
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <a class="btn btn-success" href="@Url.Action("Publicar", "Projetos", new { @id = Model.Id })" onclick="if(!confirm('Deseja publicar este projeto?')) return false;">Publicar</a>
+                    </div>
+                </div>
+            }
         </form>
     </div>
 </div>

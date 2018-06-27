@@ -11,12 +11,21 @@
                 <div class="col-md-4 text-center">
                     @if (!string.IsNullOrWhiteSpace(Model.Foto))
                     {
-                        <img src="@Url.Content(string.Format("~/Uploads/{0}", Model.Foto))" class="img-circle text-center" width="200" />
+                        <img class="img-circle" src="@Url.Content(string.Format("~/Uploads/{0}", Model.Foto))" style="width: 100px;" />
                     }
                     else
                     {
-                        <img class="img-circle text-center" src="@Url.Content("~/Images/avatar_2x.png")" width="150" height="150">                                             
+                        <img class="img-circle" src="@Url.Content("~/Images/avatar_2x.png")" style="width: 100px;" />
                     }
+                    
+                    @*@if (!string.IsNullOrWhiteSpace(Model.Foto))
+                    {
+                        <img src="@Url.Content(string.Format("~/Uploads/{0}", Model.Foto))" class="img-circle text-center" width="150" height="150" />
+                    }
+                    else
+                    {
+                        <img class="img-circle text-center" src="@Url.Content("~/Images/avatar_2x.png")" width="150" height="150">
+                    }*@
                 </div>
                 <div class="col-md-4" style="padding-top: 15px;">
                     <div class="col-md-12 text-left">
@@ -48,63 +57,67 @@
             </fieldset>
         </form>
     </div>
-    <div class="col-md-12" style="padding-top: 25px;">        
-                <form class="form-horizontal" style="border-bottom: 5px;">         
-                    <fieldset> 
-                        <legend>Meus Projetos</legend>
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <table class="table table-bordered">
-                                    <tbody class="text-center">
-                                        <tr>
-                                            <td style="width: 50%;">
-                                                <label class="control-label">Quantidade de Projetos Votados: @Model.Leis.Where(x => x.Publicado && x.TotalDeVotos > 0).Count()</label>
-                                            </td>
-                                            <td style="width: 50%;">
-                                                <label class="control-label">Quantidade de Projetos Cadastrados: @Model.Leis.Count</label>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>        
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-center" style="vertical-align: middle;">Projeto de Lei</th>
-                                            <th class="text-center" style="vertical-align: middle;">Categoria</th>
-                                            <th class="text-center" style="vertical-align: middle;">Publicado?</th>
-                                            <th class="text-center" style="vertical-align: middle;">Total de Votos</th>
-                                            <th class="text-center" style="vertical-align: middle;">&nbsp;</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="text-center">
-                                        @foreach (var lei in Model.Leis)
-                                        {
-                                            <tr>
-                                                <td style="width: 20%; vertical-align: middle;" rowspan="2">@lei.Nome</td>
-                                                <td style="width: 15%; vertical-align: middle;" rowspan="2">@lei.Categoria.Nome</td>
-                                                <td style="width: 5%; vertical-align: middle;" rowspan="2">@(lei.Publicado ? "Sim" : "Não")</td>
-                                                <td style="width: 10%; vertical-align: middle;" rowspan="2">@lei.TotalDeVotos</td>
-                                                <td style="width: 25%; vertical-align: middle;">
-                                                    <label class="control-label">Votos Contra:</label>
-                                                    <progress max="100" value="@(lei.PercContra)" title="@(lei.PercContra)%">@(lei.PercContra)%</progress>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 25%; vertical-align: middle;">
-                                                    <label class="control-label">Votos a Favor:</label>
-                                                    <progress max="100" value="@(lei.PercAFavor)" title="@(lei.PercAFavor)%">@(lei.PercAFavor)%</progress>
-                                                </td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </fieldset>                   
-                </form>
-            </div>
-        </div>
+    <div class="col-md-12" style="padding-top: 25px;">
+        <form class="form-horizontal" style="border-bottom: 5px;">
+            <fieldset>
+                <legend>Meus Projetos</legend>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <table class="table table-bordered">
+                            <tbody class="text-center">
+                                <tr>
+                                    <td style="width: 50%;">
+                                        <label class="control-label">Quantidade de Projetos Votados: @Model.Leis.Where(x => x.Publicado && x.TotalDeVotos > 0).Count()</label>
+                                    </td>
+                                    <td style="width: 50%;">
+                                        <label class="control-label">Quantidade de Projetos Cadastrados: @Model.Leis.Count</label>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" style="vertical-align: middle;">Projeto de Lei</th>
+                                    <th class="text-center" style="vertical-align: middle;">Categoria</th>
+                                    <th class="text-center" style="vertical-align: middle;">Publicado?</th>
+                                    <th class="text-center" style="vertical-align: middle;">Total de Votos</th>
+                                    <th class="text-center" style="vertical-align: middle;">&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                @foreach (var lei in Model.Leis)
+                                {
+                                    <tr>
+                                        <td style="width: 20%; vertical-align: middle;" rowspan="2">
+                                            <a href="@Url.Action("ConcordaLeisU", "Leis", new { @id = lei.Id })">
+                                                @lei.Nome
+                                            </a>
+                                        </td>
+                                        <td style="width: 15%; vertical-align: middle;" rowspan="2">@lei.Categoria.Nome</td>
+                                        <td style="width: 5%; vertical-align: middle;" rowspan="2">@(lei.Publicado ? "Sim" : "Não")</td>
+                                        <td style="width: 10%; vertical-align: middle;" rowspan="2">@lei.TotalDeVotos</td>
+                                        <td style="width: 25%; vertical-align: middle;">
+                                            <label class="control-label">Votos Contra:</label>
+                                            <progress max="100" value="@(lei.PercContra)" title="@(lei.PercContra)%">@(lei.PercContra)%</progress>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25%; vertical-align: middle;">
+                                            <label class="control-label">Votos a Favor:</label>
+                                            <progress max="100" value="@(lei.PercAFavor)" title="@(lei.PercAFavor)%">@(lei.PercAFavor)%</progress>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
