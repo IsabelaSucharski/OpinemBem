@@ -26,7 +26,7 @@
                         <td class="text-center">@item.Id</td>
                         <td>@item.Nome</td>
                         <td>@item.Estado.Nome</td> 
-                        <td>
+                        <td class="text-center">
                             <a href="@Url.Action("ExcluirCidade", "Cidade", new { @id = item.Id })" onclick="javascript: if (!(confirm('Deseja realmente excluir esta cidade?'))) return false;">
                                 <span class="glyphicon glyphicon-remove"></span>
                             </a>

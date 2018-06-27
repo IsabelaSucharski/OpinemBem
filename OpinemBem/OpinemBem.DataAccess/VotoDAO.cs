@@ -24,6 +24,14 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@data_voto", SqlDbType.DateTime).Value = obj.DataVoto;
                         cmd.Parameters.Add("@valor", SqlDbType.VarChar).Value = obj.Valor;
 
+                        foreach (SqlParameter parameter in cmd.Parameters)
+                        {
+                            if (parameter.Value == null)
+                            {
+                                parameter.Value = DBNull.Value;
+                            }
+                        }
+
                         conn.Open();
                         cmd.ExecuteNonQuery();
                         conn.Close();
@@ -45,6 +53,14 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@id_projeto", SqlDbType.Int).Value = obj.ProjetoDeLei.Id;
                         cmd.Parameters.Add("@data_voto", SqlDbType.DateTime).Value = obj.DataVoto;
                         cmd.Parameters.Add("@valor", SqlDbType.VarChar).Value = obj.Valor;
+
+                        foreach (SqlParameter parameter in cmd.Parameters)
+                        {
+                            if (parameter.Value == null)
+                            {
+                                parameter.Value = DBNull.Value;
+                            }
+                        }
 
                         conn.Open();
                         cmd.ExecuteNonQuery();

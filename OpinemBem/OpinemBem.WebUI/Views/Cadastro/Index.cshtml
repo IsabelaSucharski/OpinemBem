@@ -74,7 +74,7 @@
                         <div class="col-md-6">
                             @Html.LabelFor(m => m.Sexo, "Sexo:", new { @class = "control-label" })
                             <br />
-                            @Html.RadioButtonFor(m => m.Sexo, Sexo.FEMININO) Feminino
+                            @Html.RadioButtonFor(m => m.Sexo, Sexo.FEMININO, new { @checked = true }) Feminino
                             @Html.RadioButtonFor(m => m.Sexo, Sexo.MASCULINO) Masculino
                         </div>
                     </div>

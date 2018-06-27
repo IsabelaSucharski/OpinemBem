@@ -3,6 +3,11 @@
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<style type="text/css">
+    table > tbody > tr > td {
+        vertical-align: middle !important;
+    }
+</style>
 <div class="row">
     <div class="col-md-12">
         <form>
@@ -21,50 +26,45 @@
         </form>
     </div>
     <div class="col-md-12" style="padding-top: 25px;">
-        <form>
-            <fieldset>
-                <legend>Projetos</legend>
-                <table class="table table-bordered">
-                    <thead class="text-center">
-                        <tr>
-                            <th class="text-center" style="vertical-align: middle;">Nome do Projeto</th>
-                            <th class="text-center" style="vertical-align: middle;">Tempo Disponível</th>
-                            <th class="text-center" style="vertical-align: middle;">Categoria</th>
-                            <th class="text-center" style="vertical-align: middle;">Votos à Favor</th>
-                            <th class="text-center" style="vertical-align: middle;">Votos Contra</th>
-                            <th class="text-center" style="vertical-align: middle;">Total de Votos</th>
-                            <th class="text-center" style="vertical-align: middle;">Publicado?</th>
-                            <th class="text-center" style="vertical-align: middle;"></th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-center">
-                        @foreach (ProjetoDeLei item in Model.Leis)
-                        {
-                            <tr>
-                                <td>
-                                    <a href="@Url.Action("GerenciarLeisAdm", "Leis", new { @id = item.Id })">
-                                        @item.Nome
-                                    </a>
-                                </td>
-                                <td>@item.TempoDisponivel</td>
-                                <td>@item.Categoria.Nome</td>
-                                <td>@item.VotosAFavor</td>
-                                <td>@item.VotosContra</td>
-                                <td>@item.TotalDeVotos</td>
-                                <td>@(item.Publicado ? "Sim" : "Não")</td>
-                                <td>
-                                    <a href="@Url.Action("AlterarProjeto", "Projetos", new { @id = item.Id })">
-                                        <span class="glyphicon glyphicon-pencil"></span>
-                                    </a>
-                                    <a href="@Url.Action("ExcluirProjeto", "Projetos", new { @id = item.Id })" onclick="javascript: if (!(confirm('Deseja realmente excluir este projeto?'))) return false;">
-                                        <span class="glyphicon glyphicon-remove"></span>
-                                    </a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </fieldset>
-        </form>
+        <table class="table table-bordered">
+            <thead class="text-center">
+                <tr>
+                    <th class="text-center" style="vertical-align: middle;">Nome do Projeto</th>
+                    <th class="text-center" style="vertical-align: middle;">Tempo Disponível</th>
+                    <th class="text-center" style="vertical-align: middle;">Categoria</th>
+                    <th class="text-center" style="vertical-align: middle;">Votos à Favor</th>
+                    <th class="text-center" style="vertical-align: middle;">Votos Contra</th>
+                    <th class="text-center" style="vertical-align: middle;">Total de Votos</th>
+                    <th class="text-center" style="vertical-align: middle;">Publicado?</th>
+                    <th class="text-center" style="vertical-align: middle; white-space: nowrap;"></th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                @foreach (ProjetoDeLei item in Model.Leis)
+                {
+                    <tr>
+                        <td>
+                            <a href="@Url.Action("GerenciarLeisAdm", "Leis", new { @id = item.Id })">
+                                @item.Nome
+                            </a>
+                        </td>
+                        <td>@item.TempoDisponivel</td>
+                        <td>@item.Categoria.Nome</td>
+                        <td>@item.VotosAFavor</td>
+                        <td>@item.VotosContra</td>
+                        <td>@item.TotalDeVotos</td>
+                        <td>@(item.Publicado ? "Sim" : "Não")</td>
+                        <td style="white-space: nowrap;">
+                            <a href="@Url.Action("AlterarProjeto", "Projetos", new { @id = item.Id })">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </a>
+                            <a href="@Url.Action("ExcluirProjeto", "Projetos", new { @id = item.Id })" onclick="javascript: if (!(confirm('Deseja realmente excluir este projeto?'))) return false;">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 </div>

@@ -15,13 +15,7 @@ namespace OpinemBem.WebUI.Controllers
         {
             var obj = new UsuarioDAO().BuscarPorId(((Usuario)User).Id);
             obj.Leis = new ProjetoDeLeiDAO().BuscarPorUsuario(((Usuario)User).Id);
-            obj.Leis = new ProjetoDeLeiDAO().BuscarPublicados();
             return View(obj);
         }
-
-        //public ActionResult AtualizarSenha()
-        //{
-
-        //}
     }
 }

@@ -24,6 +24,14 @@ namespace OpinemBem.DataAccess
                     //Preenchendo os parâmetros da instrução sql
                     cmd.Parameters.Add("@nome", SqlDbType.VarChar).Value = obj.Nome;
 
+                    foreach (SqlParameter parameter in cmd.Parameters)
+                    {
+                        if (parameter.Value == null)
+                        {
+                            parameter.Value = DBNull.Value;
+                        }
+                    }
+
                     //Abrindo conexão com o banco de dados
                     conn.Open();
                     //Executando instrução sql
@@ -49,6 +57,14 @@ namespace OpinemBem.DataAccess
                     //Preenchendo os parâmetros da instrução sql
                     cmd.Parameters.Add("@nome", SqlDbType.VarChar).Value = obj.Nome;
                     cmd.Parameters.Add("@id_categoria", SqlDbType.VarChar).Value = obj.Id;
+
+                    foreach (SqlParameter parameter in cmd.Parameters)
+                    {
+                        if (parameter.Value == null)
+                        {
+                            parameter.Value = DBNull.Value;
+                        }
+                    }
 
                     //Abrindo conexão com o banco de dados
                     conn.Open();

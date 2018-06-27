@@ -29,6 +29,14 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@tempo_disponivel", SqlDbType.Int).Value = obj.TempoDisponivel;
                         cmd.Parameters.Add("@publicado", SqlDbType.Bit).Value = obj.Publicado;
 
+                        foreach (SqlParameter parameter in cmd.Parameters)
+                        {
+                            if (parameter.Value == null)
+                            {
+                                parameter.Value = DBNull.Value;
+                            }
+                        }
+
                         conn.Open();
                         cmd.ExecuteNonQuery();
                         conn.Close();
@@ -61,6 +69,14 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@desvantagens", SqlDbType.VarChar).Value = obj.Desvantagens;
                         cmd.Parameters.Add("@tempo_disponivel", SqlDbType.Int).Value = obj.TempoDisponivel;
                         cmd.Parameters.Add("@id_projeto", SqlDbType.Int).Value = obj.Id;
+
+                        foreach (SqlParameter parameter in cmd.Parameters)
+                        {
+                            if (parameter.Value == null)
+                            {
+                                parameter.Value = DBNull.Value;
+                            }
+                        }
 
                         conn.Open();
                         cmd.ExecuteNonQuery();

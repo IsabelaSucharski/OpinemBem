@@ -25,10 +25,18 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@senha", SqlDbType.VarChar).Value = obj.Senha;
                         cmd.Parameters.Add("@data_nasc", SqlDbType.DateTime).Value = obj.DataNasc.HasValue ? obj.DataNasc : DateTime.Now;
                         cmd.Parameters.Add("@administrador", SqlDbType.Bit).Value = obj.Administrador;
-                        cmd.Parameters.Add("@foto", SqlDbType.VarChar).Value = obj.Foto ?? string.Empty;
+                        cmd.Parameters.Add("@foto", SqlDbType.VarChar).Value = obj.Foto;
                         cmd.Parameters.Add("@sexo", SqlDbType.Int).Value = obj.Sexo.HasValue ? (object)Convert.ToInt32(obj.Sexo) : DBNull.Value;
                         cmd.Parameters.Add("@id_cidade", SqlDbType.Int).Value = obj.Cidade.Id;
                         cmd.Parameters.Add("@id_estado", SqlDbType.Int).Value = obj.Estado.Id;
+
+                        foreach (SqlParameter parameter in cmd.Parameters)
+                        {
+                            if (parameter.Value == null)
+                            {
+                                parameter.Value = DBNull.Value;
+                            }
+                        }
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -64,10 +72,18 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@senha", SqlDbType.VarChar).Value = obj.Senha;
                         cmd.Parameters.Add("@data_nasc", SqlDbType.DateTime).Value = obj.DataNasc.HasValue ? obj.DataNasc : DateTime.Now;
                         cmd.Parameters.Add("@administrador", SqlDbType.Bit).Value = obj.Administrador;
-                        cmd.Parameters.Add("@foto", SqlDbType.VarChar).Value = obj.Foto ?? string.Empty;
+                        cmd.Parameters.Add("@foto", SqlDbType.VarChar).Value = obj.Foto;
                         cmd.Parameters.Add("@sexo", SqlDbType.Int).Value = obj.Sexo.HasValue ? (object)Convert.ToInt32(obj.Sexo) : DBNull.Value;
                         cmd.Parameters.Add("@id_cidade", SqlDbType.Int).Value = obj.Cidade.Id;
                         cmd.Parameters.Add("@id_estado", SqlDbType.Int).Value = obj.Estado.Id;
+
+                        foreach (SqlParameter parameter in cmd.Parameters)
+                        {
+                            if (parameter.Value == null)
+                            {
+                                parameter.Value = DBNull.Value;
+                            }
+                        }
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -161,7 +177,7 @@ namespace OpinemBem.DataAccess
                     string strSQL = @"SELECT U.*, E.NOME AS NOME_ESTADO, C.NOME AS NOME_CIDADE 
                                       FROM USUARIO U
                                       LEFT JOIN ESTADO E ON (E.ID_ESTADO = U.ID_ESTADO)
-                                      LEFT JOIN CIDADE C ON (C.ID_CIDADE = U.ID_CIDADE);";  
+                                      LEFT JOIN CIDADE C ON (C.ID_CIDADE = U.ID_CIDADE);";
 
                     using (SqlCommand cmd = new SqlCommand(strSQL))
                     {
@@ -222,8 +238,8 @@ namespace OpinemBem.DataAccess
                 {
                     conn.Open();
                     cmd.Connection = conn;
-                    cmd.Parameters.Add("@CPF", SqlDbType.VarChar).Value = obj.CPF ?? string.Empty;
-                    cmd.Parameters.Add("@SENHA", SqlDbType.VarChar).Value = obj.Senha ?? string.Empty;
+                    cmd.Parameters.Add("@CPF", SqlDbType.VarChar).Value = obj.CPF;
+                    cmd.Parameters.Add("@SENHA", SqlDbType.VarChar).Value = obj.Senha;
                     cmd.CommandText = strSQL;
 
                     var dataReader = cmd.ExecuteReader();
@@ -278,8 +294,8 @@ namespace OpinemBem.DataAccess
                 {
                     conn.Open();
                     cmd.Connection = conn;
-                    cmd.Parameters.Add("@CPF", SqlDbType.VarChar).Value = obj.CPF ?? string.Empty;
-                    cmd.Parameters.Add("@SENHA", SqlDbType.VarChar).Value = obj.Senha ?? string.Empty;
+                    cmd.Parameters.Add("@CPF", SqlDbType.VarChar).Value = obj.CPF;
+                    cmd.Parameters.Add("@SENHA", SqlDbType.VarChar).Value = obj.Senha;
                     cmd.CommandText = strSQL;
 
                     var dataReader = cmd.ExecuteReader();
@@ -317,8 +333,6 @@ namespace OpinemBem.DataAccess
                     return usuario;
                 }
             }
-        }               
-
-
+        }
     }
 }

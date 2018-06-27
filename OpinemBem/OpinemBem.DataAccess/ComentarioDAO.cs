@@ -27,6 +27,13 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@data_comentario", SqlDbType.DateTime).Value = obj.DataHora;
                         cmd.Parameters.Add("@mensagem", SqlDbType.VarChar).Value = obj.Mensagem;
 
+                        foreach (SqlParameter parameter in cmd.Parameters)
+                        {
+                            if (parameter.Value == null)
+                            {
+                                parameter.Value = DBNull.Value;
+                            }
+                        }
 
                         //Abrindo conexão com o banco de dados
                         conn.Open();
@@ -53,6 +60,14 @@ namespace OpinemBem.DataAccess
                         cmd.Parameters.Add("@id_projeto", SqlDbType.Int).Value = obj.ProjetoDeLei.Id;
                         cmd.Parameters.Add("@data_comentario", SqlDbType.DateTime).Value = obj.DataHora;
                         cmd.Parameters.Add("@mensagem", SqlDbType.VarChar).Value = obj.Mensagem;
+
+                        foreach (SqlParameter parameter in cmd.Parameters)
+                        {
+                            if (parameter.Value == null)
+                            {
+                                parameter.Value = DBNull.Value;
+                            }
+                        }
 
                         conn.Open();
                         cmd.ExecuteNonQuery();

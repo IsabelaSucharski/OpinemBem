@@ -37,18 +37,13 @@
                     <p>@Model.Desvantagens</p>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-md-12">
-                    <label class="control-label">Você concorda com esse projeto?</label>
-                </div>
-            </div>
-            @*@if (var usuarioLogado.Usuario.Id =! ProjetoDeLei.Usuario.Id)
-            {
-                
-            }*@
-
             @if (Model != null && Model.Voto != null)
             {
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label class="control-label">Você concorda com esse projeto?</label>
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="col-md-12 text-center">
                         @if (!string.IsNullOrWhiteSpace(Model.Voto.Valor) && Model.Voto.Valor == "S")
@@ -64,14 +59,22 @@
             }
             else
             {
-                <div class="form-group">
-                    <div class="col-md-6 text-right">
-                        <a class="btn btn-success btn-lg" href=@Url.Action("Votar", "Projetos", new { @id = Model.Id, @voto = "S" }) onclick="if (!confirm('Deseja confirmar seu voto?')) return false;">Sim</a>
+                if (HttpContext.Current.User.GetType() == typeof(Usuario) && ((Usuario)HttpContext.Current.User).Id != Model.Usuario.Id)
+                {
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label class="control-label">Você concorda com esse projeto?</label>
+                        </div>
                     </div>
-                    <div class="col-md-6 text-left">
-                        <a class="btn btn-danger btn-lg" href=@Url.Action("Votar", "Projetos", new { @id = Model.Id, @voto = "N" }) onclick="if (!confirm('Deseja confirmar seu voto?')) return false;">Não</a>
+                    <div class="form-group">
+                        <div class="col-md-6 text-right">
+                            <a class="btn btn-success btn-lg" href=@Url.Action("Votar", "Projetos", new { @id = Model.Id, @voto = "S" }) onclick="if (!confirm('Deseja confirmar seu voto?')) return false;">Sim</a>
+                        </div>
+                        <div class="col-md-6 text-left">
+                            <a class="btn btn-danger btn-lg" href=@Url.Action("Votar", "Projetos", new { @id = Model.Id, @voto = "N" }) onclick="if (!confirm('Deseja confirmar seu voto?')) return false;">Não</a>
+                        </div>
                     </div>
-                </div>
+                }
             }
         </form>
     </div>
@@ -118,7 +121,7 @@
                             else
                             {
                                 <img class="img-circle" src="@Url.Content("~/Images/avatar_2x.png")" style="width: 100px;" />
-                            }                            
+                            }
                         </div>
                         <div class="col-md-8">
                             <h4 style="font-weight: bold;">@post.Usuario.Nome</h4>
@@ -128,11 +131,11 @@
                             </p>
                         </div>
                         @*<div>
-                            
-                            <a href="@Url.Action("ExcluirPost", "Leis", new { @id = item.Id })" onclick="javascript: if (!(confirm('Deseja realmente excluir este comentário?'))) return false;">
-                                <span class="glyphicon glyphicon-remove"></span>
-                            </a>
-                        </div>*@
+
+                                <a href="@Url.Action("ExcluirPost", "Leis", new { @id = item.Id })" onclick="javascript: if (!(confirm('Deseja realmente excluir este comentário?'))) return false;">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </a>
+                            </div>*@
                     </div>
                 </div>
             </div>
