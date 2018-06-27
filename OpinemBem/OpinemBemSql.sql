@@ -71,11 +71,6 @@ create table projeto_de_lei
 	publicado bit not null default 0
 );
 
-
---insert into projeto_de_lei (nome,id_categoria,id_usuario,descricao,vantagens,desvantagens,tempo_disponivel) 
---values ('Melhroia 1',1,1,'melhoria','melhoria','melhoria',12)
-
---select * from projeto_de_lei
 create table voto
 (
 	id_voto int identity(1,1) primary key,
@@ -134,17 +129,3 @@ go
 alter table projeto_de_lei add total_votos as dbo.get_total(id_projeto);
 go
 
---bulk insert estado
---from 'D:\Documents\GitHub\OpinemBem\OpinemBem\Estados.txt'
---with	
---(
---	codepage = 'ACP'
---)
-
---bulk insert cidade
---from 'D:\Documents\GitHub\OpinemBem\OpinemBem\Cidades.txt'
---with	
---(
---	codepage = 'ACP'
---)
---http://opinembem.azurewebsites.net/Login
